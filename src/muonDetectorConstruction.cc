@@ -15,12 +15,12 @@
 #include "G4Element.hh"
 #include "G4Material.hh"
 #include "G4SDManager.hh"
-//#include "G4UnitDefinition.hh"
+
 
 
 muonDetectorConstruction::muonDetectorConstruction()
 : G4VUserDetectorConstruction()
-{ Construct();}
+{ }
 
 
 muonDetectorConstruction::~muonDetectorConstruction()
@@ -93,7 +93,11 @@ G4VPhysicalVolume* muonDetectorConstruction::Construct()
 
   return physWorld;
 }
+
 #include "EnergyTimeSD.hh"
+// 设置敏感探测器 记录 能量沉积 位置
+
+
 void muonDetectorConstruction::ConstructSDandField()
 {
   G4SDManager* sdManager = G4SDManager::GetSDMpointer();
@@ -101,5 +105,6 @@ void muonDetectorConstruction::ConstructSDandField()
 
   EnergyTimeSD* muondectorET = new EnergyTimeSD("muondectorET");
   SetSensitiveDetector("muondector",muondectorET);
-  sdManager ->AddNewDetector(muondectorET);
+  sdManager->AddNewDetector(muondectorET);
+
 }
