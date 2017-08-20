@@ -5,11 +5,8 @@
 #include "G4RunManager.hh"
 #include "G4NistManager.hh"
 #include "G4Box.hh"
-// #include "G4Cons.hh"
-// #include "G4Orb.hh"
-// #include "G4Tubs.hh"
-// #include "G4Sphere.hh"
 #include "G4Trd.hh"
+
 #include "G4LogicalVolume.hh"
 #include "G4PVPlacement.hh"
 #include "G4SystemOfUnits.hh"
@@ -18,12 +15,12 @@
 #include "G4Element.hh"
 #include "G4Material.hh"
 #include "G4SDManager.hh"
-//#include "G4UnitDefinition.hh"
+
 
 
 muonDetectorConstruction::muonDetectorConstruction()
 : G4VUserDetectorConstruction()
-{ Construct();}
+{ }
 
 
 muonDetectorConstruction::~muonDetectorConstruction()
@@ -95,4 +92,19 @@ G4VPhysicalVolume* muonDetectorConstruction::Construct()
   new G4PVPlacement(rotm, pos2, logicShape, "muondector2", logicWorld, false, 1, checkOverlaps);
 
   return physWorld;
+}
+
+#include "EnergyTimeSD.hh"
+// 设置敏感探测器 记录 能量沉积 位置
+
+
+void muonDetectorConstruction::ConstructSDandField()
+{
+  G4SDManager* sdManager = G4SDManager::GetSDMpointer();
+  sdManager->SetVerboseLevel(2);
+
+  EnergyTimeSD* muondectorET = new EnergyTimeSD("muondectorET");
+  SetSensitiveDetector("muondector",muondectorET);
+  sdManager->AddNewDetector(muondectorET);
+
 }

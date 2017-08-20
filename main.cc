@@ -17,15 +17,15 @@
 
 
 #include "Randomize.hh"
-
+#include "Analysis.hh"
 #include <vector>
 
 
 #include "muonDetectorConstruction.hh"
 #include "muonActionInitialization.hh"
-#include "muonPhysics.hh"
+// #include "muonPhysics.hh"
 #include "SFLeptonPhysics.hh"
-#include "PhysicsList.hh"
+// #include "PhysicsList.hh"
 using namespace std;
 int main(int argc,char** argv)
 {
@@ -68,7 +68,7 @@ int main(int argc,char** argv)
 
   // Set mandatory initialization classes
   // Detector construction
-  runManager->SetUserInitialization(new muonDetectorConstruction());
+  runManager->SetUserInitialization(new muonDetectorConstruction() );
 
   // Physics list
   // G4VModularPhysicsList* physicsList = new QBBC;
@@ -114,8 +114,12 @@ int main(int argc,char** argv)
       }
   #endif
 
+  G4AnalysisManager* man = G4AnalysisManager::Instance();
+  man->CloseFile();
+
   delete visManager;
   delete runManager;
 
+  std::cout << "Application successfully ended.\nBye :-)" << std::endl;
   return 0;
 }

@@ -15,14 +15,14 @@ class G4LogicalVolume;
 class muonDetectorConstruction : public G4VUserDetectorConstruction
 {
   public:
-    // 调用 Construct() 函数建造 detector
+
     muonDetectorConstruction();
     virtual ~muonDetectorConstruction();
 
     virtual G4VPhysicalVolume* Construct() override;
 
     // if Register some of the detector's volumes as "sensitive"
-    // void ConstructSDandField() override;
+    void ConstructSDandField() override;
 };
 
 #endif

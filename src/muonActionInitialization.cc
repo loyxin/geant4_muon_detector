@@ -13,16 +13,15 @@ muonActionInitialization::~muonActionInitialization()
 
 void muonActionInitialization::BuildForMaster() const
 {
-  // SetUserAction(new muonRunAction());
+
 }
 
 
 void muonActionInitialization::Build() const
 {
   SetUserAction(new muonPrimaryGeneratorAction());
-  // muonRunAction* runAction = new muonRunAction;
-  // SetUserAction(runAction);
-
-  // SetUserAction(new muonEventAction(runAction));
+  muonRunAction* runAction = new muonRunAction;
+  SetUserAction(runAction);
+  SetUserAction(new muonEventAction());
 
 }
