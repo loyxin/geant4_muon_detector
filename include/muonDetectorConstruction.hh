@@ -15,7 +15,7 @@ class G4LogicalVolume;
 class muonDetectorConstruction : public G4VUserDetectorConstruction
 {
   public:
-
+    // 调用 Construct() 函数建造 detector
     muonDetectorConstruction();
     virtual ~muonDetectorConstruction();
 

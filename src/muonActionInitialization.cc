@@ -22,6 +22,6 @@ void muonActionInitialization::Build() const
   SetUserAction(new muonPrimaryGeneratorAction());
   muonRunAction* runAction = new muonRunAction;
   SetUserAction(runAction);
-  SetUserAction(new muonEventAction());
+  SetUserAction(new muonEventAction(runAction));
 
 }

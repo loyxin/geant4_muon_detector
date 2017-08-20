@@ -4,27 +4,7 @@
 #include <G4AccumulableManager.hh>
 #include <G4SystemOfUnits.hh>
 
-#include "Analysis.hh"
-
-muonRunAction::muonRunAction(){
-
-	G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
-	analysisManager->SetVerboseLevel(1);
-	analysisManager->SetFirstNtupleId(1);
-	analysisManager->SetFirstHistoId(1);
-
-	//   EnergyDeposit, Time, X, Y & Z
-	analysisManager->CreateNtuple("ekin_time", "Energy and time");
-	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
-	analysisManager->CreateNtupleDColumn("Time/ns");
-	analysisManager->CreateNtupleDColumn("X/mm");
-	analysisManager->CreateNtupleDColumn("Y/mm");
-	analysisManager->CreateNtupleDColumn("Z/mm");
-	analysisManager->FinishNtuple();
-
-	analysisManager->OpenFile("muon");
-
-}
+muonRunAction::muonRunAction(){}
 
 void muonRunAction::EndOfRunAction(const G4Run* run)
 {
@@ -45,6 +25,5 @@ void muonRunAction::EndOfRunAction(const G4Run* run)
 
 muonRunAction::~muonRunAction()
 {
-	G4AnalysisManager* man = G4AnalysisManager::Instance();
-  man->Write();
+
 }

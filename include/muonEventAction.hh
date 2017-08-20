@@ -11,12 +11,12 @@ class muonRunAction;
 class muonEventAction : public G4UserEventAction
 {
   public:
-    muonEventAction();
+    muonEventAction(muonRunAction* runAction);
     virtual ~muonEventAction();
 
     virtual void EndOfEventAction(const G4Event* anEvent) override;
 	private:
-
+		muonRunAction* frunAction;
 		G4int muondetectorETId { -1 };
 };
 
