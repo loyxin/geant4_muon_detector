@@ -24,16 +24,34 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
 
     if(!hcofEvent) return;
 
-    if(muondetectorETId < 0)
+    if(muondetectorEnId < 0)
     {
-      muondetectorETId = sdm->GetCollectionID("muondectorET/energy_time");
-      G4cout << "EventAction: muonDetector energy/time scorer ID: " << muondetectorETId << G4endl;
+      muondetectorEnId = sdm->GetCollectionID("muondectorEn/enerygy");
+      G4cout << "EventAction: muonDetector energy scorer ID: " << muondetectorEnId << G4endl;
+
     }
 
-    G4int histogramId = 1;
+    if( PMT_Id < 0)
+    {
+      PMT_Id = sdm->GetCollectionID("PMT_ET/energy_time");
+      G4cout << "EventAction: PMT energy/time scorer ID: " << PMT_Id << G4endl;
+    }
 
-    EnergyTimeHitsCollection* hitCollection =
-    dynamic_cast<EnergyTimeHitsCollection*>(hcofEvent->GetHC(muondetectorETId));
+    G4THitsMap<G4double>* hitMap =
+    dynamic_cast<G4THitsMap<G4double>*>(hcofEvent->GetHC(muondetectorEnId));
+
+    if (hitMap)
+    {
+        for (auto pair : *(hitMap->GetMap()))
+        {
+              G4double energy = *(pair.second);
+              G4double x =  pair.first;
+              analysis->FillNtupleDColumn(1,0, energy / MeV);
+              analysis->AddNtupleRow();
+        }
+    }
+   EnergyTimeHitsCollection* hitCollection =
+    dynamic_cast<EnergyTimeHitsCollection*>(hcofEvent->GetHC(PMT_Id));
 
     if (hitCollection)
     {
@@ -51,4 +69,5 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
             analysis->AddNtupleRow();
         }
     }
+   
 }

@@ -2,8 +2,8 @@
 #ifndef MUONPRIMARYGENERATORACTION_HH
 #define MUONPRIMARYGENERATORACTION_HH
 
-#include "G4VUserPrimaryGeneratorAction.hh"
-#include "G4ParticleGun.hh"
+#include <G4VUserPrimaryGeneratorAction.hh>
+#include <G4ParticleGun.hh>
 
 class G4Event;
 class G4ParticleGun;

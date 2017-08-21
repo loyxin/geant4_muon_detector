@@ -13,6 +13,12 @@ muonRunAction::muonRunAction(){
 	analysisManager->SetFirstNtupleId(1);
 	analysisManager->SetFirstHistoId(1);
 
+	
+	analysisManager->CreateNtuple("ekin", "Energy ");
+	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
+	analysisManager->FinishNtuple();
+
+	analysisManager->OpenFile("muon");
 	//   EnergyDeposit, Time, X, Y & Z
 	analysisManager->CreateNtuple("ekin_time", "Energy and time");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
@@ -22,7 +28,9 @@ muonRunAction::muonRunAction(){
 	analysisManager->CreateNtupleDColumn("Z/mm");
 	analysisManager->FinishNtuple();
 
-	analysisManager->OpenFile("muon");
+	analysisManager->OpenFile("PMT");
+
+
 
 }
 
@@ -35,6 +43,7 @@ void muonRunAction::EndOfRunAction(const G4Run* run)
   	G4cout
      << "\n--------------------End of Global Run-----------------------"
      << " \n The run was " << nofEvents << " events " << G4endl;
+
   }
  else
   {
@@ -46,5 +55,5 @@ void muonRunAction::EndOfRunAction(const G4Run* run)
 muonRunAction::~muonRunAction()
 {
 	G4AnalysisManager* man = G4AnalysisManager::Instance();
-  man->Write();
+  	man->Write();
 }

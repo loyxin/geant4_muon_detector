@@ -115,13 +115,23 @@ void SFLeptonPhysics::ConstructParticle()
 #include "G4HadronFissionProcess.hh"
 #include "G4HadronElasticProcess.hh"
 #include "G4HadronCaptureProcess.hh"
+#include <G4OpticalPhysics.hh>
+#include <G4DecayPhysics.hh>
+#include <G4EmStandardPhysics.hh>
 
 #include "G4BGGNucleonInelasticXS.hh"
-
+#include <G4VPhysicsConstructor.hh>
 void SFLeptonPhysics::ConstructProcess()
 {
 
   AddTransportation();
+
+  G4VPhysicsConstructor* fOpPhysicsList = new G4OpticalPhysics();
+  fOpPhysicsList->ConstructProcess();
+  G4VPhysicsConstructor* fDecayPhysicsList = new G4DecayPhysics();
+  fDecayPhysicsList->ConstructProcess();
+  G4VPhysicsConstructor* fEmPhysicsList = new G4EmStandardPhysics();
+  fEmPhysicsList->ConstructProcess();
 
   ConstructElectronProcess();
   ConstructPositronProcess();

@@ -3,8 +3,8 @@
 #ifndef MUONMINEKINECUTS_HH
 #define MUONMINEKINECUTS_HH
 
-#include "G4ios.hh"
-#include "globals.hh"
+#include <G4ios.hh>
+#include <globals.hh>
 #include "muonSpecialCuts.hh"
 
 

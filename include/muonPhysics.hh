@@ -2,10 +2,8 @@
 #ifndef MUONPHYSICS
 #define MUONPHYSICS
 
-#include "G4VUserPhysicsList.hh"
-
-#include "G4VUserPhysicsList.hh"
-#include "globals.hh"
+#include <G4VUserPhysicsList.hh>
+#include <globals.hh>
 
 class muonPhysics: public G4VUserPhysicsList
 {

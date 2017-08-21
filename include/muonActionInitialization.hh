@@ -3,7 +3,7 @@
 #ifndef MUONACTIONINITIALIZATION_HH
 #define MUONACTIONINITIALIZATION_HH
 
-#include "G4VUserActionInitialization.hh"
+#include <G4VUserActionInitialization.hh>
 
 class muonActionInitialization : public G4VUserActionInitialization
 {

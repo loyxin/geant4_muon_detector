@@ -1,20 +1,13 @@
 #include "PhysicsList.hh"
 
-#include "G4SystemOfUnits.hh"
-#include "G4StepLimiter.hh"
+#include <G4SystemOfUnits.hh>
 
-#include "G4EmStandardPhysics.hh"
+#include <G4EmStandardPhysics.hh>
+#include <G4DecayPhysics.hh>
+#include <G4EmExtraPhysics.hh>
 
-
-#include "G4DecayPhysics.hh"
-#include "G4LossTableManager.hh"
-#include "G4EmExtraPhysics.hh"
-
-#include "G4ProcessManager.hh"
-
-#include "G4Gamma.hh"
-#include "G4Electron.hh"
-#include "G4Positron.hh"
+#include <G4LossTableManager.hh>
+#include <G4ProcessManager.hh>
 
 
 PhysicsList::PhysicsList() : G4VModularPhysicsList()
@@ -58,7 +51,7 @@ void PhysicsList::ConstructProcess()
 }
 
 
-
+#include <G4StepLimiter.hh>
 
 void PhysicsList::AddStepMax()
 {
@@ -97,18 +90,23 @@ void PhysicsList::SetCuts()
   if (verboseLevel>0) DumpCutValuesTable();
 }
 
+#include <G4Gamma.hh>
+
 void PhysicsList::SetCutForGamma(G4double cut)
 {
   fCutForGamma = cut;
   SetParticleCuts(fCutForGamma, G4Gamma::Gamma());
 }
 
+#include <G4Electron.hh>
 
 void PhysicsList::SetCutForElectron(G4double cut)
 {
   fCutForElectron = cut;
   SetParticleCuts(fCutForElectron, G4Electron::Electron());
 }
+
+#include <G4Positron.hh>
 
 void PhysicsList::SetCutForPositron(G4double cut)
 {

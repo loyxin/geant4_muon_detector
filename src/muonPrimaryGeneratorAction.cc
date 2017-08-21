@@ -25,12 +25,10 @@ muonPrimaryGeneratorAction::muonPrimaryGeneratorAction() : G4VUserPrimaryGenerat
 
   fParticleGun->SetParticleDefinition(particle);
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,-1.));
-  // G4double sigma = 2;
-	// TRandom3 r(0);
-  // G4double energySpd = 1E-3;
+
 	G4double energy = 4.*GeV;
 	fParticleGun->SetParticleEnergy(energy);
-  // fParticleGun->SetParticleEnergy(4.*GeV);
+
 }
 
 

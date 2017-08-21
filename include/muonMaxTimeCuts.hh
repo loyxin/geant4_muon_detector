@@ -2,8 +2,8 @@
 
 #ifndef MUONMAXTIMECUTS_HH
 #define MUONMAXTIMECUTS_HH
-#include "G4ios.hh"
-#include "globals.hh"
+#include <G4ios.hh>
+#include <globals.hh>
 #include "muonSpecialCuts.hh"
 
 

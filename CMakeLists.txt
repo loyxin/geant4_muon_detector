@@ -35,14 +35,14 @@ target_link_libraries(muon ${Geant4_LIBRARIES})
 
 # Copy all scripts to the build directory,
 
-set(EXAMPLEmuon_SCRIPTS
+set(muon_SCRIPTS
   init_vis.mac
   vis.mac
   otherdrive.mac
   run.mac
   )
 
-foreach(_script ${EXAMPLEmuon_SCRIPTS})
+foreach(_script ${muon_SCRIPTS})
   configure_file(
     ${PROJECT_SOURCE_DIR}/${_script}
     ${PROJECT_BINARY_DIR}/${_script}

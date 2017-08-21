@@ -1,10 +1,8 @@
-
-
 #ifndef SFLeptonPhysics_hh
 #define SFLeptonPhysics_hh
 
-#include "G4VUserPhysicsList.hh"
-#include "globals.hh"
+#include <G4VUserPhysicsList.hh>
+#include <globals.hh>
 
 
 class SFLeptonPhysics : public G4VUserPhysicsList
@@ -31,8 +29,7 @@ class SFLeptonPhysics : public G4VUserPhysicsList
     void ConstructPionProcess();
     void AddTransportation();
     virtual void SetCuts();
-// private:
-//   G4double defaultCutValue;
+
 };
 
 #endif

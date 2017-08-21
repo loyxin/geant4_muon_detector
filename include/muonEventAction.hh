@@ -17,7 +17,8 @@ class muonEventAction : public G4UserEventAction
     virtual void EndOfEventAction(const G4Event* anEvent) override;
 	private:
 
-		G4int muondetectorETId { -1 };
+		G4int muondetectorEnId { -1 };
+    G4int PMT_Id{-1};
 };
 
 #endif

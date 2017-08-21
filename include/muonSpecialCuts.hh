@@ -1,9 +1,9 @@
 #ifndef MUONSPECIALCUTS_HH
 #define MUONSPECIALCUTS_HH
 
-#include "G4ios.hh"
-#include "globals.hh"
-#include "G4VProcess.hh"
+#include <G4ios.hh>
+#include <globals.hh>
+#include <G4VProcess.hh>
 
 
 class muonSpecialCuts : public G4VProcess
