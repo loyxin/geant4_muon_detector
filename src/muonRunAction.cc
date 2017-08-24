@@ -14,8 +14,10 @@ muonRunAction::muonRunAction(){
 	analysisManager->SetFirstHistoId(1);
 
 	
-	analysisManager->CreateNtuple("ekin", "Energy ");
+	analysisManager->CreateNtuple("ekin", "Energy and time ");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
+	analysisManager->CreateNtupleDColumn("Time/ns");
+	analysisManager->CreateNtupleDColumn("EventID");
 	analysisManager->FinishNtuple();
 
 	analysisManager->OpenFile("muon");

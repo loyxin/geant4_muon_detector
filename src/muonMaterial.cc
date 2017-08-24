@@ -161,24 +161,28 @@ void muonMaterial::CreateMaterials(){
     G4MaterialPropertiesTable* mptC10H14 = new G4MaterialPropertiesTable();
     mptC10H14->AddProperty("RINDEX", photonEnergy, C10H14refractiveIndex, nEntries);
     mptC10H14->AddProperty("ABSLENGTH",photonEnergy,absC10H14,nEntries);
+    mptC10H14->AddConstProperty("SCINTILLATIONYIELD",10./keV);
+    mptC10H14->AddConstProperty("RESOLUTIONSCALE",1.0);
+    mptC10H14->AddConstProperty("FASTTIMECONSTANT", 10.*ns);
 
-    fdetector ->SetMaterialPropertiesTable(mptC10H14);  
+    fdetector->SetMaterialPropertiesTable(mptC10H14);  
 
-    //--------------------------------------------------
+    // --------------------------------------------------
     // PMT SiO_2
-    //-------------------------------------------------- 
-    // G4double SiO2refractiveIndex[] =
-    // { 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-    //     1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-    //     1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-    //     1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-    //     1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-    //     1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54};
+    // -------------------------------------------------- 
+    G4double SiO2refractiveIndex[] =
+    { 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
+        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
+        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
+        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
+        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
+        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54};
 
-    // assert(sizeof(SiO2refractiveIndex) == sizeof(photonEnergy));
+    assert(sizeof(SiO2refractiveIndex) == sizeof(photonEnergy));
     
-    // G4MaterialPropertiesTable* mptSiO2 = new G4MaterialPropertiesTable();
-    // mptSiO2->AddProperty("RINDEX", photonEnergy, SiO2refractiveIndex, nEntries);
-    // mptSiO2->AddProperty("ABSLENGTH", photonEnergy, absC10H14, nEntries);
-    // fdetector ->SetMaterialPropertiesTable(mptSiO2);     
+    G4MaterialPropertiesTable* mptSiO2 = new G4MaterialPropertiesTable();
+    mptSiO2->AddProperty("RINDEX", photonEnergy, SiO2refractiveIndex, nEntries);
+    mptSiO2->AddProperty("ABSLENGTH", photonEnergy, absC10H14, nEntries);
+
+    fPMT ->SetMaterialPropertiesTable(mptSiO2);     
 }

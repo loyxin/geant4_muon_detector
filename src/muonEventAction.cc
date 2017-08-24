@@ -16,7 +16,8 @@ muonEventAction::~muonEventAction()
 
 void muonEventAction::EndOfEventAction(const G4Event* event)
 {
-    G4cout << "--------------End of EventAction--------------"<<G4endl;
+    G4int eventID = event->GetEventID();
+    G4cout << "--------------End of EventAction--------------"<<eventID<<G4endl;
     G4SDManager* sdm = G4SDManager::GetSDMpointer();
     G4AnalysisManager* analysis = G4AnalysisManager::Instance();
 
@@ -26,7 +27,7 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
 
     if(muondetectorEnId < 0)
     {
-      muondetectorEnId = sdm->GetCollectionID("muondectorEn/enerygy");
+      muondetectorEnId = sdm->GetCollectionID("muondectorEn/energy_time");
       G4cout << "EventAction: muonDetector energy scorer ID: " << muondetectorEnId << G4endl;
 
     }
@@ -37,19 +38,21 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
       G4cout << "EventAction: PMT energy/time scorer ID: " << PMT_Id << G4endl;
     }
 
-    G4THitsMap<G4double>* hitMap =
-    dynamic_cast<G4THitsMap<G4double>*>(hcofEvent->GetHC(muondetectorEnId));
+    EnergyTimeHitsCollection* muhitCollection =
+    dynamic_cast<EnergyTimeHitsCollection*>(hcofEvent->GetHC(muondetectorEnId));
 
-    if (hitMap)
+    if (muhitCollection)
     {
-        for (auto pair : *(hitMap->GetMap()))
+        for (auto hit: *muhitCollection->GetVector())
         {
-              G4double energy = *(pair.second);
-              G4double x =  pair.first;
-              analysis->FillNtupleDColumn(1,0, energy / MeV);
-              analysis->AddNtupleRow();
+            analysis->FillNtupleDColumn(1, 0, hit->GetDeltaEnergy() / MeV);
+            analysis->FillNtupleDColumn(1,1, hit->GetTime() / ns);
+            analysis->FillNtupleDColumn(1,2, eventID);
+            analysis->AddNtupleRow();
         }
     }
+
+
    EnergyTimeHitsCollection* hitCollection =
     dynamic_cast<EnergyTimeHitsCollection*>(hcofEvent->GetHC(PMT_Id));
 
@@ -70,4 +73,6 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
         }
     }
    
+
+
 }

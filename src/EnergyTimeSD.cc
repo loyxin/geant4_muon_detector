@@ -8,9 +8,18 @@ EnergyTimeSD::EnergyTimeSD(G4String name) :
 {
     collectionName.insert("energy_time");
 }
-
+#include <G4OpticalPhoton.hh>
+#include <G4MuonPlus.hh>
+#include <G4MuonMinus.hh>
 G4bool EnergyTimeSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
 {
+    if (aStep == NULL) return false;
+    G4Track* theTrack = aStep->GetTrack();
+  
+    // Need to know if this is an optical photon
+    if(theTrack->GetDefinition()
+       !=G4MuonMinus::MuonMinus() && theTrack->GetDefinition()
+       !=G4MuonPlus::MuonPlus() ) return false;
     G4double aDep = aStep->GetTotalEnergyDeposit();
     G4double time = aStep->GetPostStepPoint()->GetGlobalTime();
     G4ThreeVector position = aStep->GetPostStepPoint()->GetPosition();
@@ -21,6 +30,7 @@ G4bool EnergyTimeSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     hit->SetPosition(position);
 
     fHitsCollection->insert(hit);
+
     return true;
 }
 
