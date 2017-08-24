@@ -21,10 +21,7 @@
 #include "Analysis.hh"
 #include "muonDetectorConstruction.hh"
 #include "muonActionInitialization.hh"
-#include "muonPhysics.hh"
-#include "SFLeptonPhysics.hh"
-#include "PhysicsList.hh"
-#include <QBBC.hh>
+#include "WLSPhysicsList.hh"
 using namespace std;
 
 int main(int argc,char** argv)
@@ -71,9 +68,11 @@ int main(int argc,char** argv)
   runManager->SetUserInitialization(new muonDetectorConstruction() );
 
   // Physics list
+   G4String physName = "QGSP_BERT_HP";
   // G4VModularPhysicsList* physicsList = new QBBC;
-  G4VUserPhysicsList* muonPhy = new SFLeptonPhysics();
+  // G4VUserPhysicsList* muonPhy = new SFLeptonPhysics();
   // G4VUserPhysicsList* muonPhy = new muonPhysics();
+  G4VUserPhysicsList* muonPhy = new WLSPhysicsList(physName);
   // G4VUserPhysicsList* muonPhy = new PhysicsList();
   runManager->SetUserInitialization(muonPhy);
   muonPhy->SetVerboseLevel(1);

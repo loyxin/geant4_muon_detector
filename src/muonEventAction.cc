@@ -58,12 +58,12 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
         for (auto hit: *hitCollection->GetVector())
         {
 
-            analysis->FillNtupleDColumn(0, hit->GetDeltaEnergy() / MeV);
-            analysis->FillNtupleDColumn(1, hit->GetTime() / ns);
+            analysis->FillNtupleDColumn(2, 0, hit->GetDeltaEnergy() / MeV);
+            analysis->FillNtupleDColumn(2,1, hit->GetTime() / ns);
             G4ThreeVector position = hit->GetPosition();
-            analysis->FillNtupleDColumn(2, position.getX() / mm);
-            analysis->FillNtupleDColumn(3, position.getY() / mm);
-            analysis->FillNtupleDColumn(4, position.getZ() / mm);
+            analysis->FillNtupleDColumn(2,2, position.getX() / mm);
+            analysis->FillNtupleDColumn(2,3, position.getY() / mm);
+            analysis->FillNtupleDColumn(2,4, position.getZ() / mm);
 
 
             analysis->AddNtupleRow();

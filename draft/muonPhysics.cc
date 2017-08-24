@@ -28,6 +28,17 @@ muonPhysics::muonPhysics() : G4VUserPhysicsList()
   OpVerbLevel = 0;
 
   SetVerboseLevel(VerboseLevel);
+
+  fWLSProcess                = NULL;
+  fScintProcess              = NULL;
+  fCerenkovProcess           = NULL;
+  fBoundaryProcess           = NULL;
+  fAbsorptionProcess         = NULL;
+  fRayleighScattering        = NULL;
+  fMieHGScatteringProcess    = NULL;
+
+  fAbsorptionOn              = true;
+
 }
 
 
@@ -78,7 +89,8 @@ void muonPhysics::ConstructMyLeptons()
 #include "G4MesonConstructor.hh"
 #include "G4BaryonConstructor.hh"
 #include "G4IonConstructor.hh"
-
+#include "G4ProcessTable.hh"
+#include "G4PionDecayMakeSpin.hh"
 void muonPhysics::ConstructMyHadrons()
 {
  //  mesons
@@ -103,9 +115,80 @@ void muonPhysics::ConstructMyShortLiveds()
   slConstructor.ConstructParticle();
 }
 
-
+#include "G4LossTableManager.hh"
+#include "G4EmSaturation.hh"
+#include <G4DecayWithSpin.hh>
 void muonPhysics::ConstructProcess()
 {
+
+
+   G4DecayWithSpin* decayWithSpin = new G4DecayWithSpin();
+
+    G4ProcessTable* processTable = G4ProcessTable::GetProcessTable();
+
+    G4VProcess* decay;
+    decay = processTable->FindProcess("Decay",G4MuonPlus::MuonPlus());
+
+    G4ProcessManager* pManager;
+    pManager = G4MuonPlus::MuonPlus()->GetProcessManager();
+
+    if (pManager) {
+      if (decay) pManager->RemoveProcess(decay);
+      pManager->AddProcess(decayWithSpin);
+      // set ordering for PostStepDoIt and AtRestDoIt
+      pManager ->SetProcessOrdering(decayWithSpin, idxPostStep);
+      pManager ->SetProcessOrdering(decayWithSpin, idxAtRest);
+    }
+
+    decay = processTable->FindProcess("Decay",G4MuonMinus::MuonMinus());
+
+    pManager = G4MuonMinus::MuonMinus()->GetProcessManager();
+
+    if (pManager) {
+      if (decay) pManager->RemoveProcess(decay);
+      pManager->AddProcess(decayWithSpin);
+      // set ordering for PostStepDoIt and AtRestDoIt
+      pManager ->SetProcessOrdering(decayWithSpin, idxPostStep);
+      pManager ->SetProcessOrdering(decayWithSpin, idxAtRest);
+    }
+
+    G4PionDecayMakeSpin* poldecay = new G4PionDecayMakeSpin();
+
+    decay = processTable->FindProcess("Decay",G4PionPlus::PionPlus());
+
+    pManager = G4PionPlus::PionPlus()->GetProcessManager();
+
+    if (pManager) {
+      if (decay) pManager->RemoveProcess(decay);
+      pManager->AddProcess(poldecay);
+      // set ordering for PostStepDoIt and AtRestDoIt
+      pManager ->SetProcessOrdering(poldecay, idxPostStep);
+      pManager ->SetProcessOrdering(poldecay, idxAtRest);
+    }
+
+    decay = processTable->FindProcess("Decay",G4PionMinus::PionMinus());
+
+    pManager = G4PionMinus::PionMinus()->GetProcessManager();
+
+    if (pManager) {
+      if (decay) pManager->RemoveProcess(decay);
+      pManager->AddProcess(poldecay);
+      // set ordering for PostStepDoIt and AtRestDoIt
+      pManager ->SetProcessOrdering(poldecay, idxPostStep);
+      pManager ->SetProcessOrdering(poldecay, idxAtRest);
+    }
+
+    //AddStepMax();
+
+
+
+
+
+
+
+
+
+
 
   AddTransportation();
 
@@ -117,6 +200,89 @@ void muonPhysics::ConstructProcess()
 
   ConstructGeneral();
 
+
+      G4cout << "WLSOpticalPhysics:: Add Optical Physics Processes"
+           << G4endl;
+
+  fWLSProcess = new G4OpWLS();
+
+  fScintProcess = new G4Scintillation();
+  fScintProcess->SetScintillationYieldFactor(1.);
+  fScintProcess->SetTrackSecondariesFirst(true);
+
+  fCerenkovProcess = new G4Cerenkov();
+  fCerenkovProcess->SetMaxNumPhotonsPerStep(300);
+  fCerenkovProcess->SetTrackSecondariesFirst(true);
+
+  fAbsorptionProcess      = new G4OpAbsorption();
+  fRayleighScattering     = new G4OpRayleigh();
+  fMieHGScatteringProcess = new G4OpMieHG();
+  fBoundaryProcess        = new G4OpBoundaryProcess();
+
+   pManager = G4OpticalPhoton::OpticalPhoton()->GetProcessManager();
+
+  if (!pManager) {
+     std::ostringstream o;
+     o << "Optical Photon without a Process Manager";
+     G4Exception("WLSOpticalPhysics::ConstructProcess()","",
+                  FatalException,o.str().c_str());
+  }
+
+  if (fAbsorptionOn) pManager->AddDiscreteProcess(fAbsorptionProcess);
+
+  //pManager->AddDiscreteProcess(fRayleighScattering);
+  //pManager->AddDiscreteProcess(fMieHGScatteringProcess);
+
+  pManager->AddDiscreteProcess(fBoundaryProcess);
+
+  fWLSProcess->UseTimeProfile("delta");
+  //fWLSProcess->UseTimeProfile("exponential");
+
+  pManager->AddDiscreteProcess(fWLSProcess);
+
+  fScintProcess->SetScintillationYieldFactor(1.);
+  fScintProcess->SetScintillationExcitationRatio(0.0);
+  fScintProcess->SetTrackSecondariesFirst(true);
+
+  // Use Birks Correction in the Scintillation process
+
+  G4EmSaturation* emSaturation = G4LossTableManager::Instance()->EmSaturation();
+  fScintProcess->AddSaturation(emSaturation);
+
+  auto particleIterator=GetParticleIterator();
+  particleIterator->reset();
+  while ( (*particleIterator)() ){
+
+    G4ParticleDefinition* particle = particleIterator->value();
+    G4String particleName = particle->GetParticleName();
+
+    pManager = particle->GetProcessManager();
+    if (!pManager) {
+       std::ostringstream o;
+       o << "Particle " << particleName << "without a Process Manager";
+       G4Exception("WLSOpticalPhysics::ConstructProcess()","",
+                    FatalException,o.str().c_str());
+    }
+
+    if(fCerenkovProcess->IsApplicable(*particle)){
+      pManager->AddProcess(fCerenkovProcess);
+      pManager->SetProcessOrdering(fCerenkovProcess,idxPostStep);
+    }
+    if(fScintProcess->IsApplicable(*particle)){
+      pManager->AddProcess(fScintProcess);
+      pManager->SetProcessOrderingToLast(fScintProcess,idxAtRest);
+      pManager->SetProcessOrderingToLast(fScintProcess,idxPostStep);
+    }
+
+  }
+
+
+}
+
+
+void muonPhysics::SetNbOfPhotonsCerenkov(G4int maxNumber)
+{
+  fCerenkovProcess->SetMaxNumPhotonsPerStep(maxNumber);
 }
 
 
