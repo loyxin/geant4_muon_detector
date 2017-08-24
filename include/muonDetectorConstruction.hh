@@ -5,6 +5,7 @@
 
 #include <G4VUserDetectorConstruction.hh>
 #include <G4SystemOfUnits.hh>
+#include "muonMaterial.hh"
 class G4LogicalVolume;
 /// Detector construction class to define materials and geometry.
 
@@ -20,10 +21,14 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     void ConstructPMT(G4LogicalVolume*);
     // if Register some of the detector's volumes as "sensitive"
     void ConstructSDandField() override;
+
+  private:
     G4double c_light   = 2.99792458e+8 * m/s;
     G4int   lambda_min = 200*nm ; 
     G4int lambda_max = 700*nm ;  
     G4double h_Planck      = 6.62606896e-34 * joule*s;
+    G4bool checkOverlaps = true;
+    muonMaterial* fMaterial;
 };
 
 #endif
