@@ -7,6 +7,7 @@
 
 #include "Analysis.hh"
 #include "EnergyTimeHit.hh"
+#include "PMThit.hh"
 using namespace std;
 
 muonEventAction::muonEventAction() : G4UserEventAction(){}
@@ -34,8 +35,8 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
 
     if( PMT_Id < 0)
     {
-      PMT_Id = sdm->GetCollectionID("PMT_ET/energy_time");
-      G4cout << "EventAction: PMT energy/time scorer ID: " << PMT_Id << G4endl;
+      PMT_Id = sdm->GetCollectionID("PMT_ET/pmt_energy_time");
+      G4cout << "EventAction: PMT pmt_energy_time scorer ID: " << PMT_Id << G4endl;
     }
 
     EnergyTimeHitsCollection* muhitCollection =
@@ -45,31 +46,35 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
     {
         for (auto hit: *muhitCollection->GetVector())
         {
-            analysis->FillNtupleDColumn(1, 0, hit->GetDeltaEnergy() / MeV);
-            analysis->FillNtupleDColumn(1,1, hit->GetTime() / ns);
-            analysis->FillNtupleDColumn(1,2, eventID);
-            analysis->AddNtupleRow();
+            analysis->FillNtupleDColumn(2, 0, hit->GetDeltaEnergy() / MeV);
+            analysis->FillNtupleDColumn(2,1, hit->GetTime() / ns);
+            analysis->FillNtupleDColumn(2,3, eventID);
+            if(hit->GetName()=="muondector1")
+                analysis->FillNtupleDColumn(2,2,1);
+            if(hit->GetName()=="muondector2")
+                analysis->FillNtupleDColumn(2,2,2);
+            analysis->AddNtupleRow(2);
         }
     }
 
 
-   EnergyTimeHitsCollection* hitCollection =
-    dynamic_cast<EnergyTimeHitsCollection*>(hcofEvent->GetHC(PMT_Id));
+    pmtHitsCollection* hitCollection =
+    dynamic_cast<pmtHitsCollection*>(hcofEvent->GetHC(PMT_Id));
 
     if (hitCollection)
     {
         for (auto hit: *hitCollection->GetVector())
         {
 
-            analysis->FillNtupleDColumn(2, 0, hit->GetDeltaEnergy() / MeV);
-            analysis->FillNtupleDColumn(2,1, hit->GetTime() / ns);
-            G4ThreeVector position = hit->GetPosition();
-            analysis->FillNtupleDColumn(2,2, position.getX() / mm);
-            analysis->FillNtupleDColumn(2,3, position.getY() / mm);
-            analysis->FillNtupleDColumn(2,4, position.getZ() / mm);
+            analysis->FillNtupleDColumn(1, 0, hit->GetDeltaEnergy() / MeV);
+            analysis->FillNtupleDColumn(1,1, hit->GetTime() / ns);
+            if(hit->GetName()=="PMT1") // value 1
+                analysis->FillNtupleDColumn(1,2,1);
+            if(hit->GetName()=="PMT2") //value 2
+                analysis->FillNtupleDColumn(1,2,2);
 
-
-            analysis->AddNtupleRow();
+            analysis->FillNtupleDColumn(1,3, eventID);
+            analysis->AddNtupleRow(1);
         }
     }
    

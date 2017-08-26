@@ -26,7 +26,7 @@ muonPrimaryGeneratorAction::muonPrimaryGeneratorAction() : G4VUserPrimaryGenerat
   fParticleGun->SetParticleDefinition(particle);
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,-1.));
 
-	G4double energy = 4.*GeV;
+	G4double energy = 150.*MeV;
 	fParticleGun->SetParticleEnergy(energy);
 
 }
@@ -47,7 +47,7 @@ void muonPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   // G4double size = 0.7;
   // G4double x0 = size * envSizeXY * (G4UniformRand()-0.5);
   // G4double y0 = size * envSizeXY * (G4UniformRand()-0.5);
-  G4double z0 = 0.5 * 2 * m;
+  G4double z0 = 0.5 * 0.2 * m;
 
   fParticleGun->SetParticlePosition(G4ThreeVector(x0,y0,z0));
   // vertex 顶点

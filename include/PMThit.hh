@@ -1,12 +1,12 @@
-#ifndef ENERGYTIMEHIT_HH
-#define ENERGYTIMEHIT_HH
+#ifndef PMTHIT_HH
+#define PMTHIT_HH 1
 
 #include <G4VHit.hh>
 #include <G4THitsMap.hh>
 #include <G4ThreeVector.hh>
 
 // 设置 Hit 容器
-class EnergyTimeHit : public G4VHit
+class PMThit : public G4VHit
 {
 public:
     // Memory allocation and de-allocation
@@ -29,26 +29,26 @@ private:
     G4String fname;
 };
 
-using EnergyTimeHitsCollection = G4THitsCollection<EnergyTimeHit>;
+using pmtHitsCollection = G4THitsCollection<PMThit>;
 
-extern G4ThreadLocal G4Allocator<EnergyTimeHit> *hitAllocator;
+extern G4ThreadLocal G4Allocator<PMThit> *pmthitAllocat;
 
-inline void* EnergyTimeHit::operator new(size_t)
+inline void* PMThit::operator new(size_t)
 {
-  if (!hitAllocator)
+  if (!pmthitAllocat)
   {
-      hitAllocator = new G4Allocator<EnergyTimeHit>;
+      pmthitAllocat = new G4Allocator<PMThit>;
   }
-  return hitAllocator->MallocSingle();
+  return pmthitAllocat->MallocSingle();
 }
 
-inline void EnergyTimeHit::operator delete(void *aHit)
+inline void PMThit::operator delete(void *aHit)
 {
-    if (!hitAllocator)
+    if (!pmthitAllocat)
     {
-        hitAllocator = new G4Allocator<EnergyTimeHit>;
+        pmthitAllocat = new G4Allocator<PMThit>;
     }
-    hitAllocator->FreeSingle((EnergyTimeHit*) aHit);
+    pmthitAllocat->FreeSingle((PMThit*) aHit);
 }
 
 #endif

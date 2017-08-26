@@ -9,28 +9,28 @@
 muonRunAction::muonRunAction(){
 
 	G4AnalysisManager* analysisManager = G4AnalysisManager::Instance();
+
+	analysisManager->OpenFile("muon");
+
 	analysisManager->SetVerboseLevel(1);
 	analysisManager->SetFirstNtupleId(1);
 	analysisManager->SetFirstHistoId(1);
 
-	
-	analysisManager->CreateNtuple("ekin", "Energy and time ");
-	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
-	analysisManager->CreateNtupleDColumn("Time/ns");
-	analysisManager->CreateNtupleDColumn("EventID");
-	analysisManager->FinishNtuple();
-
-	analysisManager->OpenFile("muon");
 	//   EnergyDeposit, Time, X, Y & Z
-	analysisManager->CreateNtuple("ekin_time", "Energy and time");
+	analysisManager->CreateNtuple("pmt", "Energy and time");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
 	analysisManager->CreateNtupleDColumn("Time/ns");
-	analysisManager->CreateNtupleDColumn("X/mm");
-	analysisManager->CreateNtupleDColumn("Y/mm");
-	analysisManager->CreateNtupleDColumn("Z/mm");
-	analysisManager->FinishNtuple();
+	analysisManager->CreateNtupleDColumn("PMT");
+	analysisManager->CreateNtupleDColumn("EventID");
+	analysisManager->FinishNtuple(1);
+	
+	analysisManager->CreateNtuple("detector", "Energy and time ");
+	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
+	analysisManager->CreateNtupleDColumn("Time/ns");
+	analysisManager->CreateNtupleDColumn("detector");
+	analysisManager->CreateNtupleDColumn("EventID");
+	analysisManager->FinishNtuple(2);
 
-	analysisManager->OpenFile("PMT");
 
 
 
@@ -57,5 +57,6 @@ void muonRunAction::EndOfRunAction(const G4Run* run)
 muonRunAction::~muonRunAction()
 {
 	G4AnalysisManager* man = G4AnalysisManager::Instance();
-  	man->Write();
+	  man->Write();
+	  man->CloseFile();
 }
