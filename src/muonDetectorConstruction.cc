@@ -23,7 +23,7 @@ G4VPhysicalVolume* muonDetectorConstruction::Construct()
 
   // world size 1 m x 1 m x 2 m box material air
   // name "world" point solidWorld logicalWorld physWorld
-  G4double world_sizeXY = 1*m, world_sizeZ  = 2*m;
+  G4double world_sizeXY = 1*m, world_sizeZ  = 0.2*m;
   G4Material* world_mat = fMaterial->GetfAir();
 
   G4Box* solidWorld = new G4Box("World",0.5*world_sizeXY, 0.5*world_sizeXY, 0.5*world_sizeZ);
@@ -129,8 +129,8 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
 
   G4double PMT_thick   =   1.0*mm; // Thickness of PMT window
   G4double PMT_x    =  20./2.*mm, PMT_y=84./2.*mm; // Radius of curvature of PMT window
-  G4ThreeVector PMTpos1 = G4ThreeVector(342.0/2.0*mm,0.0*cm,15 *mm);
-  G4ThreeVector PMTpos2 = G4ThreeVector(342.0/2.0*mm,0.0*cm,-15 *mm);
+  G4ThreeVector PMTpos1 = G4ThreeVector(340.5/2.0*mm,0.0*cm,15 *mm);
+  G4ThreeVector PMTpos2 = G4ThreeVector(340.5/2.0*mm,0.0*cm,-15 *mm);
 
   G4double phi=90.*deg;
   G4ThreeVector u = G4ThreeVector(std::cos(phi),0., -std::sin(phi));
@@ -203,7 +203,7 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
 }
 
 #include "EnergyTimeSD.hh"
-#include "WLSPhotonDetSD.hh"
+#include "pmtSD.hh"
 // 设置敏感探测器 记录 能量沉积 位置
 #include <G4SDManager.hh>
 #include <G4MultiFunctionalDetector.hh>
@@ -218,7 +218,7 @@ void muonDetectorConstruction::ConstructSDandField()
   SetSensitiveDetector("muondector",muondectorEn);
   sdManager->AddNewDetector(muondectorEn);
 
-  EnergyTimeSD*  PMT_ET = new EnergyTimeSD("PMT_ET");
+  pmtSD*  PMT_ET = new pmtSD("PMT_ET");
   SetSensitiveDetector("PMT_log",PMT_ET);
   sdManager->AddNewDetector(PMT_ET);
 

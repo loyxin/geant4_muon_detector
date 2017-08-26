@@ -3,7 +3,7 @@
 #include "muonPrimaryGeneratorAction.hh"
 #include "muonRunAction.hh"
 #include "muonEventAction.hh"
-
+#include "muonSteppingAction.hh"
 muonActionInitialization::muonActionInitialization()
  : G4VUserActionInitialization()
 {}
@@ -22,6 +22,9 @@ void muonActionInitialization::Build() const
   SetUserAction(new muonPrimaryGeneratorAction());
   muonRunAction* runAction = new muonRunAction;
   SetUserAction(runAction);
-  SetUserAction(new muonEventAction());
+  muonEventAction* event = new muonEventAction();
+  SetUserAction(event);
+
+  SetUserAction(new muonSteppingAction(event));
 
 }
