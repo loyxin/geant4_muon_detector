@@ -13,7 +13,7 @@ import math
 
 reader = csv.reader(open("muon_nt_pmt.csv"))
 
-csvfile = open('pmt_result.csv','w')
+csvfile = open('pmt_result.csv', 'w')
 write = csv.writer(csvfile)
 
 flag = 0
@@ -31,7 +31,7 @@ muonphotonum = 0
 
 def pinjun_fangcha(list):
     if len(list) == 0:
-        return [0,0]
+        return [0, 0]
     count = 0
     one = 0.0
     two = 0.0
@@ -51,7 +51,7 @@ for row in reader:
     if temp == flag:
         if float(row[1]) < 100.0:
             muontime.append(float(row[1]))
-            muonphotonum +=1
+            muonphotonum += 1
         else:
             decayphotonum += 1
             decaytime.append(float(row[1]))
