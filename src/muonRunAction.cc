@@ -26,7 +26,7 @@ muonRunAction::muonRunAction(){
 	
 	analysisManager->CreateNtuple("detector", "Energy and time ");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
-	analysisManager->CreateNtupleDColumn("Time/ns");
+	analysisManager->CreateNtupleDColumn("z/mm");
 	analysisManager->CreateNtupleDColumn("detector");
 	analysisManager->CreateNtupleDColumn("EventID");
 	analysisManager->FinishNtuple(2);
