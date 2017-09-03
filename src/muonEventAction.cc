@@ -47,7 +47,8 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
         for (auto hit: *muhitCollection->GetVector())
         {
             analysis->FillNtupleDColumn(2, 0, hit->GetDeltaEnergy() / MeV);
-            analysis->FillNtupleDColumn(2,1, hit->GetTime() / ns);
+            G4ThreeVector position = hit->GetPosition();
+            analysis->FillNtupleDColumn(2,1, position.getZ() / mm);
             analysis->FillNtupleDColumn(2,3, eventID);
             if(hit->GetName()=="muondector1")
                 analysis->FillNtupleDColumn(2,2,1);

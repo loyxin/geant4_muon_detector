@@ -1,39 +1,9 @@
-//
-// ********************************************************************
-// * License and Disclaimer                                           *
-// *                                                                  *
-// * The  Geant4 software  is  copyright of the Copyright Holders  of *
-// * the Geant4 Collaboration.  It is provided  under  the terms  and *
-// * conditions of the Geant4 Software License,  included in the file *
-// * LICENSE and available at  http://cern.ch/geant4/license .  These *
-// * include a list of copyright holders.                             *
-// *                                                                  *
-// * Neither the authors of this software system, nor their employing *
-// * institutes,nor the agencies providing financial support for this *
-// * work  make  any representation or  warranty, express or implied, *
-// * regarding  this  software system or assume any liability for its *
-// * use.  Please see the license in the file  LICENSE  and URL above *
-// * for the full disclaimer and the limitation of liability.         *
-// *                                                                  *
-// * This  code  implementation is the result of  the  scientific and *
-// * technical work of the GEANT4 collaboration.                      *
-// * By using,  copying,  modifying or  distributing the software (or *
-// * any work based  on the software)  you  agree  to acknowledge its *
-// * use  in  resulting  scientific  publications,  and indicate your *
-// * acceptance of all terms of the Geant4 Software license.          *
-// ********************************************************************
-//
-// $Id: WLSPhysicsList.cc 101181 2016-11-08 15:08:33Z gcosmo $
-//
-/// \file optical/wls/src/WLSPhysicsList.cc
-/// \brief Implementation of the WLSPhysicsList class
-//
-//
-#include "WLSPhysicsList.hh"
-#include "WLSPhysicsListMessenger.hh"
 
-#include "WLSExtraPhysics.hh"
-#include "WLSOpticalPhysics.hh"
+#include "muonPhysicsList.hh"
+#include "muonPhysicsListMessenger.hh"
+
+#include "muonExtraPhysics.hh"
+#include "muonOpticalPhysics.hh"
 
 #include "G4LossTableManager.hh"
 
@@ -49,7 +19,7 @@
 #include "G4Electron.hh"
 #include "G4Positron.hh"
 
-#include "WLSStepMax.hh"
+#include "muonStepMax.hh"
 
 #include "G4ProcessTable.hh"
 
@@ -66,7 +36,7 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-WLSPhysicsList::WLSPhysicsList(G4String physName) : G4VModularPhysicsList()
+muonPhysicsList::muonPhysicsList(G4String physName) : G4VModularPhysicsList()
 {
     G4LossTableManager::Instance();
 
@@ -84,9 +54,9 @@ WLSPhysicsList::WLSPhysicsList(G4String physName) : G4VModularPhysicsList()
     }
 //    if (factory.IsReferencePhysList(physName)) {
 //       phys = factory.GetReferencePhysList(physName);
-//       if(!phys)G4Exception("WLSPhysicsList::WLSPhysicsList","InvalidSetup",
+//       if(!phys)G4Exception("muonPhysicsList::muonPhysicsList","InvalidSetup",
 //                            FatalException,"PhysicsList does not exist");
-       fMessenger = new WLSPhysicsListMessenger(this);
+       fMessenger = new muonPhysicsListMessenger(this);
 //    }
 
     for (G4int i = 0; ; ++i) {
@@ -99,17 +69,17 @@ WLSPhysicsList::WLSPhysicsList(G4String physName) : G4VModularPhysicsList()
 
     fAbsorptionOn = true;
     
-    RegisterPhysics(new WLSExtraPhysics());
-    RegisterPhysics(fOpticalPhysics = new WLSOpticalPhysics(fAbsorptionOn));
+    RegisterPhysics(new muonExtraPhysics());
+    RegisterPhysics(fOpticalPhysics = new muonOpticalPhysics(fAbsorptionOn));
 
     RegisterPhysics(new G4RadioactiveDecayPhysics());
 
-    fStepMaxProcess = new WLSStepMax();
+    fStepMaxProcess = new muonStepMax();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-WLSPhysicsList::~WLSPhysicsList()
+muonPhysicsList::~muonPhysicsList()
 {
     delete fMessenger;
 
@@ -118,7 +88,7 @@ WLSPhysicsList::~WLSPhysicsList()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::ClearPhysics()
+void muonPhysicsList::ClearPhysics()
 {
     for (G4PhysConstVector::iterator p  = fPhysicsVector->begin();
                                      p != fPhysicsVector->end(); ++p) {
@@ -129,7 +99,7 @@ void WLSPhysicsList::ClearPhysics()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::ConstructParticle()
+void muonPhysicsList::ConstructParticle()
 {
     G4VModularPhysicsList::ConstructParticle();
 
@@ -151,7 +121,7 @@ void WLSPhysicsList::ConstructParticle()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::ConstructProcess()
+void muonPhysicsList::ConstructProcess()
 {
     G4VModularPhysicsList::ConstructProcess();
 
@@ -219,7 +189,7 @@ void WLSPhysicsList::ConstructProcess()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::RemoveFromPhysicsList(const G4String& name)
+void muonPhysicsList::RemoveFromPhysicsList(const G4String& name)
 {
     G4bool success = false;
     for (G4PhysConstVector::iterator p  = fPhysicsVector->begin();
@@ -234,28 +204,28 @@ void WLSPhysicsList::RemoveFromPhysicsList(const G4String& name)
     if (!success) {
        G4ExceptionDescription message;
        message << "PhysicsList::RemoveFromEMPhysicsList "<< name << "not found";
-       G4Exception("example WLSPhysicsList::RemoveFromPhysicsList()",
-       "ExamWLSPhysicsList01",FatalException,message);
+       G4Exception("example muonPhysicsList::RemoveFromPhysicsList()",
+       "ExammuonPhysicsList01",FatalException,message);
     }
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::SetAbsorption(G4bool toggle)
+void muonPhysicsList::SetAbsorption(G4bool toggle)
 {
        fAbsorptionOn = toggle;
        RemoveFromPhysicsList("Optical");
        fPhysicsVector->
-                    push_back(fOpticalPhysics = new WLSOpticalPhysics(toggle));
+                    push_back(fOpticalPhysics = new muonOpticalPhysics(toggle));
        fOpticalPhysics->ConstructProcess();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::SetCuts()
+void muonPhysicsList::SetCuts()
 {
     if (verboseLevel >0) {
-        G4cout << "WLSPhysicsList::SetCuts:";
+        G4cout << "muonPhysicsList::SetCuts:";
         G4cout << "CutLength : " << G4BestUnit(defaultCutValue,"Length")
                << G4endl;
     }
@@ -271,7 +241,7 @@ void WLSPhysicsList::SetCuts()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::SetCutForGamma(G4double cut)
+void muonPhysicsList::SetCutForGamma(G4double cut)
 {
     fCutForGamma = cut;
     SetParticleCuts(fCutForGamma, G4Gamma::Gamma());
@@ -279,7 +249,7 @@ void WLSPhysicsList::SetCutForGamma(G4double cut)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::SetCutForElectron(G4double cut)
+void muonPhysicsList::SetCutForElectron(G4double cut)
 {
     fCutForElectron = cut;
     SetParticleCuts(fCutForElectron, G4Electron::Electron());
@@ -287,7 +257,7 @@ void WLSPhysicsList::SetCutForElectron(G4double cut)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::SetCutForPositron(G4double cut)
+void muonPhysicsList::SetCutForPositron(G4double cut)
 {
     fCutForPositron = cut;
     SetParticleCuts(fCutForPositron, G4Positron::Positron());
@@ -295,21 +265,21 @@ void WLSPhysicsList::SetCutForPositron(G4double cut)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::SetStepMax(G4double step)
+void muonPhysicsList::SetStepMax(G4double step)
 {
   fStepMaxProcess->SetStepMax(step);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-WLSStepMax* WLSPhysicsList::GetStepMaxProcess()
+muonStepMax* muonPhysicsList::GetStepMaxProcess()
 {
   return fStepMaxProcess;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::AddStepMax()
+void muonPhysicsList::AddStepMax()
 {
   // Step limitation seen as a process
 
@@ -328,14 +298,14 @@ void WLSPhysicsList::AddStepMax()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::SetNbOfPhotonsCerenkov(G4int maxNumber)
+void muonPhysicsList::SetNbOfPhotonsCerenkov(G4int maxNumber)
 {
    fOpticalPhysics->SetNbOfPhotonsCerenkov(maxNumber);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void WLSPhysicsList::SetVerbose(G4int verbose)
+void muonPhysicsList::SetVerbose(G4int verbose)
 {
    fOpticalPhysics->GetCerenkovProcess()->SetVerboseLevel(verbose);
    fOpticalPhysics->GetScintillationProcess()->SetVerboseLevel(verbose);
