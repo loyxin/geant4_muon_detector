@@ -9,20 +9,16 @@
 
 #include "muonExtraPhysics.hh"
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 muonExtraPhysics::muonExtraPhysics()
     : G4VPhysicsConstructor("Extra") { }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 muonExtraPhysics::~muonExtraPhysics() { }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
 void muonExtraPhysics::ConstructParticle() { }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
 
 void muonExtraPhysics::ConstructProcess()
 {

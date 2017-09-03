@@ -1,0 +1,58 @@
+\hypertarget{classpmtSD}{}\section{pmt\+SD Class Reference}
+\label{classpmtSD}\index{pmt\+SD@{pmt\+SD}}
+
+
+Inheritance diagram for pmt\+SD\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{classpmtSD__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for pmt\+SD\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{classpmtSD__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpmtSD_ae7746efb08ea75673a718fd342d243ea}{pmt\+SD} (G4\+String name)
+\begin{DoxyCompactList}\small\item\em 设置敏感探测器保存哪些数据 \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}\label{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}} 
+void {\bfseries Initialize} (G4\+H\+Cof\+This\+Event $\ast$) override
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}\label{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}} 
+G4bool {\bfseries Process\+Hits} (G4\+Step $\ast$a\+Step, G4\+Touchable\+History $\ast$R\+Ohist) override
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpmtSD_ae7746efb08ea75673a718fd342d243ea}\label{classpmtSD_ae7746efb08ea75673a718fd342d243ea}} 
+\index{pmt\+SD@{pmt\+SD}!pmt\+SD@{pmt\+SD}}
+\index{pmt\+SD@{pmt\+SD}!pmt\+SD@{pmt\+SD}}
+\subsubsection{\texorpdfstring{pmt\+S\+D()}{pmtSD()}}
+{\footnotesize\ttfamily pmt\+S\+D\+::pmt\+SD (\begin{DoxyParamCaption}\item[{G4\+String}]{name }\end{DoxyParamCaption})}
+
+
+
+设置敏感探测器保存哪些数据 
+
+muon 击中 pmt ，保存时间，能量，位置和击中哪一个 pmt 信息 敏感探测器挂载在敏感探测器管理类格式为 name/pmt\+\_\+energy\+\_\+time 
+\begin{DoxyParams}{Parameters}
+{\em name} & pmt 的名字 \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/pmt\+S\+D.\+hh\item 
+src/pmt\+S\+D.\+cc\end{DoxyCompactItemize}

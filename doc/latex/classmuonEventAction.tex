@@ -1,0 +1,51 @@
+\hypertarget{classmuonEventAction}{}\section{muon\+Event\+Action Class Reference}
+\label{classmuonEventAction}\index{muon\+Event\+Action@{muon\+Event\+Action}}
+
+
+Inheritance diagram for muon\+Event\+Action\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classmuonEventAction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for muon\+Event\+Action\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classmuonEventAction__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classmuonEventAction_a674e82851a04669f19294aae5e4a69e6}{End\+Of\+Event\+Action} (const G4\+Event $\ast$an\+Event) override
+\begin{DoxyCompactList}\small\item\em 获得敏感探测器的 id, 输出数据 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classmuonEventAction_a674e82851a04669f19294aae5e4a69e6}\label{classmuonEventAction_a674e82851a04669f19294aae5e4a69e6}} 
+\index{muon\+Event\+Action@{muon\+Event\+Action}!End\+Of\+Event\+Action@{End\+Of\+Event\+Action}}
+\index{End\+Of\+Event\+Action@{End\+Of\+Event\+Action}!muon\+Event\+Action@{muon\+Event\+Action}}
+\subsubsection{\texorpdfstring{End\+Of\+Event\+Action()}{EndOfEventAction()}}
+{\footnotesize\ttfamily void muon\+Event\+Action\+::\+End\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+获得敏感探测器的 id, 输出数据 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & \mbox{[}description\mbox{]} \\
+\hline
+\end{DoxyParams}
+第一列 能量 第二列 时间 第三列 如果是 探测器 ‘\+P\+M\+T1\textquotesingle{} 则为 1， 探测器 ’\+P\+M\+T2‘ 则为 2 第四列 event id
+
+第一列 能量 第二列 深度信息 第三列 如果是 探测器 ‘muondector1\textquotesingle{} 则为 1， 探测器 ’muondector2‘ 则为 2 第四列 event id
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/muon\+Event\+Action.\+hh\item 
+src/muon\+Event\+Action.\+cc\end{DoxyCompactItemize}

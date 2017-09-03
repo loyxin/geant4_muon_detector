@@ -6,7 +6,7 @@ muonMaterial* muonMaterial::fInstance=0;
 muonMaterial::muonMaterial(){
     fNistMan = G4NistManager::Instance();
 
-    fNistMan->SetVerbose(2);
+    // fNistMan->SetVerbose(2);
 
     CreateMaterials();
 }
@@ -57,7 +57,7 @@ void muonMaterial::CreateMaterials(){
     fdetector->AddElement(elH,10);
     fdetector->AddElement(elC,14);
     // PMT SiO_2
-    fPMT = fNistMan->FindOrBuildMaterial("G4_SILICON_DIOXIDE");
+    fPMT = fNistMan->FindOrBuildMaterial("G4_GLASS_PLATE");
 
 
     // freflection
