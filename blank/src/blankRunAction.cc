@@ -7,26 +7,20 @@
 #include "G4RunManager.hh"
 #include "G4Run.hh"
 
-
-
-
-
 blankRunAction::blankRunAction()
 : G4UserRunAction()
 { 
-
 }
 
 
 blankRunAction::~blankRunAction()
-{}
+{
+}
 
 
 
 void blankRunAction::BeginOfRunAction(const G4Run*)
 { 
-
-
 }
 
 
