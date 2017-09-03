@@ -1,4 +1,8 @@
-
+/**
+ * @brief action 管理类
+ * @details runaction eventaction steppingaction 注册
+ * 一个 primary generator 强制类的注册
+ */
 #include "muonActionInitialization.hh"
 #include "muonPrimaryGeneratorAction.hh"
 #include "muonRunAction.hh"

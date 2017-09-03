@@ -1,4 +1,6 @@
-
+/**
+ * @brief 默认粒子为 mu- 能量 150 MeV
+ */
 #include "muonPrimaryGeneratorAction.hh"
 
 #include "G4Event.hh"

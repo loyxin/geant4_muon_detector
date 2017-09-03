@@ -5,7 +5,10 @@
 #include <G4THitsMap.hh>
 #include <G4ThreeVector.hh>
 
-// 设置 Hit 容器
+/**
+ * @brief 设置 Hit 容器
+ * @details Hit 容器保存能量，时间，位置，探测器名字
+ */
 class EnergyTimeHit : public G4VHit
 {
 public:

@@ -1,3 +1,7 @@
+
+/**
+	@brief 打开 csv 文件，文件名，声明哪些数据被保存
+*/
 #include "muonRunAction.hh"
 
 
@@ -16,14 +20,14 @@ muonRunAction::muonRunAction(){
 	analysisManager->SetFirstNtupleId(1);
 	analysisManager->SetFirstHistoId(1);
 
-	//   EnergyDeposit, Time, X, Y & Z
+	//   EnergyDeposit, Time, X, Y & Z id = 1
 	analysisManager->CreateNtuple("pmt", "Energy and time");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
 	analysisManager->CreateNtupleDColumn("Time/ns");
 	analysisManager->CreateNtupleDColumn("PMT");
 	analysisManager->CreateNtupleDColumn("EventID");
 	analysisManager->FinishNtuple(1);
-	
+	// id = 2
 	analysisManager->CreateNtuple("detector", "Energy and time ");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
 	analysisManager->CreateNtupleDColumn("z/mm");
