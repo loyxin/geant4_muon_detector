@@ -18,8 +18,12 @@ $$
 ![ muon detector](./pic/muondetect.png  "muon detector")
 
 **其中红色为探测器，白色为氧化铝反射层，绿色为光电倍增管的光窗**
-<iframe  title="muon detecter vidio" width="480" height="390" src="./pic/GMovie.mpeg" frameborder="0" allowfullscreen></iframe>
 
+
+<video id="video" controls=""  >
+      <source id="mpeg" src="./pic/GMovie.mpeg" type="video/mpeg">
+</video>
+    
 ## 运行结果
 
 Monday, 04. September 2017 09:53AM 
