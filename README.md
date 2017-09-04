@@ -33,33 +33,61 @@ $$
 
 ## 文件介绍
 ├── blank 存放一个空白的 geant4 代码，可以基于这个搭建自己的 geant4 程序
+
 ├── CMakeLists.txt cmake 文件
+
 ├── doc 注释生成文件 可以运行里面的 html 文件夹下的 index.html 文件查看文档，也可以打开 latex 文件夹下的 refman.pdf 
+
 ├── pic 存放图片
+
 ├── shell_py 存放shell 脚本和python数据处理文件
+
 │   ├── detector
+
 │   │   ├── cal_aver_var.py 读取 detect_result .csv , 计算平均值和方差
+
 │   │   ├── detect_one_csv.py 读取一个 $\mu$ 的能量产生的数据，平均值和方差
+
 │   │   ├── detect_one_csv.sh 通过运行 detect_one_csv.py，读取各个$\mu$ 能量的数据合成一个 csv 文件
+
 │   │   ├── detect.py 读取 muon_nt_detect.csv 文件，生成 detect_result .csv  一个$mu$ 能量的1000事例的能量信息，位置信息
+
 │   │   └── detect.sh 通过运行 detect.py，读取各个$\mu$ 能量的数据，生成 detect_result .csv
+
 │   ├── pmt
+
 │   │   ├── pmt_cal.py   读取 pmt_result.csv，统计衰变时间
+
 │   │   ├── pmt_cal.sh  通过运行 pmt_cal.py， 统计各个$\mu$ 能量衰变时间
+
 │   │   ├── pmt.py 读取 muon_nt_pmt.csv 文件，生成 pmt_result .csv  一个$mu$ 能量的1000事例的进入 pmt 的衰变光子能量平均值和方差以及光子个数，进入时间的平均值和方差，以及$\mu$产生光子能量平均值和方差以及光子个数，进入时间的平均值和方差
+
 │   │   └── pmt.sh 通过运行 pmt.py，读取各个$\mu$ 能量的数据
+
 │   └── run
+
 │       ├── muon.sh 读取 run.mac 生成一个新的$\mu$ 能量的宏文件 new.mac 
+
 │       └── test.sh 运行程序以及宏文件 new.mac， 并将生成的 muon_nt_detect.csv 和 muon_nt_pmt.csv 放在 data 文件夹下
+
 ├── result 存放运行结果
+
 ├── include 库文件的存放文件夹
+
 ├── src 源文件夹
+
 ├── main.cc 程序主文件
+
 ├── vis.mac 可视化图形界面的设定
+
 ├── init_vis.mac 初始化图形界面的宏文件，调用 vis.mac文件
+
 ├── otherdrive.mac 调用不同图形界面引擎
+
 ├── run.mac
+
 ├── Doxyfile doxygen 文件
+
 
 
 Monday, 04. September 2017 09:53AM 
