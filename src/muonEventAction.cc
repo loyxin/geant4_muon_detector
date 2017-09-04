@@ -25,9 +25,9 @@ muonEventAction::~muonEventAction()
  */
 void muonEventAction::EndOfEventAction(const G4Event* event)
 {
-    G4cout << "--------------End of EventAction--------------"<<eventID<<G4endl;
-
     G4int eventID = event->GetEventID();
+
+    G4cout << "--------------End of EventAction--------------"<<eventID<<G4endl;
 
     G4SDManager* sdm = G4SDManager::GetSDMpointer();
     G4AnalysisManager* analysis = G4AnalysisManager::Instance();
