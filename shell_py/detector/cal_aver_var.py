@@ -4,6 +4,7 @@ with open('detect_result.csv', 'r+') as csvfile:
     reader = csv.reader(csvfile)
     # energy 0 , decay length 1, energy /mm 2, decay event number 3
     one = [0.0, 0.0, 0.0, 0]
+    # 能量方差，衰变长度方差，energy /mm 方差
     two = [0.0, 0.0, 0.0]
     count = -1
     eventnum = 0

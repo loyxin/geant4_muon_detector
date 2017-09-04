@@ -18,6 +18,8 @@ write = csv.writer(csvfile)
 flag = 0
 result = 0.0
 position = []
+# 第一列 总沉积能量 第二列 离开位置或者衰变位置，第三列 是否衰变 1 为衰变 0 为未衰变
+# 第四列 事件 id
 line = ['MeV', 'leave position /ns', 'flag whether decay', 'event id']
 write.writerow(line)
 line = []
