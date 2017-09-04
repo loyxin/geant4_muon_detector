@@ -1,0 +1,37 @@
+\contentsline {chapter}{\numberline {第一章\hspace {0.3em}}Hierarchical Index}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Class Hierarchy}{1}{section.1.1}
+\contentsline {chapter}{\numberline {第二章\hspace {0.3em}}Class Index}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}
+\contentsline {chapter}{\numberline {第三章\hspace {0.3em}}Class Documentation}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Energy\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Time\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Hit Class Reference}{5}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{6}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Energy\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Time\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}SD Class Reference}{6}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{7}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Constructor \& Destructor Documentation}{7}{subsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.2.1}Energy\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Time\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}S\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}D()}{7}{subsubsection.3.2.2.1}
+\contentsline {subsection}{\numberline {3.2.3}Member Function Documentation}{8}{subsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.3.1}Initialize()}{8}{subsubsection.3.2.3.1}
+\contentsline {subsubsection}{\numberline {3.2.3.2}Process\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Hits()}{8}{subsubsection.3.2.3.2}
+\contentsline {section}{\numberline {3.3}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Action\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Initialization Class Reference}{8}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Constructor \& Destructor Documentation}{9}{subsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.1.1}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Action\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Initialization()}{9}{subsubsection.3.3.1.1}
+\contentsline {section}{\numberline {3.4}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Detector\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Construction Class Reference}{9}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Detailed Description}{10}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.5}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Event\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Action Class Reference}{11}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Member Function Documentation}{11}{subsection.3.5.1}
+\contentsline {subsubsection}{\numberline {3.5.1.1}End\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Of\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Event\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Action()}{11}{subsubsection.3.5.1.1}
+\contentsline {section}{\numberline {3.6}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Extra\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Physics Class Reference}{12}{section.3.6}
+\contentsline {section}{\numberline {3.7}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Material Class Reference}{13}{section.3.7}
+\contentsline {section}{\numberline {3.8}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Optical\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Physics Class Reference}{13}{section.3.8}
+\contentsline {section}{\numberline {3.9}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Physics\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}List Class Reference}{14}{section.3.9}
+\contentsline {section}{\numberline {3.10}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Physics\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}List\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Messenger Class Reference}{16}{section.3.10}
+\contentsline {subsection}{\numberline {3.10.1}Detailed Description}{16}{subsection.3.10.1}
+\contentsline {section}{\numberline {3.11}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Primary\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Generator\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Action Class Reference}{17}{section.3.11}
+\contentsline {section}{\numberline {3.12}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Run\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Action Class Reference}{18}{section.3.12}
+\contentsline {section}{\numberline {3.13}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Step\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Max Class Reference}{19}{section.3.13}
+\contentsline {section}{\numberline {3.14}muon\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Stepping\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Action Class Reference}{20}{section.3.14}
+\contentsline {section}{\numberline {3.15}P\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}M\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}Thit Class Reference}{21}{section.3.15}
+\contentsline {subsection}{\numberline {3.15.1}Detailed Description}{22}{subsection.3.15.1}
+\contentsline {section}{\numberline {3.16}pmt\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}SD Class Reference}{22}{section.3.16}
+\contentsline {subsection}{\numberline {3.16.1}Constructor \& Destructor Documentation}{23}{subsection.3.16.1}
+\contentsline {subsubsection}{\numberline {3.16.1.1}pmt\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}S\discretionary {\unhbox \voidb@x \hbox {\scriptsize $\leftarrow \joinrel \rhook $}}{}{}D()}{23}{subsubsection.3.16.1.1}
