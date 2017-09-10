@@ -1,5 +1,13 @@
-
-#include "pmtSD.hh"
+/**
+ * @file PMTSD.cc
+ * @brief 设置敏感探测器保存哪些数据
+ * @details muon 击中 pmt ，保存时间，能量，位置和击中哪一个 pmt 信息
+ * 敏感探测器挂载在敏感探测器管理类格式为 name/pmt_energy_time
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
+ */
+#include "PMTSD.hh"
 
 #include <G4SDManager.hh>
 #include <G4SystemOfUnits.hh>
@@ -10,7 +18,7 @@
  * @param name pmt 的名字
  */
 
-pmtSD::pmtSD(G4String name) :
+PMTSD::PMTSD(G4String name) :
   G4VSensitiveDetector(name)
 {
     collectionName.insert("pmt_energy_time");
@@ -18,15 +26,15 @@ pmtSD::pmtSD(G4String name) :
 #include <G4OpticalPhoton.hh>
 
 
-G4bool pmtSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
+G4bool PMTSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
 {
 
     if (aStep == NULL) return false;
 
     G4Track* theTrack = aStep->GetTrack();
-    // 确定是否是光子
+    
     if(theTrack->GetDefinition()
-    !=G4OpticalPhoton::OpticalPhoton() ) return false;
+    !=G4OpticalPhoton::OpticalPhoton() ) return false;// 确定是否是光子
 
     G4StepPoint* thePrePoint  = aStep->GetPreStepPoint();
     G4StepPoint* thePostPoint = aStep->GetPostStepPoint();
@@ -73,7 +81,7 @@ G4bool pmtSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     return true;
 }
 
-void pmtSD::Initialize(G4HCofThisEvent* hcof)
+void PMTSD::Initialize(G4HCofThisEvent* hcof)
 {
     fHitsCollection = new pmtHitsCollection(SensitiveDetectorName, collectionName[0]);
     if (fHitsCollectionId < 0)

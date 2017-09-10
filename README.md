@@ -4,6 +4,8 @@
 本项目由国家基础科学人才培养基金资助
 ## geant4
 Geant４是由欧洲核子中心(CERN)和日本高能物理中心(KEK)主导开发的蒙特卡罗辐射输运计算通用程序包,主要应用在高能物理领域,可方便模拟强相互作用、弱相互作用等高能、超高能物理过程。
+
+[geant4安装与编写要点](doc/geant4.md) 
 ## 缪子
 缪子是一种与电子相似的基本粒子，符号 $\mu^-$, 它带有 1 单位负电荷，自旋为 1/2，质量为 105 $MeV/c^2$. 缪子的反粒子是 $\mu^+$,拥有 1 单位正电荷．地球上绝大部分自然生成的缪子都由宇宙
 线中的 $\pi$ 介子产生($\pi^- \rightarrow \mu^- + \bar{\nu_u} \ \pi^+\rightarrow \mu^+ + \nu_\mu$ ).大多数缪子在海平面以上  15km  处产生．因为不参与强相互作用，缪子的穿透能力很强．与绝大部分高能碰撞产生的粒子一样，缪子也是不稳定的．缪子的平均寿命约为$2.2\mu s$, 准确值为 2.1969811(22)×10−6 s，缪子的衰变方式:
@@ -40,35 +42,45 @@ $$
 
 ├── pic 存放图片
 
+├── macro 存放宏文件
+
+│   ├── vis.mac 可视化图形界面的设定
+
+│   ├── init_vis.mac 初始化图形界面的宏文件，调用 vis.mac文件
+
+│   ├── otherdrive.mac 调用不同图形界面引擎
+
+│   ├── run.mac
+
 ├── shell_py 存放shell 脚本和python数据处理文件
 
-│   ├── detector
+│   ├── detector
 
-│   │   ├── cal_aver_var.py 读取 detect_result .csv , 计算平均值和方差
+│   │   ├── cal_aver_var.py 读取 detect_result .csv , 计算平均值和方差
 
-│   │   ├── detect_one_csv.py 读取一个 $\mu$ 的能量产生的数据，平均值和方差
+│   │   ├── detect_one_csv.py 读取一个 $\mu$ 的能量产生的数据，平均值和方差
 
-│   │   ├── detect_one_csv.sh 通过运行 detect_one_csv.py，读取各个$\mu$ 能量的数据合成一个 csv 文件
+│   │   ├── detect_one_csv.sh 通过运行 detect_one_csv.py，读取各个$\mu$ 能量的数据合成一个 csv 文件
 
-│   │   ├── detect.py 读取 muon_nt_detect.csv 文件，生成 detect_result .csv  一个$mu$ 能量的1000事例的能量信息，位置信息
+│   │   ├── detect.py 读取 muon_nt_detect.csv 文件，生成 detect_result .csv  一个$mu$ 能量的1000事例的能量信息，位置信息
 
-│   │   └── detect.sh 通过运行 detect.py，读取各个$\mu$ 能量的数据，生成 detect_result .csv
+│   │   └── detect.sh 通过运行 detect.py，读取各个$\mu$ 能量的数据，生成 detect_result .csv
 
-│   ├── pmt
+│   ├── pmt
 
-│   │   ├── pmt_cal.py   读取 pmt_result.csv，统计衰变时间
+│   │   ├── pmt_cal.py   读取 pmt_result.csv，统计衰变时间
 
-│   │   ├── pmt_cal.sh  通过运行 pmt_cal.py， 统计各个$\mu$ 能量衰变时间
+│   │   ├── pmt_cal.sh  通过运行 pmt_cal.py， 统计各个$\mu$ 能量衰变时间
 
-│   │   ├── pmt.py 读取 muon_nt_pmt.csv 文件，生成 pmt_result .csv  一个$mu$ 能量的1000事例的进入 pmt 的衰变光子能量平均值和方差以及光子个数，进入时间的平均值和方差，以及$\mu$产生光子能量平均值和方差以及光子个数，进入时间的平均值和方差
+│   │   ├── pmt.py 读取 muon_nt_pmt.csv 文件，生成 pmt_result .csv  一个$mu$ 能量的1000事例的进入 pmt 的衰变光子能量平均值和方差以及光子个数，进入时间的平均值和方差，以及$\mu$产生光子能量平均值和方差以及光子个数，进入时间的平均值和方差
 
-│   │   └── pmt.sh 通过运行 pmt.py，读取各个$\mu$ 能量的数据
+│   │   └── pmt.sh 通过运行 pmt.py，读取各个$\mu$ 能量的数据
 
-│   └── run
+│   └── run
 
-│       ├── muon.sh 读取 run.mac 生成一个新的$\mu$ 能量的宏文件 new.mac 
+│       ├── muon.sh 读取 run.mac 生成一个新的$\mu$ 能量的宏文件 new.mac 
 
-│       └── test.sh 运行程序以及宏文件 new.mac， 并将生成的 muon_nt_detect.csv 和 muon_nt_pmt.csv 放在 data 文件夹下
+│       └── test.sh 运行程序以及宏文件 new.mac， 并将生成的 muon_nt_detect.csv 和 muon_nt_pmt.csv 放在 data 文件夹下
 
 ├── result 存放运行结果
 
@@ -77,14 +89,6 @@ $$
 ├── src 源文件夹
 
 ├── main.cc 程序主文件
-
-├── vis.mac 可视化图形界面的设定
-
-├── init_vis.mac 初始化图形界面的宏文件，调用 vis.mac文件
-
-├── otherdrive.mac 调用不同图形界面引擎
-
-├── run.mac
 
 ├── Doxyfile doxygen 文件
 

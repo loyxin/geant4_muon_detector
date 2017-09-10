@@ -12,4 +12,4 @@
 #
 
 # Visualization setting
-/control/execute vis.mac
+/control/execute macro/vis.mac

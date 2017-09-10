@@ -1,14 +1,23 @@
+/**
+ * @file PMTSD.hh
+ * @brief pmt的敏感探测器类
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
+ */
 #ifndef PMTSD_HH
 #define PMTSD_HH 1
 
 #include <G4VSensitiveDetector.hh>
 
 #include "PMThit.hh"
-
-class pmtSD : public G4VSensitiveDetector
+/**
+ * @brief pmt的敏感探测器类
+ */
+class PMTSD : public G4VSensitiveDetector
 {
 public:
-    pmtSD(G4String name);
+    PMTSD(G4String name);
 
     void Initialize(G4HCofThisEvent*) override;
 

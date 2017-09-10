@@ -1,7 +1,11 @@
 /**
+ * @file muonActionInitialization.cc
  * @brief action 管理类
  * @details runaction eventaction steppingaction 注册
  * 一个 primary generator 强制类的注册
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
  */
 #include "muonActionInitialization.hh"
 #include "muonPrimaryGeneratorAction.hh"

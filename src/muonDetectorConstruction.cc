@@ -1,5 +1,9 @@
 /**
+ * @file muonDetectorConstruction.cc
  * @brief 搭建探测器
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
  */
 #include "muonDetectorConstruction.hh"
 
@@ -83,8 +87,10 @@ void muonDetectorConstruction::ConstructReflection(G4LogicalVolume* logicalWorld
   new G4PVPlacement(rotm, rpos1, logicAl2O3, "Al2O31", logicalWorld, false, 0, checkOverlaps);
   new G4PVPlacement(rotm, rpos2, logicAl2O3, "Al2O32", logicalWorld, false, 1, checkOverlaps);
   
+  //设置光学性质
+
   G4double fPolish = 1.;
-  G4double fReflectivity = 1.;
+  G4double fReflectivity = 1.;//全反射
 
   G4OpticalSurface* Al2O3Surface = new G4OpticalSurface("PhotonDetSurface",glisur,ground,dielectric_metal,fPolish);
 
@@ -120,8 +126,10 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
   new G4PVPlacement(rotm,PMTpos1,logicalPMT,"PMT1",logicalWorld,false,0,checkOverlaps);
   new G4PVPlacement(rotm,PMTpos2,logicalPMT,"PMT2",logicalWorld,false,1,checkOverlaps);
 
+  //设置光学性质
+
   G4double fPolish = 0.;
-  G4double fReflectivity = 0.;
+  G4double fReflectivity = 0.;//全吸收
 
   G4OpticalSurface* photonDetSurface = new G4OpticalSurface("PhotonDetSurface",glisur,ground,dielectric_metal,
   fPolish);
@@ -172,7 +180,7 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
 }
 
 #include "EnergyTimeSD.hh"
-#include "pmtSD.hh"
+#include "PMTSD.hh"
 // 设置敏感探测器 记录 能量沉积 位置
 #include <G4SDManager.hh>
 #include <G4MultiFunctionalDetector.hh>
@@ -188,7 +196,7 @@ void muonDetectorConstruction::ConstructSDandField()
   SetSensitiveDetector("muondector",muondectorEn);
   sdManager->AddNewDetector(muondectorEn);
 
-  pmtSD*  PMT_ET = new pmtSD("PMT_ET");
+  PMTSD*  PMT_ET = new PMTSD("PMT_ET");
   SetSensitiveDetector("PMT_log",PMT_ET);
   sdManager->AddNewDetector(PMT_ET);
 
