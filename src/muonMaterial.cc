@@ -1,3 +1,10 @@
+/**
+ * @file muonMaterial.cc
+ * @brief 构建探测器的材料
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
+ */
 #include "muonMaterial.hh"
 #include <G4SystemOfUnits.hh>
 

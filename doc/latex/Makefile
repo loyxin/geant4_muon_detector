@@ -3,18 +3,18 @@ all: refman.pdf
 pdf: refman.pdf
 
 refman.pdf: clean refman.tex
-	xelatex refman
+	pdflatex refman
 	makeindex refman.idx
-	xelatex refman
+	pdflatex refman
 	latex_count=8 ; \
 	while egrep -s 'Rerun (LaTeX|to get cross-references right)' refman.log && [ $$latex_count -gt 0 ] ;\
 	    do \
 	      echo "Rerunning latex...." ;\
-	      xelatex refman ;\
+	      pdflatex refman ;\
 	      latex_count=`expr $$latex_count - 1` ;\
 	    done
 	makeindex refman.idx
-	xelatex refman
+	pdflatex refman
 
 
 clean:

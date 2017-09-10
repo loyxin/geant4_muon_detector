@@ -1,32 +1,277 @@
-\hypertarget{classmuonMaterial}{}\section{muon\+Material Class Reference}
+\hypertarget{classmuonMaterial}{}\section{muon\+Material类 参考}
 \label{classmuonMaterial}\index{muon\+Material@{muon\+Material}}
-\subsection*{Public Member Functions}
+
+
+构建材料  
+
+
+
+
+{\ttfamily \#include $<$muon\+Material.\+hh$>$}
+
+
+
+muon\+Material 的协作图\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classmuonMaterial__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public 成员函数}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classmuonMaterial_a86cd49b45dd1042b6ec7aa697197c0b5}\label{classmuonMaterial_a86cd49b45dd1042b6ec7aa697197c0b5}} 
-G4\+Material $\ast$ {\bfseries Get\+Material} (const G4\+String)
+\hyperlink{classmuonMaterial_ae18416f718e33ca4a8bf12b11fe7d4cf}{muon\+Material} ()
+\begin{DoxyCompactList}\small\item\em 默认 construction 函数并初始化 f\+Nist\+Man \end{DoxyCompactList}\item 
+\hyperlink{classmuonMaterial_a4f043be3ac0578d37c1c2cd801b9a1d8}{$\sim$muon\+Material} ()
 \item 
-\mbox{\Hypertarget{classmuonMaterial_a8621980c58fd47d46f47728850341aa5}\label{classmuonMaterial_a8621980c58fd47d46f47728850341aa5}} 
-G4\+Material $\ast$ {\bfseries Getfdetector} ()
+G4\+Material $\ast$ \hyperlink{classmuonMaterial_a86cd49b45dd1042b6ec7aa697197c0b5}{Get\+Material} (const G4\+String)
+\begin{DoxyCompactList}\small\item\em 根据名字找到 nist 下的材料 \end{DoxyCompactList}\item 
+G4\+Material $\ast$ \hyperlink{classmuonMaterial_a8621980c58fd47d46f47728850341aa5}{Getfdetector} ()
+\begin{DoxyCompactList}\small\item\em 得到 detector 的材料 \end{DoxyCompactList}\item 
+G4\+Material $\ast$ \hyperlink{classmuonMaterial_a198ba1027e11cf15bc0118533fff4356}{Getf\+P\+MT} ()
+\begin{DoxyCompactList}\small\item\em 得到 P\+MT 的材料 \end{DoxyCompactList}\item 
+G4\+Material $\ast$ \hyperlink{classmuonMaterial_a8b1a5528153587650e3990045cae47a1}{Getfreflect} ()
+\begin{DoxyCompactList}\small\item\em 得到 reflect 的材料 \end{DoxyCompactList}\item 
+G4\+Material $\ast$ \hyperlink{classmuonMaterial_a561de210ea339679872c522163990899}{Getf\+Air} ()
+\begin{DoxyCompactList}\small\item\em 得到 world 的材料-\/空气 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{静态 Public 成员函数}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classmuonMaterial_a198ba1027e11cf15bc0118533fff4356}\label{classmuonMaterial_a198ba1027e11cf15bc0118533fff4356}} 
-G4\+Material $\ast$ {\bfseries Getf\+P\+MT} ()
+static \hyperlink{classmuonMaterial}{muon\+Material} $\ast$ \hyperlink{classmuonMaterial_ac5be4443f4de88103fea67e651cc554b}{Get\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Private 成员函数}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classmuonMaterial_a8b1a5528153587650e3990045cae47a1}\label{classmuonMaterial_a8b1a5528153587650e3990045cae47a1}} 
-G4\+Material $\ast$ {\bfseries Getfreflect} ()
+void \hyperlink{classmuonMaterial_a8a540dd90dc8252913e5dcb63d7f07b0}{Create\+Materials} ()
+\begin{DoxyCompactList}\small\item\em 构建材料 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private 属性}
+\begin{DoxyCompactItemize}
 \item 
+G4\+Nist\+Manager $\ast$ \hyperlink{classmuonMaterial_a369d8b63868ac68fc917aa93cc321d17}{f\+Nist\+Man}
+\item 
+G4\+Material $\ast$ \hyperlink{classmuonMaterial_ae5df2e697057d4e3c7e22f1152942eb4}{fdetector}
+\item 
+G4\+Material $\ast$ \hyperlink{classmuonMaterial_a91b124a58e862152b3a04317d3ca8cbc}{f\+P\+MT}
+\item 
+G4\+Material $\ast$ \hyperlink{classmuonMaterial_a62687d2a8459169ed8c79aaedaf9013d}{freflect}
+\item 
+G4\+Material $\ast$ \hyperlink{classmuonMaterial_aad484f194b194516ad00b9c263345639}{f\+Air}
+\end{DoxyCompactItemize}
+\subsection*{静态 Private 属性}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classmuonMaterial}{muon\+Material} $\ast$ \hyperlink{classmuonMaterial_a930e3601f3476643cc24db541f6ea253}{f\+Instance} =0
+\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+构建材料 
+
+在文件 muon\+Material.\+hh 第 17 行定义.
+
+
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classmuonMaterial_ae18416f718e33ca4a8bf12b11fe7d4cf}\label{classmuonMaterial_ae18416f718e33ca4a8bf12b11fe7d4cf}} 
+\index{muon\+Material@{muon\+Material}!muon\+Material@{muon\+Material}}
+\index{muon\+Material@{muon\+Material}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{muon\+Material()}{muonMaterial()}}
+{\footnotesize\ttfamily muon\+Material\+::muon\+Material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+默认 construction 函数并初始化 f\+Nist\+Man 
+
+
+
+在文件 muon\+Material.\+cc 第 13 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_a4f043be3ac0578d37c1c2cd801b9a1d8}\label{classmuonMaterial_a4f043be3ac0578d37c1c2cd801b9a1d8}} 
+\index{muon\+Material@{muon\+Material}!````~muon\+Material@{$\sim$muon\+Material}}
+\index{````~muon\+Material@{$\sim$muon\+Material}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{$\sim$muon\+Material()}{~muonMaterial()}}
+{\footnotesize\ttfamily muon\+Material\+::$\sim$muon\+Material (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+在文件 muon\+Material.\+cc 第 21 行定义.
+
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classmuonMaterial_a8a540dd90dc8252913e5dcb63d7f07b0}\label{classmuonMaterial_a8a540dd90dc8252913e5dcb63d7f07b0}} 
+\index{muon\+Material@{muon\+Material}!Create\+Materials@{Create\+Materials}}
+\index{Create\+Materials@{Create\+Materials}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{Create\+Materials()}{CreateMaterials()}}
+{\footnotesize\ttfamily void muon\+Material\+::\+Create\+Materials (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+构建材料 
+
+初始化 fdetector f\+P\+MT freflect f\+Air 
+
+在文件 muon\+Material.\+cc 第 53 行定义.
+
 \mbox{\Hypertarget{classmuonMaterial_a561de210ea339679872c522163990899}\label{classmuonMaterial_a561de210ea339679872c522163990899}} 
-G4\+Material $\ast$ {\bfseries Getf\+Air} ()
-\end{DoxyCompactItemize}
-\subsection*{Static Public Member Functions}
-\begin{DoxyCompactItemize}
-\item 
+\index{muon\+Material@{muon\+Material}!Getf\+Air@{Getf\+Air}}
+\index{Getf\+Air@{Getf\+Air}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{Getf\+Air()}{GetfAir()}}
+{\footnotesize\ttfamily G4\+Material$\ast$ muon\+Material\+::\+Getf\+Air (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+得到 world 的材料-\/空气 
+
+\begin{DoxyReturn}{返回}
+world 的材料 
+\end{DoxyReturn}
+
+
+在文件 muon\+Material.\+hh 第 48 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_a8621980c58fd47d46f47728850341aa5}\label{classmuonMaterial_a8621980c58fd47d46f47728850341aa5}} 
+\index{muon\+Material@{muon\+Material}!Getfdetector@{Getfdetector}}
+\index{Getfdetector@{Getfdetector}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{Getfdetector()}{Getfdetector()}}
+{\footnotesize\ttfamily G4\+Material$\ast$ muon\+Material\+::\+Getfdetector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+得到 detector 的材料 
+
+\begin{DoxyReturn}{返回}
+detector 的材料 
+\end{DoxyReturn}
+
+
+在文件 muon\+Material.\+hh 第 33 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_a198ba1027e11cf15bc0118533fff4356}\label{classmuonMaterial_a198ba1027e11cf15bc0118533fff4356}} 
+\index{muon\+Material@{muon\+Material}!Getf\+P\+MT@{Getf\+P\+MT}}
+\index{Getf\+P\+MT@{Getf\+P\+MT}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{Getf\+P\+M\+T()}{GetfPMT()}}
+{\footnotesize\ttfamily G4\+Material$\ast$ muon\+Material\+::\+Getf\+P\+MT (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+得到 P\+MT 的材料 
+
+\begin{DoxyReturn}{返回}
+P\+MT 的材料 
+\end{DoxyReturn}
+
+
+在文件 muon\+Material.\+hh 第 38 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_a8b1a5528153587650e3990045cae47a1}\label{classmuonMaterial_a8b1a5528153587650e3990045cae47a1}} 
+\index{muon\+Material@{muon\+Material}!Getfreflect@{Getfreflect}}
+\index{Getfreflect@{Getfreflect}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{Getfreflect()}{Getfreflect()}}
+{\footnotesize\ttfamily G4\+Material$\ast$ muon\+Material\+::\+Getfreflect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+得到 reflect 的材料 
+
+\begin{DoxyReturn}{返回}
+reflect 的材料 
+\end{DoxyReturn}
+
+
+在文件 muon\+Material.\+hh 第 43 行定义.
+
 \mbox{\Hypertarget{classmuonMaterial_ac5be4443f4de88103fea67e651cc554b}\label{classmuonMaterial_ac5be4443f4de88103fea67e651cc554b}} 
-static \hyperlink{classmuonMaterial}{muon\+Material} $\ast$ {\bfseries Get\+Instance} ()
-\end{DoxyCompactItemize}
+\index{muon\+Material@{muon\+Material}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily \hyperlink{classmuonMaterial}{muon\+Material} $\ast$ muon\+Material\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+
+在文件 muon\+Material.\+cc 第 27 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_a86cd49b45dd1042b6ec7aa697197c0b5}\label{classmuonMaterial_a86cd49b45dd1042b6ec7aa697197c0b5}} 
+\index{muon\+Material@{muon\+Material}!Get\+Material@{Get\+Material}}
+\index{Get\+Material@{Get\+Material}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{Get\+Material()}{GetMaterial()}}
+{\footnotesize\ttfamily G4\+Material $\ast$ muon\+Material\+::\+Get\+Material (\begin{DoxyParamCaption}\item[{const G4\+String}]{material }\end{DoxyParamCaption})}
+
+
+
+根据名字找到 nist 下的材料 
+
+
+
+在文件 muon\+Material.\+cc 第 36 行定义.
+
+
+
+\subsection{类成员变量说明}
+\mbox{\Hypertarget{classmuonMaterial_aad484f194b194516ad00b9c263345639}\label{classmuonMaterial_aad484f194b194516ad00b9c263345639}} 
+\index{muon\+Material@{muon\+Material}!f\+Air@{f\+Air}}
+\index{f\+Air@{f\+Air}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{f\+Air}{fAir}}
+{\footnotesize\ttfamily G4\+Material$\ast$ muon\+Material\+::f\+Air\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Material.\+hh 第 66 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_ae5df2e697057d4e3c7e22f1152942eb4}\label{classmuonMaterial_ae5df2e697057d4e3c7e22f1152942eb4}} 
+\index{muon\+Material@{muon\+Material}!fdetector@{fdetector}}
+\index{fdetector@{fdetector}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{fdetector}{fdetector}}
+{\footnotesize\ttfamily G4\+Material$\ast$ muon\+Material\+::fdetector\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Material.\+hh 第 63 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_a930e3601f3476643cc24db541f6ea253}\label{classmuonMaterial_a930e3601f3476643cc24db541f6ea253}} 
+\index{muon\+Material@{muon\+Material}!f\+Instance@{f\+Instance}}
+\index{f\+Instance@{f\+Instance}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{f\+Instance}{fInstance}}
+{\footnotesize\ttfamily \hyperlink{classmuonMaterial}{muon\+Material} $\ast$ muon\+Material\+::f\+Instance =0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+在文件 muon\+Material.\+hh 第 59 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_a369d8b63868ac68fc917aa93cc321d17}\label{classmuonMaterial_a369d8b63868ac68fc917aa93cc321d17}} 
+\index{muon\+Material@{muon\+Material}!f\+Nist\+Man@{f\+Nist\+Man}}
+\index{f\+Nist\+Man@{f\+Nist\+Man}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{f\+Nist\+Man}{fNistMan}}
+{\footnotesize\ttfamily G4\+Nist\+Manager$\ast$ muon\+Material\+::f\+Nist\+Man\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Material.\+hh 第 61 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_a91b124a58e862152b3a04317d3ca8cbc}\label{classmuonMaterial_a91b124a58e862152b3a04317d3ca8cbc}} 
+\index{muon\+Material@{muon\+Material}!f\+P\+MT@{f\+P\+MT}}
+\index{f\+P\+MT@{f\+P\+MT}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{f\+P\+MT}{fPMT}}
+{\footnotesize\ttfamily G4\+Material$\ast$ muon\+Material\+::f\+P\+MT\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Material.\+hh 第 64 行定义.
+
+\mbox{\Hypertarget{classmuonMaterial_a62687d2a8459169ed8c79aaedaf9013d}\label{classmuonMaterial_a62687d2a8459169ed8c79aaedaf9013d}} 
+\index{muon\+Material@{muon\+Material}!freflect@{freflect}}
+\index{freflect@{freflect}!muon\+Material@{muon\+Material}}
+\subsubsection{\texorpdfstring{freflect}{freflect}}
+{\footnotesize\ttfamily G4\+Material$\ast$ muon\+Material\+::freflect\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Material.\+hh 第 65 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
 \item 
-include/muon\+Material.\+hh\item 
-src/muon\+Material.\+cc\end{DoxyCompactItemize}
+include/\hyperlink{muonMaterial_8hh}{muon\+Material.\+hh}\item 
+src/\hyperlink{muonMaterial_8cc}{muon\+Material.\+cc}\end{DoxyCompactItemize}

@@ -1,3 +1,10 @@
+/**
+ * @file muonSteppingAction.cc
+ * @brief 暂时没有动作
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
+ */
 #include "muonSteppingAction.hh"
 #include "muonEventAction.hh"
 

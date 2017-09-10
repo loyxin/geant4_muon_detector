@@ -1,8 +1,8 @@
-\hypertarget{classEnergyTimeHit}{}\section{Energy\+Time\+Hit Class Reference}
+\hypertarget{classEnergyTimeHit}{}\section{Energy\+Time\+Hit类 参考}
 \label{classEnergyTimeHit}\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}}
 
 
-设置 Hit 容器  
+设置 muon detector Hit 容器  
 
 
 
@@ -11,7 +11,7 @@
 
 
 
-Inheritance diagram for Energy\+Time\+Hit\+:\nopagebreak
+类 Energy\+Time\+Hit 继承关系图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,53 +20,260 @@ Inheritance diagram for Energy\+Time\+Hit\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Energy\+Time\+Hit\+:\nopagebreak
+Energy\+Time\+Hit 的协作图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=162pt]{classEnergyTimeHit__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\subsection*{Public 成员函数}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classEnergyTimeHit_a13352f0fdc7bf25e3655b803b50ae9ca}\label{classEnergyTimeHit_a13352f0fdc7bf25e3655b803b50ae9ca}} 
-void $\ast$ {\bfseries operator new} (size\+\_\+t)
+void $\ast$ \hyperlink{classEnergyTimeHit_a13352f0fdc7bf25e3655b803b50ae9ca}{operator new} (size\+\_\+t)
+\begin{DoxyCompactList}\small\item\em Memory allocation and de-\/allocation \end{DoxyCompactList}\item 
+void \hyperlink{classEnergyTimeHit_ab146f5c1aec4e913a416faee3b2ff60b}{operator delete} (void $\ast$)
 \item 
-\mbox{\Hypertarget{classEnergyTimeHit_ab146f5c1aec4e913a416faee3b2ff60b}\label{classEnergyTimeHit_ab146f5c1aec4e913a416faee3b2ff60b}} 
-void {\bfseries operator delete} (void $\ast$)
+void \hyperlink{classEnergyTimeHit_ab7a9602285c51cf42566382df8277147}{Set\+Delta\+Energy} (G4double deltaE)
+\begin{DoxyCompactList}\small\item\em 设置能量 \end{DoxyCompactList}\item 
+void \hyperlink{classEnergyTimeHit_a139ed317e433a0ddef477117f39daf8a}{Set\+Time} (G4double time)
+\begin{DoxyCompactList}\small\item\em 设置时间 \end{DoxyCompactList}\item 
+void \hyperlink{classEnergyTimeHit_a987123b85e019adc1f01332bb23c3f2c}{Set\+Position} (G4\+Three\+Vector pos)
+\begin{DoxyCompactList}\small\item\em 设置位置 \end{DoxyCompactList}\item 
+void \hyperlink{classEnergyTimeHit_aadf608ec3e5d06c9735546b29a0f92b4}{Set\+Name} (G4\+String name)
+\begin{DoxyCompactList}\small\item\em 设置探测器名字 \end{DoxyCompactList}\item 
+G4double \hyperlink{classEnergyTimeHit_a15aae5ff8efc3a4efc39c00c26308836}{Get\+Delta\+Energy} () const
+\begin{DoxyCompactList}\small\item\em 得到 hit 中能量信息 \end{DoxyCompactList}\item 
+G4double \hyperlink{classEnergyTimeHit_ab7f49eaf401c5b559876d69330c57c78}{Get\+Time} () const
+\begin{DoxyCompactList}\small\item\em 得到 hit 中时间信息 \end{DoxyCompactList}\item 
+G4\+Three\+Vector \hyperlink{classEnergyTimeHit_a4611709e7caf2e34f4e368dd8c4e8ad4}{Get\+Position} () const
+\begin{DoxyCompactList}\small\item\em 得到 hit 中位置信息 \end{DoxyCompactList}\item 
+G4\+String \hyperlink{classEnergyTimeHit_a7e348ee943ce7065910e75b0063108d5}{Get\+Name} () const
+\begin{DoxyCompactList}\small\item\em 得到 hit 中探测器信息 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private 属性}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classEnergyTimeHit_ab7a9602285c51cf42566382df8277147}\label{classEnergyTimeHit_ab7a9602285c51cf42566382df8277147}} 
-void {\bfseries Set\+Delta\+Energy} (G4double deltaE)
+G4double \hyperlink{classEnergyTimeHit_a3979f4ac628b68fad49d5014267bbb61}{f\+Delta\+Energy}
 \item 
-\mbox{\Hypertarget{classEnergyTimeHit_a139ed317e433a0ddef477117f39daf8a}\label{classEnergyTimeHit_a139ed317e433a0ddef477117f39daf8a}} 
-void {\bfseries Set\+Time} (G4double time)
+G4double \hyperlink{classEnergyTimeHit_a1c7ce3f598d87ae1855d7edb833d4486}{f\+Time}
 \item 
-\mbox{\Hypertarget{classEnergyTimeHit_a987123b85e019adc1f01332bb23c3f2c}\label{classEnergyTimeHit_a987123b85e019adc1f01332bb23c3f2c}} 
-void {\bfseries Set\+Position} (G4\+Three\+Vector pos)
+G4\+Three\+Vector \hyperlink{classEnergyTimeHit_adb5230ba263dadd37f343c2c6b04bf55}{f\+Position}
 \item 
-\mbox{\Hypertarget{classEnergyTimeHit_aadf608ec3e5d06c9735546b29a0f92b4}\label{classEnergyTimeHit_aadf608ec3e5d06c9735546b29a0f92b4}} 
-void {\bfseries Set\+Name} (G4\+String name)
-\item 
-\mbox{\Hypertarget{classEnergyTimeHit_a15aae5ff8efc3a4efc39c00c26308836}\label{classEnergyTimeHit_a15aae5ff8efc3a4efc39c00c26308836}} 
-G4double {\bfseries Get\+Delta\+Energy} () const
-\item 
-\mbox{\Hypertarget{classEnergyTimeHit_ab7f49eaf401c5b559876d69330c57c78}\label{classEnergyTimeHit_ab7f49eaf401c5b559876d69330c57c78}} 
-G4double {\bfseries Get\+Time} () const
-\item 
-\mbox{\Hypertarget{classEnergyTimeHit_a4611709e7caf2e34f4e368dd8c4e8ad4}\label{classEnergyTimeHit_a4611709e7caf2e34f4e368dd8c4e8ad4}} 
-G4\+Three\+Vector {\bfseries Get\+Position} () const
-\item 
-\mbox{\Hypertarget{classEnergyTimeHit_a7e348ee943ce7065910e75b0063108d5}\label{classEnergyTimeHit_a7e348ee943ce7065910e75b0063108d5}} 
-G4\+String {\bfseries Get\+Name} () const
+G4\+String \hyperlink{classEnergyTimeHit_a892c47bfb7d81fe010e7e58413ab52fe}{fname}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-设置 Hit 容器 
+\subsection{详细描述}
+设置 muon detector Hit 容器 
 
 Hit 容器保存能量，时间，位置，探测器名字 
 
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+在文件 Energy\+Time\+Hit.\+hh 第 19 行定义.
+
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classEnergyTimeHit_a15aae5ff8efc3a4efc39c00c26308836}\label{classEnergyTimeHit_a15aae5ff8efc3a4efc39c00c26308836}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!Get\+Delta\+Energy@{Get\+Delta\+Energy}}
+\index{Get\+Delta\+Energy@{Get\+Delta\+Energy}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{Get\+Delta\+Energy()}{GetDeltaEnergy()}}
+{\footnotesize\ttfamily G4double Energy\+Time\+Hit\+::\+Get\+Delta\+Energy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+得到 hit 中能量信息 
+
+在 event\+Action 有用到 
+
+在文件 Energy\+Time\+Hit.\+hh 第 52 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_a7e348ee943ce7065910e75b0063108d5}\label{classEnergyTimeHit_a7e348ee943ce7065910e75b0063108d5}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!Get\+Name@{Get\+Name}}
+\index{Get\+Name@{Get\+Name}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{Get\+Name()}{GetName()}}
+{\footnotesize\ttfamily G4\+String Energy\+Time\+Hit\+::\+Get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+得到 hit 中探测器信息 
+
+在 event\+Action 有用到 
+
+在文件 Energy\+Time\+Hit.\+hh 第 67 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_a4611709e7caf2e34f4e368dd8c4e8ad4}\label{classEnergyTimeHit_a4611709e7caf2e34f4e368dd8c4e8ad4}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!Get\+Position@{Get\+Position}}
+\index{Get\+Position@{Get\+Position}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{Get\+Position()}{GetPosition()}}
+{\footnotesize\ttfamily G4\+Three\+Vector Energy\+Time\+Hit\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+得到 hit 中位置信息 
+
+在 event\+Action 有用到 
+
+在文件 Energy\+Time\+Hit.\+hh 第 62 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_ab7f49eaf401c5b559876d69330c57c78}\label{classEnergyTimeHit_ab7f49eaf401c5b559876d69330c57c78}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!Get\+Time@{Get\+Time}}
+\index{Get\+Time@{Get\+Time}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{Get\+Time()}{GetTime()}}
+{\footnotesize\ttfamily G4double Energy\+Time\+Hit\+::\+Get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+得到 hit 中时间信息 
+
+在 event\+Action 有用到 
+
+在文件 Energy\+Time\+Hit.\+hh 第 57 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_ab146f5c1aec4e913a416faee3b2ff60b}\label{classEnergyTimeHit_ab146f5c1aec4e913a416faee3b2ff60b}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!operator delete@{operator delete}}
+\index{operator delete@{operator delete}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{operator delete()}{operator delete()}}
+{\footnotesize\ttfamily void Energy\+Time\+Hit\+::operator delete (\begin{DoxyParamCaption}\item[{void $\ast$}]{a\+Hit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 89 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_a13352f0fdc7bf25e3655b803b50ae9ca}\label{classEnergyTimeHit_a13352f0fdc7bf25e3655b803b50ae9ca}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!operator new@{operator new}}
+\index{operator new@{operator new}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{operator new()}{operator new()}}
+{\footnotesize\ttfamily void $\ast$ Energy\+Time\+Hit\+::operator new (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Memory allocation and de-\/allocation 
+
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 80 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_ab7a9602285c51cf42566382df8277147}\label{classEnergyTimeHit_ab7a9602285c51cf42566382df8277147}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!Set\+Delta\+Energy@{Set\+Delta\+Energy}}
+\index{Set\+Delta\+Energy@{Set\+Delta\+Energy}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{Set\+Delta\+Energy()}{SetDeltaEnergy()}}
+{\footnotesize\ttfamily void Energy\+Time\+Hit\+::\+Set\+Delta\+Energy (\begin{DoxyParamCaption}\item[{G4double}]{deltaE }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+设置能量 
+
+
+\begin{DoxyParams}{参数}
+{\em deltaE} & 在 sensitive类中的\+Process\+Hit()中的从step得到 \\
+\hline
+\end{DoxyParams}
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 31 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_aadf608ec3e5d06c9735546b29a0f92b4}\label{classEnergyTimeHit_aadf608ec3e5d06c9735546b29a0f92b4}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!Set\+Name@{Set\+Name}}
+\index{Set\+Name@{Set\+Name}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{Set\+Name()}{SetName()}}
+{\footnotesize\ttfamily void Energy\+Time\+Hit\+::\+Set\+Name (\begin{DoxyParamCaption}\item[{G4\+String}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+设置探测器名字 
+
+因为有两个探测器用一个 logical Volume 所以用这个标记 
+\begin{DoxyParams}{参数}
+{\em name} & 在 sensitive类中的\+Process\+Hit()中的从step得到 \\
+\hline
+\end{DoxyParams}
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 47 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_a987123b85e019adc1f01332bb23c3f2c}\label{classEnergyTimeHit_a987123b85e019adc1f01332bb23c3f2c}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!Set\+Position@{Set\+Position}}
+\index{Set\+Position@{Set\+Position}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{Set\+Position()}{SetPosition()}}
+{\footnotesize\ttfamily void Energy\+Time\+Hit\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{G4\+Three\+Vector}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+设置位置 
+
+
+\begin{DoxyParams}{参数}
+{\em pos} & 在 sensitive类中的\+Process\+Hit()中的从step得到 \\
+\hline
+\end{DoxyParams}
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 41 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_a139ed317e433a0ddef477117f39daf8a}\label{classEnergyTimeHit_a139ed317e433a0ddef477117f39daf8a}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!Set\+Time@{Set\+Time}}
+\index{Set\+Time@{Set\+Time}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{Set\+Time()}{SetTime()}}
+{\footnotesize\ttfamily void Energy\+Time\+Hit\+::\+Set\+Time (\begin{DoxyParamCaption}\item[{G4double}]{time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+设置时间 
+
+
+\begin{DoxyParams}{参数}
+{\em time} & 在 sensitive类中的\+Process\+Hit()中的从step得到 \\
+\hline
+\end{DoxyParams}
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 36 行定义.
+
+
+
+\subsection{类成员变量说明}
+\mbox{\Hypertarget{classEnergyTimeHit_a3979f4ac628b68fad49d5014267bbb61}\label{classEnergyTimeHit_a3979f4ac628b68fad49d5014267bbb61}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!f\+Delta\+Energy@{f\+Delta\+Energy}}
+\index{f\+Delta\+Energy@{f\+Delta\+Energy}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{f\+Delta\+Energy}{fDeltaEnergy}}
+{\footnotesize\ttfamily G4double Energy\+Time\+Hit\+::f\+Delta\+Energy\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 69 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_a892c47bfb7d81fe010e7e58413ab52fe}\label{classEnergyTimeHit_a892c47bfb7d81fe010e7e58413ab52fe}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!fname@{fname}}
+\index{fname@{fname}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{fname}{fname}}
+{\footnotesize\ttfamily G4\+String Energy\+Time\+Hit\+::fname\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 72 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_adb5230ba263dadd37f343c2c6b04bf55}\label{classEnergyTimeHit_adb5230ba263dadd37f343c2c6b04bf55}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!f\+Position@{f\+Position}}
+\index{f\+Position@{f\+Position}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{f\+Position}{fPosition}}
+{\footnotesize\ttfamily G4\+Three\+Vector Energy\+Time\+Hit\+::f\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 71 行定义.
+
+\mbox{\Hypertarget{classEnergyTimeHit_a1c7ce3f598d87ae1855d7edb833d4486}\label{classEnergyTimeHit_a1c7ce3f598d87ae1855d7edb833d4486}} 
+\index{Energy\+Time\+Hit@{Energy\+Time\+Hit}!f\+Time@{f\+Time}}
+\index{f\+Time@{f\+Time}!Energy\+Time\+Hit@{Energy\+Time\+Hit}}
+\subsubsection{\texorpdfstring{f\+Time}{fTime}}
+{\footnotesize\ttfamily G4double Energy\+Time\+Hit\+::f\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 Energy\+Time\+Hit.\+hh 第 70 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
 \item 
-include/Energy\+Time\+Hit.\+hh\end{DoxyCompactItemize}
+include/\hyperlink{EnergyTimeHit_8hh}{Energy\+Time\+Hit.\+hh}\end{DoxyCompactItemize}

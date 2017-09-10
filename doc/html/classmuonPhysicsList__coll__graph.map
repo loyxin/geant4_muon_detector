@@ -1,2 +1,5 @@
 <map id="muonPhysicsList" name="muonPhysicsList">
+<area shape="rect" id="node7" href="$classmuonPhysicsListMessenger.html" title="Provide control of the physics list and cut parameters " alt="" coords="67,260,253,287"/>
+<area shape="rect" id="node3" href="$classmuonOpticalPhysics.html" title="muonOpticalPhysics" alt="" coords="193,81,335,108"/>
+<area shape="rect" id="node5" href="$classmuonStepMax.html" title="muonStepMax" alt="" coords="375,81,481,108"/>
 </map>

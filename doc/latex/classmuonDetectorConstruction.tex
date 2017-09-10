@@ -1,8 +1,8 @@
-\hypertarget{classmuonDetectorConstruction}{}\section{muon\+Detector\+Construction Class Reference}
+\hypertarget{classmuonDetectorConstruction}{}\section{muon\+Detector\+Construction类 参考}
 \label{classmuonDetectorConstruction}\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}}
 
 
-Detector construction class to define materials and geometry.  
+Detector Construction  
 
 
 
@@ -11,7 +11,7 @@ Detector construction class to define materials and geometry.
 
 
 
-Inheritance diagram for muon\+Detector\+Construction\+:\nopagebreak
+类 muon\+Detector\+Construction 继承关系图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -20,40 +20,498 @@ Inheritance diagram for muon\+Detector\+Construction\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for muon\+Detector\+Construction\+:\nopagebreak
+muon\+Detector\+Construction 的协作图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=230pt]{classmuonDetectorConstruction__coll__graph}
+\includegraphics[width=350pt]{classmuonDetectorConstruction__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\subsection*{Public 成员函数}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classmuonDetectorConstruction_ad2b397202446a2fb7d563a8122cd5ecc}\label{classmuonDetectorConstruction_ad2b397202446a2fb7d563a8122cd5ecc}} 
 \hyperlink{classmuonDetectorConstruction_ad2b397202446a2fb7d563a8122cd5ecc}{muon\+Detector\+Construction} ()
-\begin{DoxyCompactList}\small\item\em 搭建探测器 \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classmuonDetectorConstruction_ae06d0e4ad5f07bc1465a7faeccfdd19d}\label{classmuonDetectorConstruction_ae06d0e4ad5f07bc1465a7faeccfdd19d}} 
-virtual G4\+V\+Physical\+Volume $\ast$ {\bfseries Construct} () override
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+virtual \hyperlink{classmuonDetectorConstruction_a97e2173fda2b16324447693de3b31609}{$\sim$muon\+Detector\+Construction} ()
 \item 
-\mbox{\Hypertarget{classmuonDetectorConstruction_a1f76a4cb61622b57c22e2041afb96181}\label{classmuonDetectorConstruction_a1f76a4cb61622b57c22e2041afb96181}} 
-void {\bfseries Constructmuondetector} (G4\+Logical\+Volume $\ast$)
+virtual G4\+V\+Physical\+Volume $\ast$ \hyperlink{classmuonDetectorConstruction_ae06d0e4ad5f07bc1465a7faeccfdd19d}{Construct} () override
+\begin{DoxyCompactList}\small\item\em Detector construction \end{DoxyCompactList}\item 
+void \hyperlink{classmuonDetectorConstruction_a69f2bf6d3288ca6a311ac07c2fbfc86d}{Constructmuondetector} (G4\+Logical\+Volume $\ast$world)
+\begin{DoxyCompactList}\small\item\em Construct muondetector \end{DoxyCompactList}\item 
+void \hyperlink{classmuonDetectorConstruction_adaaf850335c5d3013e8e98270610e7b3}{Construct\+P\+MT} (G4\+Logical\+Volume $\ast$world)
+\begin{DoxyCompactList}\small\item\em Construct P\+MT \end{DoxyCompactList}\item 
+void \hyperlink{classmuonDetectorConstruction_ae448b2b2b572072f685b4cdf75d4f60a}{Construct\+Reflection} (G4\+Logical\+Volume $\ast$world, G4\+Trd $\ast$detector)
+\begin{DoxyCompactList}\small\item\em \mbox{[}brief description\mbox{]} \end{DoxyCompactList}\item 
+void \hyperlink{classmuonDetectorConstruction_ab730c9af042466f6464c77a62a3c75df}{Construct\+S\+Dand\+Field} () override
+\begin{DoxyCompactList}\small\item\em 注册敏感探测器 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private 属性}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classmuonDetectorConstruction_aa5c57ff26fa5e8339698103cf5422dd8}\label{classmuonDetectorConstruction_aa5c57ff26fa5e8339698103cf5422dd8}} 
-void {\bfseries Construct\+P\+MT} (G4\+Logical\+Volume $\ast$)
+G4double \hyperlink{classmuonDetectorConstruction_ae84a9c5b8ae8c23a525d2fac1c8574b4}{c\+\_\+light} = 2.\+99792458e+8 $\ast$ m/s
 \item 
-\mbox{\Hypertarget{classmuonDetectorConstruction_a01081b09828848dd76666d4e59cbab52}\label{classmuonDetectorConstruction_a01081b09828848dd76666d4e59cbab52}} 
-void {\bfseries Construct\+Reflection} (G4\+Logical\+Volume $\ast$, G4\+Trd $\ast$)
+G4double \hyperlink{classmuonDetectorConstruction_a77f36e64a1d560b7121aa14bf07c9ffe}{h\+\_\+\+Planck} = 6.\+62606896e-\/34 $\ast$ joule$\ast$s
 \item 
-\mbox{\Hypertarget{classmuonDetectorConstruction_ab730c9af042466f6464c77a62a3c75df}\label{classmuonDetectorConstruction_ab730c9af042466f6464c77a62a3c75df}} 
-void {\bfseries Construct\+S\+Dand\+Field} () override
+G4double \hyperlink{classmuonDetectorConstruction_a658d653c8308534496baa24f7aaf938b}{world\+\_\+size\+XY} = 1$\ast$m
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a0260171e245912eeff14a2bdb7cca44c}{world\+\_\+sizeZ} = 0.\+2$\ast$m
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a7577159570a4ff317f76f47375cababe}{shape\+\_\+x1} = 20./2.$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_afc85d07aa046b01cb159bcaaa3ad6c4c}{shape\+\_\+x2} = 20./2.$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_ac20e987f6a591bc5a95364b0d6540a99}{shape\+\_\+y1} =84./2.$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a83c1a7279ddb926ff746cdad0d139a1c}{shape\+\_\+y2} =143.\+5/2.$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a51a6e95e1310965fb98c6fc1ed089014}{shape\+\_\+z} =338.\+5/2.\+0$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_ae2913b2b14fcbf88711169912921c19d}{phi} =90.$\ast$deg
+\item 
+G4\+Rotation\+Matrix $\ast$ \hyperlink{classmuonDetectorConstruction_add745b205f093512b89e9263ac2c25bc}{rotm}
+\item 
+G4\+Three\+Vector \hyperlink{classmuonDetectorConstruction_a42199de1e9de3faacba57df6daff6a4c}{pos1} = G4\+Three\+Vector(0, 0, -\/15.$\ast$mm)
+\item 
+G4\+Three\+Vector \hyperlink{classmuonDetectorConstruction_a721185f703649b2297ff57c3459969d1}{pos2} = G4\+Three\+Vector(0., 0., 15.$\ast$mm)
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a7f0c69005e9e3700f89ea5ec340f784b}{P\+M\+T\+\_\+thick} = 1.\+0$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a59743f64bbef89ed64aef6c699529d06}{P\+M\+T\+\_\+x} = 20./2.$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a9574fc8ddbc472645c91a5be868f46b2}{P\+M\+T\+\_\+y} =84./2.$\ast$mm
+\item 
+G4\+Three\+Vector \hyperlink{classmuonDetectorConstruction_aae5093d6de44702c9799fdf41302b732}{P\+M\+Tpos1} = G4\+Three\+Vector(340.\+5/2.\+0$\ast$mm,0.\+0$\ast$cm,15 $\ast$mm)
+\item 
+G4\+Three\+Vector \hyperlink{classmuonDetectorConstruction_ac60e3fd7868c15c3f5f351d4e064a1b5}{P\+M\+Tpos2} = G4\+Three\+Vector(340.\+5/2.\+0$\ast$mm,0.\+0$\ast$cm,-\/15 $\ast$mm)
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_ad5f560a56957f9d7a4d2b32a67130dd7}{rshape\+\_\+x1} = 22./2.$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a03e92841ed58214bff5548ba39bece65}{rshape\+\_\+x2} = 22./2.$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a6a5656686c94f5526260dc6ff5bab1c2}{rshape\+\_\+y1} =86./2.$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a7f7450b63b08b56eb4e510bb10407d00}{rshape\+\_\+y2} =145.\+5/2.$\ast$mm
+\item 
+G4double \hyperlink{classmuonDetectorConstruction_a829a6697c7a0d736f54ef2cc1726e998}{rshape\+\_\+z} =340.\+5/2.\+0$\ast$mm
+\item 
+G4\+Three\+Vector \hyperlink{classmuonDetectorConstruction_a3a49ae955ac065b568c7db42c570cd75}{rpos1} = G4\+Three\+Vector(-\/1.$\ast$mm, 0, -\/15.$\ast$mm)
+\item 
+G4\+Three\+Vector \hyperlink{classmuonDetectorConstruction_a95836d910644b3c728b3fe4c0d2bdc28}{rpos2} = G4\+Three\+Vector(-\/1.$\ast$mm, 0., 15.$\ast$mm)
+\item 
+G4bool \hyperlink{classmuonDetectorConstruction_a32d68e577a2dd250cce61acae6389557}{check\+Overlaps} = true
+\item 
+\hyperlink{classmuonMaterial}{muon\+Material} $\ast$ \hyperlink{classmuonDetectorConstruction_a826aea0d097deb692b12aed2149f622b}{f\+Material}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-Detector construction class to define materials and geometry. 
+\subsection{详细描述}
+Detector Construction 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+在文件 muon\+Detector\+Construction.\+hh 第 22 行定义.
+
+
+
+\subsection{构造及析构函数说明}
+\mbox{\Hypertarget{classmuonDetectorConstruction_ad2b397202446a2fb7d563a8122cd5ecc}\label{classmuonDetectorConstruction_ad2b397202446a2fb7d563a8122cd5ecc}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{muon\+Detector\+Construction()}{muonDetectorConstruction()}}
+{\footnotesize\ttfamily muon\+Detector\+Construction\+::muon\+Detector\+Construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+constructor 
+
+初始化材料对象 
+
+在文件 muon\+Detector\+Construction.\+cc 第 10 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a97e2173fda2b16324447693de3b31609}\label{classmuonDetectorConstruction_a97e2173fda2b16324447693de3b31609}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!````~muon\+Detector\+Construction@{$\sim$muon\+Detector\+Construction}}
+\index{````~muon\+Detector\+Construction@{$\sim$muon\+Detector\+Construction}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{$\sim$muon\+Detector\+Construction()}{~muonDetectorConstruction()}}
+{\footnotesize\ttfamily muon\+Detector\+Construction\+::$\sim$muon\+Detector\+Construction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+cc 第 15 行定义.
+
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classmuonDetectorConstruction_ae06d0e4ad5f07bc1465a7faeccfdd19d}\label{classmuonDetectorConstruction_ae06d0e4ad5f07bc1465a7faeccfdd19d}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!Construct@{Construct}}
+\index{Construct@{Construct}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{Construct()}{Construct()}}
+{\footnotesize\ttfamily G4\+V\+Physical\+Volume $\ast$ muon\+Detector\+Construction\+::\+Construct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Detector construction 
+
+define geometry \begin{DoxyReturn}{返回}
+world physical volume 
+\end{DoxyReturn}
+
+
+在文件 muon\+Detector\+Construction.\+cc 第 27 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a69f2bf6d3288ca6a311ac07c2fbfc86d}\label{classmuonDetectorConstruction_a69f2bf6d3288ca6a311ac07c2fbfc86d}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!Constructmuondetector@{Constructmuondetector}}
+\index{Constructmuondetector@{Constructmuondetector}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{Constructmuondetector()}{Constructmuondetector()}}
+{\footnotesize\ttfamily void muon\+Detector\+Construction\+::\+Constructmuondetector (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{world }\end{DoxyParamCaption})}
+
+
+
+Construct muondetector 
+
+
+\begin{DoxyParams}{参数}
+{\em world} & parent volume 为 world logical volume, 构建探测器 tree \\
+\hline
+\end{DoxyParams}
+
+
+在文件 muon\+Detector\+Construction.\+cc 第 53 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_adaaf850335c5d3013e8e98270610e7b3}\label{classmuonDetectorConstruction_adaaf850335c5d3013e8e98270610e7b3}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!Construct\+P\+MT@{Construct\+P\+MT}}
+\index{Construct\+P\+MT@{Construct\+P\+MT}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{Construct\+P\+M\+T()}{ConstructPMT()}}
+{\footnotesize\ttfamily void muon\+Detector\+Construction\+::\+Construct\+P\+MT (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{world }\end{DoxyParamCaption})}
+
+
+
+Construct P\+MT 
+
+
+\begin{DoxyParams}{参数}
+{\em world} & parent volume 为 world logical volume, 构建探测器 tree \\
+\hline
+\end{DoxyParams}
+
+
+在文件 muon\+Detector\+Construction.\+cc 第 114 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_ae448b2b2b572072f685b4cdf75d4f60a}\label{classmuonDetectorConstruction_ae448b2b2b572072f685b4cdf75d4f60a}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!Construct\+Reflection@{Construct\+Reflection}}
+\index{Construct\+Reflection@{Construct\+Reflection}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{Construct\+Reflection()}{ConstructReflection()}}
+{\footnotesize\ttfamily void muon\+Detector\+Construction\+::\+Construct\+Reflection (\begin{DoxyParamCaption}\item[{G4\+Logical\+Volume $\ast$}]{world,  }\item[{G4\+Trd $\ast$}]{detector }\end{DoxyParamCaption})}
+
+
+
+\mbox{[}brief description\mbox{]} 
+
+\mbox{[}long description\mbox{]}
+
+
+\begin{DoxyParams}{参数}
+{\em world} & parent volume 为 world logical volume, 构建探测器 tree \\
+\hline
+{\em detector} & muon detector 形状，用于构建发射层的形状 \\
+\hline
+\end{DoxyParams}
+
+
+在文件 muon\+Detector\+Construction.\+cc 第 77 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_ab730c9af042466f6464c77a62a3c75df}\label{classmuonDetectorConstruction_ab730c9af042466f6464c77a62a3c75df}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!Construct\+S\+Dand\+Field@{Construct\+S\+Dand\+Field}}
+\index{Construct\+S\+Dand\+Field@{Construct\+S\+Dand\+Field}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{Construct\+S\+Dand\+Field()}{ConstructSDandField()}}
+{\footnotesize\ttfamily void muon\+Detector\+Construction\+::\+Construct\+S\+Dand\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+注册敏感探测器 
+
+注册 pmt(\+P\+M\+T\+S\+D) muon detector(\+Energy\+Time\+S\+D) 敏感探测器 
+
+在文件 muon\+Detector\+Construction.\+cc 第 189 行定义.
+
+
+
+\subsection{类成员变量说明}
+\mbox{\Hypertarget{classmuonDetectorConstruction_ae84a9c5b8ae8c23a525d2fac1c8574b4}\label{classmuonDetectorConstruction_ae84a9c5b8ae8c23a525d2fac1c8574b4}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!c\+\_\+light@{c\+\_\+light}}
+\index{c\+\_\+light@{c\+\_\+light}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{c\+\_\+light}{c\_light}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::c\+\_\+light = 2.\+99792458e+8 $\ast$ m/s\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 64 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a32d68e577a2dd250cce61acae6389557}\label{classmuonDetectorConstruction_a32d68e577a2dd250cce61acae6389557}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!check\+Overlaps@{check\+Overlaps}}
+\index{check\+Overlaps@{check\+Overlaps}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{check\+Overlaps}{checkOverlaps}}
+{\footnotesize\ttfamily G4bool muon\+Detector\+Construction\+::check\+Overlaps = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 103 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a826aea0d097deb692b12aed2149f622b}\label{classmuonDetectorConstruction_a826aea0d097deb692b12aed2149f622b}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!f\+Material@{f\+Material}}
+\index{f\+Material@{f\+Material}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{f\+Material}{fMaterial}}
+{\footnotesize\ttfamily \hyperlink{classmuonMaterial}{muon\+Material}$\ast$ muon\+Detector\+Construction\+::f\+Material\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 105 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a77f36e64a1d560b7121aa14bf07c9ffe}\label{classmuonDetectorConstruction_a77f36e64a1d560b7121aa14bf07c9ffe}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!h\+\_\+\+Planck@{h\+\_\+\+Planck}}
+\index{h\+\_\+\+Planck@{h\+\_\+\+Planck}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{h\+\_\+\+Planck}{h\_Planck}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::h\+\_\+\+Planck = 6.\+62606896e-\/34 $\ast$ joule$\ast$s\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 65 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_ae2913b2b14fcbf88711169912921c19d}\label{classmuonDetectorConstruction_ae2913b2b14fcbf88711169912921c19d}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!phi@{phi}}
+\index{phi@{phi}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{phi}{phi}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::phi =90.$\ast$deg\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 79 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a7f0c69005e9e3700f89ea5ec340f784b}\label{classmuonDetectorConstruction_a7f0c69005e9e3700f89ea5ec340f784b}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!P\+M\+T\+\_\+thick@{P\+M\+T\+\_\+thick}}
+\index{P\+M\+T\+\_\+thick@{P\+M\+T\+\_\+thick}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{P\+M\+T\+\_\+thick}{PMT\_thick}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::\+P\+M\+T\+\_\+thick = 1.\+0$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 89 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a59743f64bbef89ed64aef6c699529d06}\label{classmuonDetectorConstruction_a59743f64bbef89ed64aef6c699529d06}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!P\+M\+T\+\_\+x@{P\+M\+T\+\_\+x}}
+\index{P\+M\+T\+\_\+x@{P\+M\+T\+\_\+x}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{P\+M\+T\+\_\+x}{PMT\_x}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::\+P\+M\+T\+\_\+x = 20./2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 90 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a9574fc8ddbc472645c91a5be868f46b2}\label{classmuonDetectorConstruction_a9574fc8ddbc472645c91a5be868f46b2}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!P\+M\+T\+\_\+y@{P\+M\+T\+\_\+y}}
+\index{P\+M\+T\+\_\+y@{P\+M\+T\+\_\+y}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{P\+M\+T\+\_\+y}{PMT\_y}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::\+P\+M\+T\+\_\+y =84./2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 90 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_aae5093d6de44702c9799fdf41302b732}\label{classmuonDetectorConstruction_aae5093d6de44702c9799fdf41302b732}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!P\+M\+Tpos1@{P\+M\+Tpos1}}
+\index{P\+M\+Tpos1@{P\+M\+Tpos1}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{P\+M\+Tpos1}{PMTpos1}}
+{\footnotesize\ttfamily G4\+Three\+Vector muon\+Detector\+Construction\+::\+P\+M\+Tpos1 = G4\+Three\+Vector(340.\+5/2.\+0$\ast$mm,0.\+0$\ast$cm,15 $\ast$mm)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 91 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_ac60e3fd7868c15c3f5f351d4e064a1b5}\label{classmuonDetectorConstruction_ac60e3fd7868c15c3f5f351d4e064a1b5}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!P\+M\+Tpos2@{P\+M\+Tpos2}}
+\index{P\+M\+Tpos2@{P\+M\+Tpos2}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{P\+M\+Tpos2}{PMTpos2}}
+{\footnotesize\ttfamily G4\+Three\+Vector muon\+Detector\+Construction\+::\+P\+M\+Tpos2 = G4\+Three\+Vector(340.\+5/2.\+0$\ast$mm,0.\+0$\ast$cm,-\/15 $\ast$mm)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 92 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a42199de1e9de3faacba57df6daff6a4c}\label{classmuonDetectorConstruction_a42199de1e9de3faacba57df6daff6a4c}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!pos1@{pos1}}
+\index{pos1@{pos1}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{pos1}{pos1}}
+{\footnotesize\ttfamily G4\+Three\+Vector muon\+Detector\+Construction\+::pos1 = G4\+Three\+Vector(0, 0, -\/15.$\ast$mm)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 85 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a721185f703649b2297ff57c3459969d1}\label{classmuonDetectorConstruction_a721185f703649b2297ff57c3459969d1}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!pos2@{pos2}}
+\index{pos2@{pos2}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{pos2}{pos2}}
+{\footnotesize\ttfamily G4\+Three\+Vector muon\+Detector\+Construction\+::pos2 = G4\+Three\+Vector(0., 0., 15.$\ast$mm)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 86 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_add745b205f093512b89e9263ac2c25bc}\label{classmuonDetectorConstruction_add745b205f093512b89e9263ac2c25bc}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!rotm@{rotm}}
+\index{rotm@{rotm}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{rotm}{rotm}}
+{\footnotesize\ttfamily G4\+Rotation\+Matrix$\ast$ muon\+Detector\+Construction\+::rotm\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries 初始值\+:}
+\begin{DoxyCode}
+= 
+    \textcolor{keyword}{new} G4RotationMatrix(G4ThreeVector(std::cos(\hyperlink{classmuonDetectorConstruction_ae2913b2b14fcbf88711169912921c19d}{phi}),0., -std::sin(\hyperlink{classmuonDetectorConstruction_ae2913b2b14fcbf88711169912921c19d}{phi})), 
+    G4ThreeVector(0.,1., 0.), G4ThreeVector( std::sin(\hyperlink{classmuonDetectorConstruction_ae2913b2b14fcbf88711169912921c19d}{phi}),0., std::cos(\hyperlink{classmuonDetectorConstruction_ae2913b2b14fcbf88711169912921c19d}{phi})))
+\end{DoxyCode}
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 80 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a3a49ae955ac065b568c7db42c570cd75}\label{classmuonDetectorConstruction_a3a49ae955ac065b568c7db42c570cd75}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!rpos1@{rpos1}}
+\index{rpos1@{rpos1}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{rpos1}{rpos1}}
+{\footnotesize\ttfamily G4\+Three\+Vector muon\+Detector\+Construction\+::rpos1 = G4\+Three\+Vector(-\/1.$\ast$mm, 0, -\/15.$\ast$mm)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 100 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a95836d910644b3c728b3fe4c0d2bdc28}\label{classmuonDetectorConstruction_a95836d910644b3c728b3fe4c0d2bdc28}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!rpos2@{rpos2}}
+\index{rpos2@{rpos2}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{rpos2}{rpos2}}
+{\footnotesize\ttfamily G4\+Three\+Vector muon\+Detector\+Construction\+::rpos2 = G4\+Three\+Vector(-\/1.$\ast$mm, 0., 15.$\ast$mm)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 101 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_ad5f560a56957f9d7a4d2b32a67130dd7}\label{classmuonDetectorConstruction_ad5f560a56957f9d7a4d2b32a67130dd7}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!rshape\+\_\+x1@{rshape\+\_\+x1}}
+\index{rshape\+\_\+x1@{rshape\+\_\+x1}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{rshape\+\_\+x1}{rshape\_x1}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::rshape\+\_\+x1 = 22./2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 95 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a03e92841ed58214bff5548ba39bece65}\label{classmuonDetectorConstruction_a03e92841ed58214bff5548ba39bece65}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!rshape\+\_\+x2@{rshape\+\_\+x2}}
+\index{rshape\+\_\+x2@{rshape\+\_\+x2}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{rshape\+\_\+x2}{rshape\_x2}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::rshape\+\_\+x2 = 22./2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 96 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a6a5656686c94f5526260dc6ff5bab1c2}\label{classmuonDetectorConstruction_a6a5656686c94f5526260dc6ff5bab1c2}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!rshape\+\_\+y1@{rshape\+\_\+y1}}
+\index{rshape\+\_\+y1@{rshape\+\_\+y1}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{rshape\+\_\+y1}{rshape\_y1}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::rshape\+\_\+y1 =86./2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 97 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a7f7450b63b08b56eb4e510bb10407d00}\label{classmuonDetectorConstruction_a7f7450b63b08b56eb4e510bb10407d00}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!rshape\+\_\+y2@{rshape\+\_\+y2}}
+\index{rshape\+\_\+y2@{rshape\+\_\+y2}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{rshape\+\_\+y2}{rshape\_y2}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::rshape\+\_\+y2 =145.\+5/2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 98 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a829a6697c7a0d736f54ef2cc1726e998}\label{classmuonDetectorConstruction_a829a6697c7a0d736f54ef2cc1726e998}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!rshape\+\_\+z@{rshape\+\_\+z}}
+\index{rshape\+\_\+z@{rshape\+\_\+z}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{rshape\+\_\+z}{rshape\_z}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::rshape\+\_\+z =340.\+5/2.\+0$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 99 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a7577159570a4ff317f76f47375cababe}\label{classmuonDetectorConstruction_a7577159570a4ff317f76f47375cababe}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!shape\+\_\+x1@{shape\+\_\+x1}}
+\index{shape\+\_\+x1@{shape\+\_\+x1}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{shape\+\_\+x1}{shape\_x1}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::shape\+\_\+x1 = 20./2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 73 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_afc85d07aa046b01cb159bcaaa3ad6c4c}\label{classmuonDetectorConstruction_afc85d07aa046b01cb159bcaaa3ad6c4c}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!shape\+\_\+x2@{shape\+\_\+x2}}
+\index{shape\+\_\+x2@{shape\+\_\+x2}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{shape\+\_\+x2}{shape\_x2}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::shape\+\_\+x2 = 20./2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 74 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_ac20e987f6a591bc5a95364b0d6540a99}\label{classmuonDetectorConstruction_ac20e987f6a591bc5a95364b0d6540a99}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!shape\+\_\+y1@{shape\+\_\+y1}}
+\index{shape\+\_\+y1@{shape\+\_\+y1}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{shape\+\_\+y1}{shape\_y1}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::shape\+\_\+y1 =84./2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 75 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a83c1a7279ddb926ff746cdad0d139a1c}\label{classmuonDetectorConstruction_a83c1a7279ddb926ff746cdad0d139a1c}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!shape\+\_\+y2@{shape\+\_\+y2}}
+\index{shape\+\_\+y2@{shape\+\_\+y2}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{shape\+\_\+y2}{shape\_y2}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::shape\+\_\+y2 =143.\+5/2.$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 76 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a51a6e95e1310965fb98c6fc1ed089014}\label{classmuonDetectorConstruction_a51a6e95e1310965fb98c6fc1ed089014}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!shape\+\_\+z@{shape\+\_\+z}}
+\index{shape\+\_\+z@{shape\+\_\+z}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{shape\+\_\+z}{shape\_z}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::shape\+\_\+z =338.\+5/2.\+0$\ast$mm\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 77 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a658d653c8308534496baa24f7aaf938b}\label{classmuonDetectorConstruction_a658d653c8308534496baa24f7aaf938b}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!world\+\_\+size\+XY@{world\+\_\+size\+XY}}
+\index{world\+\_\+size\+XY@{world\+\_\+size\+XY}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{world\+\_\+size\+XY}{world\_sizeXY}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::world\+\_\+size\+XY = 1$\ast$m\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 69 行定义.
+
+\mbox{\Hypertarget{classmuonDetectorConstruction_a0260171e245912eeff14a2bdb7cca44c}\label{classmuonDetectorConstruction_a0260171e245912eeff14a2bdb7cca44c}} 
+\index{muon\+Detector\+Construction@{muon\+Detector\+Construction}!world\+\_\+sizeZ@{world\+\_\+sizeZ}}
+\index{world\+\_\+sizeZ@{world\+\_\+sizeZ}!muon\+Detector\+Construction@{muon\+Detector\+Construction}}
+\subsubsection{\texorpdfstring{world\+\_\+sizeZ}{world\_sizeZ}}
+{\footnotesize\ttfamily G4double muon\+Detector\+Construction\+::world\+\_\+sizeZ = 0.\+2$\ast$m\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Detector\+Construction.\+hh 第 69 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
 \item 
-include/muon\+Detector\+Construction.\+hh\item 
-src/muon\+Detector\+Construction.\+cc\end{DoxyCompactItemize}
+include/\hyperlink{muonDetectorConstruction_8hh}{muon\+Detector\+Construction.\+hh}\item 
+src/\hyperlink{muonDetectorConstruction_8cc}{muon\+Detector\+Construction.\+cc}\end{DoxyCompactItemize}

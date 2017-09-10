@@ -1,6 +1,14 @@
 /**
+ * @file main.cc
  * @author loyxin
  * @brief  main file 可视化，三个强制类的新建
+ * @details 
+ * 可视化，如果遇到 -i 参数，都会弹出可视化界面
+ * 直接调用程序默认弹出可视化界面
+ * 如果有宏文件，则不弹出可视化界面，并执行宏文件命令
+ * 新建三个强制类，并交给 runManager 管理
+ * @version 1.0
+ * @date 2017-09-10
  */
 
 #include <G4RunManager.hh>
@@ -125,7 +133,7 @@ int main(int argc,char** argv)
   #ifdef G4UI_USE
     if (interactive)
       {
-        UImanager->ApplyCommand("/control/execute init_vis.mac");
+        UImanager->ApplyCommand("/control/execute macro/init_vis.mac");
         ui->SessionStart();
         delete ui;
       }

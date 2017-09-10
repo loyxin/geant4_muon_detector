@@ -1,8 +1,17 @@
-\hypertarget{classpmtSD}{}\section{pmt\+SD Class Reference}
+\hypertarget{classpmtSD}{}\section{pmt\+S\+D类 参考}
 \label{classpmtSD}\index{pmt\+SD@{pmt\+SD}}
 
 
-Inheritance diagram for pmt\+SD\+:\nopagebreak
+pmt的敏感探测器类  
+
+
+
+
+{\ttfamily \#include $<$pmt\+S\+D.\+hh$>$}
+
+
+
+类 pmt\+SD 继承关系图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,30 +20,35 @@ Inheritance diagram for pmt\+SD\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for pmt\+SD\+:\nopagebreak
+pmt\+SD 的协作图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=194pt]{classpmtSD__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\subsection*{Public 成员函数}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classpmtSD_ae7746efb08ea75673a718fd342d243ea}{pmt\+SD} (G4\+String name)
 \begin{DoxyCompactList}\small\item\em 设置敏感探测器保存哪些数据 \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}\label{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}} 
-void {\bfseries Initialize} (G4\+H\+Cof\+This\+Event $\ast$) override
+void \hyperlink{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}{Initialize} (G4\+H\+Cof\+This\+Event $\ast$) override
 \end{DoxyCompactItemize}
-\subsection*{Protected Member Functions}
+\subsection*{Protected 成员函数}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}\label{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}} 
-G4bool {\bfseries Process\+Hits} (G4\+Step $\ast$a\+Step, G4\+Touchable\+History $\ast$R\+Ohist) override
+G4bool \hyperlink{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}{Process\+Hits} (G4\+Step $\ast$a\+Step, G4\+Touchable\+History $\ast$R\+Ohist) override
 \end{DoxyCompactItemize}
 
 
-\subsection{Constructor \& Destructor Documentation}
+\subsection{详细描述}
+pmt的敏感探测器类 
+
+在文件 pmt\+S\+D.\+hh 第 10 行定义.
+
+
+
+\subsection{构造及析构函数说明}
 \mbox{\Hypertarget{classpmtSD_ae7746efb08ea75673a718fd342d243ea}\label{classpmtSD_ae7746efb08ea75673a718fd342d243ea}} 
 \index{pmt\+SD@{pmt\+SD}!pmt\+SD@{pmt\+SD}}
 \index{pmt\+SD@{pmt\+SD}!pmt\+SD@{pmt\+SD}}
@@ -46,13 +60,40 @@ G4bool {\bfseries Process\+Hits} (G4\+Step $\ast$a\+Step, G4\+Touchable\+History
 设置敏感探测器保存哪些数据 
 
 muon 击中 pmt ，保存时间，能量，位置和击中哪一个 pmt 信息 敏感探测器挂载在敏感探测器管理类格式为 name/pmt\+\_\+energy\+\_\+time 
-\begin{DoxyParams}{Parameters}
+\begin{DoxyParams}{参数}
 {\em name} & pmt 的名字 \\
 \hline
 \end{DoxyParams}
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+在文件 pmt\+S\+D.\+cc 第 13 行定义.
+
+
+
+\subsection{成员函数说明}
+\mbox{\Hypertarget{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}\label{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}} 
+\index{pmt\+SD@{pmt\+SD}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!pmt\+SD@{pmt\+SD}}
+\subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void pmt\+S\+D\+::\+Initialize (\begin{DoxyParamCaption}\item[{G4\+H\+Cof\+This\+Event $\ast$}]{hcof }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+在文件 pmt\+S\+D.\+cc 第 76 行定义.
+
+\mbox{\Hypertarget{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}\label{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}} 
+\index{pmt\+SD@{pmt\+SD}!Process\+Hits@{Process\+Hits}}
+\index{Process\+Hits@{Process\+Hits}!pmt\+SD@{pmt\+SD}}
+\subsubsection{\texorpdfstring{Process\+Hits()}{ProcessHits()}}
+{\footnotesize\ttfamily G4bool pmt\+S\+D\+::\+Process\+Hits (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{a\+Step,  }\item[{G4\+Touchable\+History $\ast$}]{R\+Ohist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+
+
+
+在文件 pmt\+S\+D.\+cc 第 21 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
 \item 
-include/pmt\+S\+D.\+hh\item 
-src/pmt\+S\+D.\+cc\end{DoxyCompactItemize}
+include/\hyperlink{pmtSD_8hh}{pmt\+S\+D.\+hh}\item 
+src/\hyperlink{pmtSD_8cc}{pmt\+S\+D.\+cc}\end{DoxyCompactItemize}

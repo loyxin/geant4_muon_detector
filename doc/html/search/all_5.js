@@ -1,4 +1,25 @@
 var searchData=
 [
-  ['removefromphysicslist',['RemoveFromPhysicsList',['../classmuonPhysicsList.html#aaba742da0c9dc44a6498bfc804e284eb',1,'muonPhysicsList']]]
+  ['generateprimaries',['GeneratePrimaries',['../classmuonPrimaryGeneratorAction.html#a885d97924b9fcb69292c33eafb314c60',1,'muonPrimaryGeneratorAction']]],
+  ['getabsorptionprocess',['GetAbsorptionProcess',['../classmuonOpticalPhysics.html#a0e66d292a9509fdc6703fcdea0e38c7d',1,'muonOpticalPhysics']]],
+  ['getboundaryprocess',['GetBoundaryProcess',['../classmuonOpticalPhysics.html#ad1abfb3c7d0cea07d456c5651390b168',1,'muonOpticalPhysics']]],
+  ['getcerenkovprocess',['GetCerenkovProcess',['../classmuonOpticalPhysics.html#a6588a993cc57cade05bb1371c60bf914',1,'muonOpticalPhysics']]],
+  ['getdeltaenergy',['GetDeltaEnergy',['../classEnergyTimeHit.html#a15aae5ff8efc3a4efc39c00c26308836',1,'EnergyTimeHit::GetDeltaEnergy()'],['../classPMThit.html#ac886469dc7bcc5e8f0d83de79fe636ee',1,'PMThit::GetDeltaEnergy()']]],
+  ['getfair',['GetfAir',['../classmuonMaterial.html#a561de210ea339679872c522163990899',1,'muonMaterial']]],
+  ['getfdetector',['Getfdetector',['../classmuonMaterial.html#a8621980c58fd47d46f47728850341aa5',1,'muonMaterial']]],
+  ['getfpmt',['GetfPMT',['../classmuonMaterial.html#a198ba1027e11cf15bc0118533fff4356',1,'muonMaterial']]],
+  ['getfreflect',['Getfreflect',['../classmuonMaterial.html#a8b1a5528153587650e3990045cae47a1',1,'muonMaterial']]],
+  ['getinstance',['GetInstance',['../classmuonMaterial.html#ac5be4443f4de88103fea67e651cc554b',1,'muonMaterial']]],
+  ['getmaterial',['GetMaterial',['../classmuonMaterial.html#a86cd49b45dd1042b6ec7aa697197c0b5',1,'muonMaterial']]],
+  ['getmeanfreepath',['GetMeanFreePath',['../classmuonStepMax.html#a792f2c77129ec1eeae9ac56902ec6e90',1,'muonStepMax']]],
+  ['getmiehgscatteringprocess',['GetMieHGScatteringProcess',['../classmuonOpticalPhysics.html#a57eae82cad6cd757dd6e283598a4bf54',1,'muonOpticalPhysics']]],
+  ['getname',['GetName',['../classEnergyTimeHit.html#a7e348ee943ce7065910e75b0063108d5',1,'EnergyTimeHit::GetName()'],['../classPMThit.html#a497b90707c899f06ca4a1ecfdf537f64',1,'PMThit::GetName()']]],
+  ['getparticlegun',['GetParticleGun',['../classmuonPrimaryGeneratorAction.html#a2a8edec5c700a748aefbd2ec2a95157a',1,'muonPrimaryGeneratorAction']]],
+  ['getposition',['GetPosition',['../classEnergyTimeHit.html#a4611709e7caf2e34f4e368dd8c4e8ad4',1,'EnergyTimeHit::GetPosition()'],['../classPMThit.html#ab731ac987db0650157d94673cd5a40be',1,'PMThit::GetPosition()']]],
+  ['getrayleighscatteringprocess',['GetRayleighScatteringProcess',['../classmuonOpticalPhysics.html#a443ff15987bae9b5d07155252f7fad9b',1,'muonOpticalPhysics']]],
+  ['getscintillationprocess',['GetScintillationProcess',['../classmuonOpticalPhysics.html#acda9b8ac8d073939523c861833c343ce',1,'muonOpticalPhysics']]],
+  ['getstepmax',['GetStepMax',['../classmuonStepMax.html#adf76383939936db76e310b661b4f332f',1,'muonStepMax']]],
+  ['getstepmaxprocess',['GetStepMaxProcess',['../classmuonPhysicsList.html#a673fde0059508d78547a84db91971ce9',1,'muonPhysicsList']]],
+  ['gettime',['GetTime',['../classEnergyTimeHit.html#ab7f49eaf401c5b559876d69330c57c78',1,'EnergyTimeHit::GetTime()'],['../classPMThit.html#a0a9e1a55de9a3964babad3a5f81ad5bb',1,'PMThit::GetTime()']]],
+  ['getwlsprocess',['GetWLSProcess',['../classmuonOpticalPhysics.html#a257a178b6e1a98c10d9001fe43d0b1c8',1,'muonOpticalPhysics']]]
 ];

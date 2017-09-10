@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['clearphysics',['ClearPhysics',['../classmuonPhysicsList.html#a4a34c6141040c0d5bd34396df7d10ff3',1,'muonPhysicsList']]]
+  ['addstepmax',['AddStepMax',['../classmuonPhysicsList.html#a9d96538f586114bd672f975658527527',1,'muonPhysicsList']]],
+  ['analysis_2ehh',['Analysis.hh',['../Analysis_8hh.html',1,'']]]
 ];

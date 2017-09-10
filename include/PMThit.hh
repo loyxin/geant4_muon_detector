@@ -1,3 +1,11 @@
+/**
+ * @file PMThit.hh
+ * @brief 设置 pmt Hit 容器
+ * @details Hit 容器保存能量，时间，位置，探测器名字
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
+ */
 #ifndef PMTHIT_HH
 #define PMTHIT_HH 1
 
@@ -6,7 +14,7 @@
 #include <G4ThreeVector.hh>
 
 /**
- * @brief 设置 Hit 容器
+ * @brief 设置 pmt Hit 容器
  * @details Hit 容器保存能量，时间，位置，探测器名字
  */
 class PMThit : public G4VHit

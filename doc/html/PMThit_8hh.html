@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Muon detector: include/PMThit.hh 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Muon detector
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">simulate muon physical process to measure the life time of the muon</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('PMThit_8hh.html','');});
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">PMThit.hh 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>设置 pmt Hit 容器  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;G4VHit.hh&gt;</code><br />
+<code>#include &lt;G4THitsMap.hh&gt;</code><br />
+<code>#include &lt;G4ThreeVector.hh&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+PMThit.hh 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="PMThit_8hh__incl.png" border="0" usemap="#include_2PMThit_8hh" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="PMThit_8hh__dep__incl.png" border="0" usemap="#include_2PMThit_8hhdep" alt=""/></div>
+<map name="include_2PMThit_8hhdep" id="include_2PMThit_8hhdep">
+<area shape="rect" id="node2" href="muonEventAction_8cc.html" title="输出数据到 csv 文件 " alt="" coords="5,80,171,107"/>
+<area shape="rect" id="node3" href="PMThit_8cc.html" title="src/PMThit.cc" alt="" coords="195,80,299,107"/>
+<area shape="rect" id="node4" href="PMTSD_8hh.html" title="pmt的敏感探测器类 " alt="" coords="323,80,455,107"/>
+<area shape="rect" id="node5" href="muonDetectorConstruction_8cc.html" title="搭建探测器 " alt="" coords="185,155,404,181"/>
+<area shape="rect" id="node6" href="PMTSD_8cc.html" title="设置敏感探测器保存哪些数据 " alt="" coords="428,155,537,181"/>
+</map>
+</div>
+</div>
+<p><a href="PMThit_8hh_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPMThit.html">PMThit</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置 pmt Hit 容器  <a href="classPMThit.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:a7f735d1ad0bfe8c6aa451ac6d58ffa57"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PMThit_8hh.html#a7f735d1ad0bfe8c6aa451ac6d58ffa57">pmtHitsCollection</a> = G4THitsCollection&lt; <a class="el" href="classPMThit.html">PMThit</a> &gt;</td></tr>
+<tr class="separator:a7f735d1ad0bfe8c6aa451ac6d58ffa57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a71f7d386761191d5c1d7f380ac9abd52"><td class="memItemLeft" align="right" valign="top">G4ThreadLocal G4Allocator&lt; <a class="el" href="classPMThit.html">PMThit</a> &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="PMThit_8hh.html#a71f7d386761191d5c1d7f380ac9abd52">pmthitAllocat</a></td></tr>
+<tr class="separator:a71f7d386761191d5c1d7f380ac9abd52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>设置 pmt Hit 容器 </p>
+<p>Hit 容器保存能量，时间，位置，探测器名字 </p><dl class="section author"><dt>作者</dt><dd>loyxin </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2017-09-10 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="PMThit_8hh_source.html">PMThit.hh</a> 中定义.</p>
+</div><h2 class="groupheader">类型定义说明</h2>
+<a id="a7f735d1ad0bfe8c6aa451ac6d58ffa57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f735d1ad0bfe8c6aa451ac6d58ffa57">&#9670;&nbsp;</a></span>pmtHitsCollection</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="PMThit_8hh.html#a7f735d1ad0bfe8c6aa451ac6d58ffa57">pmtHitsCollection</a> =  G4THitsCollection&lt;<a class="el" href="classPMThit.html">PMThit</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="PMThit_8hh_source.html">PMThit.hh</a> 第 <a class="el" href="PMThit_8hh_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="a71f7d386761191d5c1d7f380ac9abd52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71f7d386761191d5c1d7f380ac9abd52">&#9670;&nbsp;</a></span>pmthitAllocat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">G4ThreadLocal G4Allocator&lt;<a class="el" href="classPMThit.html">PMThit</a>&gt;* pmthitAllocat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="PMThit_8cc_source.html">PMThit.cc</a> 第 <a class="el" href="PMThit_8cc_source.html#l00009">9</a> 行定义.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="PMThit_8hh.html">PMThit.hh</a></li>
+    <li class="footer">制作者
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,8 +1,12 @@
-\hypertarget{classmuonStepMax}{}\section{muon\+Step\+Max Class Reference}
+\hypertarget{classmuonStepMax}{}\section{muon\+Step\+Max类 参考}
 \label{classmuonStepMax}\index{muon\+Step\+Max@{muon\+Step\+Max}}
 
 
-Inheritance diagram for muon\+Step\+Max\+:\nopagebreak
+{\ttfamily \#include $<$muon\+Step\+Max.\+hh$>$}
+
+
+
+类 muon\+Step\+Max 继承关系图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,46 +15,180 @@ Inheritance diagram for muon\+Step\+Max\+:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for muon\+Step\+Max\+:\nopagebreak
+muon\+Step\+Max 的协作图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=189pt]{classmuonStepMax__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\subsection*{Public 成员函数}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{classmuonStepMax_ae51ff3435957e85c269ef9d327b75482}{muon\+Step\+Max} (const G4\+String \&process\+Name=\char`\"{}User\+Step\+Max\char`\"{})
+\item 
+\hyperlink{classmuonStepMax_a41ccffbc62f636553f3d9143e98b2079}{muon\+Step\+Max} (\hyperlink{classmuonStepMax}{muon\+Step\+Max} \&)
+\item 
+virtual \hyperlink{classmuonStepMax_addd063eedac6d8211fba2e9c746df7a1}{$\sim$muon\+Step\+Max} ()
+\item 
+virtual G4bool \hyperlink{classmuonStepMax_a4437a2282448452a419149cd8d8f7495}{Is\+Applicable} (const G4\+Particle\+Definition \&)
+\item 
+void \hyperlink{classmuonStepMax_a449cd30e5d5284d56a0dc10bf831e4db}{Set\+Step\+Max} (G4double)
+\item 
+G4double \hyperlink{classmuonStepMax_adf76383939936db76e310b661b4f332f}{Get\+Step\+Max} ()
+\item 
+virtual G4double \hyperlink{classmuonStepMax_aea1aeac21f0095b44bedf878789b9d0d}{Post\+Step\+Get\+Physical\+Interaction\+Length} (const G4\+Track \&track, G4double previous\+Step\+Size, G4\+Force\+Condition $\ast$condition)
+\item 
+virtual G4\+V\+Particle\+Change $\ast$ \hyperlink{classmuonStepMax_af3da1fe21a53518e52fea709a52173fd}{Post\+Step\+Do\+It} (const G4\+Track \&, const G4\+Step \&)
+\end{DoxyCompactItemize}
+\subsection*{Protected 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+G4double \hyperlink{classmuonStepMax_a792f2c77129ec1eeae9ac56902ec6e90}{Get\+Mean\+Free\+Path} (const G4\+Track \&, G4double, G4\+Force\+Condition $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Private 成员函数}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmuonStepMax}{muon\+Step\+Max} \& \hyperlink{classmuonStepMax_aff00989b733170efdc406178a342a73b}{operator=} (const \hyperlink{classmuonStepMax}{muon\+Step\+Max} \&right)
+\item 
+\hyperlink{classmuonStepMax_ace6b77563b71db42586959b95acad24e}{muon\+Step\+Max} (const \hyperlink{classmuonStepMax}{muon\+Step\+Max} \&)
+\end{DoxyCompactItemize}
+\subsection*{Private 属性}
+\begin{DoxyCompactItemize}
+\item 
+G4double \hyperlink{classmuonStepMax_a7721e1181fe2ad8741235870bb53dd2a}{f\+Max\+Charged\+Step}
+\end{DoxyCompactItemize}
+
+
+\subsection{详细描述}
+
+
+在文件 muon\+Step\+Max.\+hh 第 11 行定义.
+
+
+
+\subsection{构造及析构函数说明}
 \mbox{\Hypertarget{classmuonStepMax_ae51ff3435957e85c269ef9d327b75482}\label{classmuonStepMax_ae51ff3435957e85c269ef9d327b75482}} 
-{\bfseries muon\+Step\+Max} (const G4\+String \&process\+Name=\char`\"{}User\+Step\+Max\char`\"{})
-\item 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!muon\+Step\+Max@{muon\+Step\+Max}}
+\index{muon\+Step\+Max@{muon\+Step\+Max}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{muon\+Step\+Max()}{muonStepMax()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily muon\+Step\+Max\+::muon\+Step\+Max (\begin{DoxyParamCaption}\item[{const G4\+String \&}]{process\+Name = {\ttfamily \char`\"{}UserStepMax\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+在文件 muon\+Step\+Max.\+cc 第 9 行定义.
+
 \mbox{\Hypertarget{classmuonStepMax_a41ccffbc62f636553f3d9143e98b2079}\label{classmuonStepMax_a41ccffbc62f636553f3d9143e98b2079}} 
-{\bfseries muon\+Step\+Max} (\hyperlink{classmuonStepMax}{muon\+Step\+Max} \&)
-\item 
-\mbox{\Hypertarget{classmuonStepMax_a4437a2282448452a419149cd8d8f7495}\label{classmuonStepMax_a4437a2282448452a419149cd8d8f7495}} 
-virtual G4bool {\bfseries Is\+Applicable} (const G4\+Particle\+Definition \&)
-\item 
-\mbox{\Hypertarget{classmuonStepMax_a449cd30e5d5284d56a0dc10bf831e4db}\label{classmuonStepMax_a449cd30e5d5284d56a0dc10bf831e4db}} 
-void {\bfseries Set\+Step\+Max} (G4double)
-\item 
-\mbox{\Hypertarget{classmuonStepMax_adf76383939936db76e310b661b4f332f}\label{classmuonStepMax_adf76383939936db76e310b661b4f332f}} 
-G4double {\bfseries Get\+Step\+Max} ()
-\item 
-\mbox{\Hypertarget{classmuonStepMax_aea1aeac21f0095b44bedf878789b9d0d}\label{classmuonStepMax_aea1aeac21f0095b44bedf878789b9d0d}} 
-virtual G4double {\bfseries Post\+Step\+Get\+Physical\+Interaction\+Length} (const G4\+Track \&track, G4double previous\+Step\+Size, G4\+Force\+Condition $\ast$condition)
-\item 
-\mbox{\Hypertarget{classmuonStepMax_af3da1fe21a53518e52fea709a52173fd}\label{classmuonStepMax_af3da1fe21a53518e52fea709a52173fd}} 
-virtual G4\+V\+Particle\+Change $\ast$ {\bfseries Post\+Step\+Do\+It} (const G4\+Track \&, const G4\+Step \&)
-\end{DoxyCompactItemize}
-\subsection*{Protected Member Functions}
-\begin{DoxyCompactItemize}
-\item 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!muon\+Step\+Max@{muon\+Step\+Max}}
+\index{muon\+Step\+Max@{muon\+Step\+Max}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{muon\+Step\+Max()}{muonStepMax()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily muon\+Step\+Max\+::muon\+Step\+Max (\begin{DoxyParamCaption}\item[{\hyperlink{classmuonStepMax}{muon\+Step\+Max} \&}]{right }\end{DoxyParamCaption})}
+
+
+
+在文件 muon\+Step\+Max.\+cc 第 23 行定义.
+
+\mbox{\Hypertarget{classmuonStepMax_addd063eedac6d8211fba2e9c746df7a1}\label{classmuonStepMax_addd063eedac6d8211fba2e9c746df7a1}} 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!````~muon\+Step\+Max@{$\sim$muon\+Step\+Max}}
+\index{````~muon\+Step\+Max@{$\sim$muon\+Step\+Max}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{$\sim$muon\+Step\+Max()}{~muonStepMax()}}
+{\footnotesize\ttfamily muon\+Step\+Max\+::$\sim$muon\+Step\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+在文件 muon\+Step\+Max.\+cc 第 19 行定义.
+
+\mbox{\Hypertarget{classmuonStepMax_ace6b77563b71db42586959b95acad24e}\label{classmuonStepMax_ace6b77563b71db42586959b95acad24e}} 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!muon\+Step\+Max@{muon\+Step\+Max}}
+\index{muon\+Step\+Max@{muon\+Step\+Max}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{muon\+Step\+Max()}{muonStepMax()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily muon\+Step\+Max\+::muon\+Step\+Max (\begin{DoxyParamCaption}\item[{const \hyperlink{classmuonStepMax}{muon\+Step\+Max} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\subsection{成员函数说明}
 \mbox{\Hypertarget{classmuonStepMax_a792f2c77129ec1eeae9ac56902ec6e90}\label{classmuonStepMax_a792f2c77129ec1eeae9ac56902ec6e90}} 
-G4double {\bfseries Get\+Mean\+Free\+Path} (const G4\+Track \&, G4double, G4\+Force\+Condition $\ast$)
-\end{DoxyCompactItemize}
+\index{muon\+Step\+Max@{muon\+Step\+Max}!Get\+Mean\+Free\+Path@{Get\+Mean\+Free\+Path}}
+\index{Get\+Mean\+Free\+Path@{Get\+Mean\+Free\+Path}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{Get\+Mean\+Free\+Path()}{GetMeanFreePath()}}
+{\footnotesize\ttfamily G4double muon\+Step\+Max\+::\+Get\+Mean\+Free\+Path (\begin{DoxyParamCaption}\item[{const G4\+Track \&}]{,  }\item[{G4double}]{,  }\item[{G4\+Force\+Condition $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+
+在文件 muon\+Step\+Max.\+cc 第 65 行定义.
+
+\mbox{\Hypertarget{classmuonStepMax_adf76383939936db76e310b661b4f332f}\label{classmuonStepMax_adf76383939936db76e310b661b4f332f}} 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!Get\+Step\+Max@{Get\+Step\+Max}}
+\index{Get\+Step\+Max@{Get\+Step\+Max}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{Get\+Step\+Max()}{GetStepMax()}}
+{\footnotesize\ttfamily G4double muon\+Step\+Max\+::\+Get\+Step\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+在文件 muon\+Step\+Max.\+hh 第 24 行定义.
+
+\mbox{\Hypertarget{classmuonStepMax_a4437a2282448452a419149cd8d8f7495}\label{classmuonStepMax_a4437a2282448452a419149cd8d8f7495}} 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!Is\+Applicable@{Is\+Applicable}}
+\index{Is\+Applicable@{Is\+Applicable}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{Is\+Applicable()}{IsApplicable()}}
+{\footnotesize\ttfamily G4bool muon\+Step\+Max\+::\+Is\+Applicable (\begin{DoxyParamCaption}\item[{const G4\+Particle\+Definition \&}]{particle }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+在文件 muon\+Step\+Max.\+cc 第 27 行定义.
+
+\mbox{\Hypertarget{classmuonStepMax_aff00989b733170efdc406178a342a73b}\label{classmuonStepMax_aff00989b733170efdc406178a342a73b}} 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!operator=@{operator=}}
+\index{operator=@{operator=}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \hyperlink{classmuonStepMax}{muon\+Step\+Max}\& muon\+Step\+Max\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{classmuonStepMax}{muon\+Step\+Max} \&}]{right }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classmuonStepMax_af3da1fe21a53518e52fea709a52173fd}\label{classmuonStepMax_af3da1fe21a53518e52fea709a52173fd}} 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!Post\+Step\+Do\+It@{Post\+Step\+Do\+It}}
+\index{Post\+Step\+Do\+It@{Post\+Step\+Do\+It}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{Post\+Step\+Do\+It()}{PostStepDoIt()}}
+{\footnotesize\ttfamily G4\+V\+Particle\+Change $\ast$ muon\+Step\+Max\+::\+Post\+Step\+Do\+It (\begin{DoxyParamCaption}\item[{const G4\+Track \&}]{a\+Track,  }\item[{const G4\+Step \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+在文件 muon\+Step\+Max.\+cc 第 55 行定义.
+
+\mbox{\Hypertarget{classmuonStepMax_aea1aeac21f0095b44bedf878789b9d0d}\label{classmuonStepMax_aea1aeac21f0095b44bedf878789b9d0d}} 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!Post\+Step\+Get\+Physical\+Interaction\+Length@{Post\+Step\+Get\+Physical\+Interaction\+Length}}
+\index{Post\+Step\+Get\+Physical\+Interaction\+Length@{Post\+Step\+Get\+Physical\+Interaction\+Length}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{Post\+Step\+Get\+Physical\+Interaction\+Length()}{PostStepGetPhysicalInteractionLength()}}
+{\footnotesize\ttfamily G4double muon\+Step\+Max\+::\+Post\+Step\+Get\+Physical\+Interaction\+Length (\begin{DoxyParamCaption}\item[{const G4\+Track \&}]{track,  }\item[{G4double}]{previous\+Step\+Size,  }\item[{G4\+Force\+Condition $\ast$}]{condition }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+在文件 muon\+Step\+Max.\+cc 第 38 行定义.
+
+\mbox{\Hypertarget{classmuonStepMax_a449cd30e5d5284d56a0dc10bf831e4db}\label{classmuonStepMax_a449cd30e5d5284d56a0dc10bf831e4db}} 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!Set\+Step\+Max@{Set\+Step\+Max}}
+\index{Set\+Step\+Max@{Set\+Step\+Max}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{Set\+Step\+Max()}{SetStepMax()}}
+{\footnotesize\ttfamily void muon\+Step\+Max\+::\+Set\+Step\+Max (\begin{DoxyParamCaption}\item[{G4double}]{step }\end{DoxyParamCaption})}
+
+
+
+在文件 muon\+Step\+Max.\+cc 第 34 行定义.
+
+
+
+\subsection{类成员变量说明}
+\mbox{\Hypertarget{classmuonStepMax_a7721e1181fe2ad8741235870bb53dd2a}\label{classmuonStepMax_a7721e1181fe2ad8741235870bb53dd2a}} 
+\index{muon\+Step\+Max@{muon\+Step\+Max}!f\+Max\+Charged\+Step@{f\+Max\+Charged\+Step}}
+\index{f\+Max\+Charged\+Step@{f\+Max\+Charged\+Step}!muon\+Step\+Max@{muon\+Step\+Max}}
+\subsubsection{\texorpdfstring{f\+Max\+Charged\+Step}{fMaxChargedStep}}
+{\footnotesize\ttfamily G4double muon\+Step\+Max\+::f\+Max\+Charged\+Step\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+在文件 muon\+Step\+Max.\+hh 第 44 行定义.
+
+
+
+该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
 \item 
-include/muon\+Step\+Max.\+hh\item 
-src/muon\+Step\+Max.\+cc\end{DoxyCompactItemize}
+include/\hyperlink{muonStepMax_8hh}{muon\+Step\+Max.\+hh}\item 
+src/\hyperlink{muonStepMax_8cc}{muon\+Step\+Max.\+cc}\end{DoxyCompactItemize}

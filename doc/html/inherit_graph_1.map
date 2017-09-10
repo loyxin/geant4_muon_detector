@@ -1,4 +1,4 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<map id="类继承关系图" name="类继承关系图">
 <area shape="rect" id="node2" href="$classEnergyTimeSD.html" title="探测器的敏感探测器类 " alt="" coords="205,5,316,32"/>
-<area shape="rect" id="node3" href="$classpmtSD.html" title="pmtSD" alt="" coords="229,56,292,83"/>
+<area shape="rect" id="node3" href="$classPMTSD.html" title="pmt的敏感探测器类 " alt="" coords="226,56,295,83"/>
 </map>
