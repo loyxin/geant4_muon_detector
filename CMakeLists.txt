@@ -36,10 +36,10 @@ target_link_libraries(muon ${Geant4_LIBRARIES})
 # Copy all scripts to the build directory,
 
 set(muon_SCRIPTS
-  init_vis.mac
-  vis.mac
-  otherdrive.mac
-  run.mac
+ ./macro/init_vis.mac
+ ./macro/vis.mac 
+ ./macro/otherdrive.mac 
+ ./macro/run.mac
   )
 
 foreach(_script ${muon_SCRIPTS})

@@ -1,7 +1,10 @@
-
 /**
-	@brief 打开 csv 文件，文件名，声明哪些数据被保存
-*/
+ * @file muonRunAction.cc
+ * @brief 打开 csv 文件，文件名，声明哪些数据被保存
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
+ */
 #include "muonRunAction.hh"
 
 

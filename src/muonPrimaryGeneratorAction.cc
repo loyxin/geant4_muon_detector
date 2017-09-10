@@ -1,5 +1,9 @@
 /**
+ * @file muonPrimaryGeneratorAction.cc
  * @brief 默认粒子为 mu- 能量 150 MeV
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
  */
 #include "muonPrimaryGeneratorAction.hh"
 

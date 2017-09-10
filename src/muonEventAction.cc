@@ -1,5 +1,9 @@
 /**
+ * @file muonEventAction.cc
  * @brief 输出数据到 csv 文件
+ * @author loyxin
+ * @version 1.0
+ * @date 2017-09-10
  */
 #include "muonEventAction.hh"
 
@@ -21,7 +25,6 @@ muonEventAction::~muonEventAction()
 /**
  * @brief 获得敏感探测器的 id, 输出数据
  * 
- * @param event [description]
  */
 void muonEventAction::EndOfEventAction(const G4Event* event)
 {
