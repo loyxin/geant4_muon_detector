@@ -34,6 +34,8 @@
 #include "muonDetectorConstruction.hh"
 #include "muonActionInitialization.hh"
 #include "muonPhysicsList.hh"
+#include "Physics.hh"
+
 using namespace std;
 /**
  * @brief main function 可视化，三个强制类的新建
@@ -94,10 +96,9 @@ int main(int argc,char** argv)
   // Physics list
    G4String physName = "QGSP_BERT_HP";
   // G4VModularPhysicsList* physicsList = new QBBC;
-  // G4VUserPhysicsList* muonPhy = new SFLeptonPhysics();
-  // G4VUserPhysicsList* muonPhy = new muonPhysics();
   G4VUserPhysicsList* muonPhy = new muonPhysicsList(physName);
-  // G4VUserPhysicsList* muonPhy = new PhysicsList();
+  // G4VUserPhysicsList* muonPhy = new Physics();
+
   runManager->SetUserInitialization(muonPhy);
   muonPhy->SetVerboseLevel(1);
 

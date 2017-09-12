@@ -1,0 +1,12 @@
+# Initialize kernel
+/physics_lists/enable  Optical
+/run/initialize
+#
+#
+
+# mu- 4 GeV to the direction (0.,0.,-1.)
+#
+/gun/particle mu-
+/gun/energy 0.01 GeV
+#
+/run/beamOn 1000
