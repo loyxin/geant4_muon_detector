@@ -40,6 +40,7 @@ set(muon_SCRIPTS
  ./macro/vis.mac 
  ./macro/otherdrive.mac 
  ./macro/run.mac
+ ./macro/run_gear.mac
   )
 
 foreach(_script ${muon_SCRIPTS})

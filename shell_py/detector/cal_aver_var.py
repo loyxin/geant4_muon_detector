@@ -1,3 +1,6 @@
+#!/usr/bin/python
+#coding=utf8
+
 import csv
 import math
 with open('detect_result.csv', 'r+') as csvfile:
