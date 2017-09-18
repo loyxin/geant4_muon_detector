@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @file EnergyTimeSD.cc
  * @brief 设置敏感探测器保存哪些数据
@@ -7,6 +8,8 @@
  * @version 1.0
  * @date 2017-09-10
  */
+=======
+>>>>>>> parent of 1c568a5... add doxygen
 #include "EnergyTimeSD.hh"
 
 #include <G4SDManager.hh>
@@ -25,7 +28,11 @@ G4bool EnergyTimeSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     if (aStep == NULL) return false;
     G4Track* theTrack = aStep->GetTrack();
   
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> parent of 1c568a5... add doxygen
     if(theTrack->GetDefinition()
        !=G4MuonMinus::MuonMinus() && theTrack->GetDefinition()
        !=G4MuonPlus::MuonPlus() ) return false;//判断是否是 muon 子
@@ -48,7 +55,10 @@ G4bool EnergyTimeSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
 
 void EnergyTimeSD::Initialize(G4HCofThisEvent* hcof)
 {
+<<<<<<< HEAD
      
+=======
+>>>>>>> parent of 1c568a5... add doxygen
     fHitsCollection = new EnergyTimeHitsCollection(SensitiveDetectorName, collectionName[0]);
     if (fHitsCollectionId < 0)
     {

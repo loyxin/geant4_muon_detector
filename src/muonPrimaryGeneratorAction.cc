@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @file muonPrimaryGeneratorAction.cc
  * @brief 默认粒子为 mu- 能量 150 MeV
@@ -5,6 +6,9 @@
  * @version 1.0
  * @date 2017-09-10
  */
+=======
+
+>>>>>>> parent of 1c568a5... add doxygen
 #include "muonPrimaryGeneratorAction.hh"
 
 #include "G4Event.hh"

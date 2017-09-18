@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @file muonRunAction.cc
  * @brief 打开 csv 文件，文件名，声明哪些数据被保存
@@ -5,6 +6,8 @@
  * @version 1.0
  * @date 2017-09-10
  */
+=======
+>>>>>>> parent of 1c568a5... add doxygen
 #include "muonRunAction.hh"
 
 
@@ -23,14 +26,14 @@ muonRunAction::muonRunAction(){
 	analysisManager->SetFirstNtupleId(1);
 	analysisManager->SetFirstHistoId(1);
 
-	//   EnergyDeposit, Time, X, Y & Z id = 1
+	//   EnergyDeposit, Time, X, Y & Z
 	analysisManager->CreateNtuple("pmt", "Energy and time");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
 	analysisManager->CreateNtupleDColumn("Time/ns");
 	analysisManager->CreateNtupleDColumn("PMT");
 	analysisManager->CreateNtupleDColumn("EventID");
 	analysisManager->FinishNtuple(1);
-	// id = 2
+	
 	analysisManager->CreateNtuple("detector", "Energy and time ");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
 	analysisManager->CreateNtupleDColumn("z/mm");

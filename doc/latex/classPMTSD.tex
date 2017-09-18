@@ -1,5 +1,5 @@
-\hypertarget{classPMTSD}{}\section{P\+M\+T\+S\+D类 参考}
-\label{classPMTSD}\index{P\+M\+T\+SD@{P\+M\+T\+SD}}
+\hypertarget{classpmtSD}{}\section{pmt\+S\+D类 参考}
+\label{classpmtSD}\index{pmt\+SD@{pmt\+SD}}
 
 
 pmt的敏感探测器类  
@@ -7,60 +7,53 @@ pmt的敏感探测器类
 
 
 
-{\ttfamily \#include $<$P\+M\+T\+S\+D.\+hh$>$}
+{\ttfamily \#include $<$pmt\+S\+D.\+hh$>$}
 
 
 
-类 P\+M\+T\+SD 继承关系图\+:\nopagebreak
+类 pmt\+SD 继承关系图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=194pt]{classPMTSD__inherit__graph}
+\includegraphics[width=194pt]{classpmtSD__inherit__graph}
 \end{center}
 \end{figure}
 
 
-P\+M\+T\+SD 的协作图\+:\nopagebreak
+pmt\+SD 的协作图\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=194pt]{classPMTSD__coll__graph}
+\includegraphics[width=194pt]{classpmtSD__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public 成员函数}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classPMTSD_aed89d4f48ef06debf8363e4ab5540e1e}{P\+M\+T\+SD} (G4\+String name)
+\hyperlink{classpmtSD_ae7746efb08ea75673a718fd342d243ea}{pmt\+SD} (G4\+String name)
 \begin{DoxyCompactList}\small\item\em 设置敏感探测器保存哪些数据 \end{DoxyCompactList}\item 
-void \hyperlink{classPMTSD_af78a52d378f6d2832a6528e81975d385}{Initialize} (G4\+H\+Cof\+This\+Event $\ast$) override
+void \hyperlink{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}{Initialize} (G4\+H\+Cof\+This\+Event $\ast$) override
 \end{DoxyCompactItemize}
 \subsection*{Protected 成员函数}
 \begin{DoxyCompactItemize}
 \item 
-G4bool \hyperlink{classPMTSD_ad901040792782721b858ac0a64a559bb}{Process\+Hits} (G4\+Step $\ast$a\+Step, G4\+Touchable\+History $\ast$R\+Ohist) override
-\end{DoxyCompactItemize}
-\subsection*{Private 属性}
-\begin{DoxyCompactItemize}
-\item 
-\hyperlink{PMThit_8hh_a7f735d1ad0bfe8c6aa451ac6d58ffa57}{pmt\+Hits\+Collection} $\ast$ \hyperlink{classPMTSD_ad096abaafe714b508f14af1a2d3673b9}{f\+Hits\+Collection} \{ nullptr \}
-\item 
-G4int \hyperlink{classPMTSD_a2b3736dfb006ce9ca639b5008c91e6a5}{f\+Hits\+Collection\+Id} \{ -\/1 \}
+G4bool \hyperlink{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}{Process\+Hits} (G4\+Step $\ast$a\+Step, G4\+Touchable\+History $\ast$R\+Ohist) override
 \end{DoxyCompactItemize}
 
 
 \subsection{详细描述}
 pmt的敏感探测器类 
 
-在文件 P\+M\+T\+S\+D.\+hh 第 17 行定义.
+在文件 pmt\+S\+D.\+hh 第 10 行定义.
 
 
 
 \subsection{构造及析构函数说明}
-\mbox{\Hypertarget{classPMTSD_aed89d4f48ef06debf8363e4ab5540e1e}\label{classPMTSD_aed89d4f48ef06debf8363e4ab5540e1e}} 
-\index{P\+M\+T\+SD@{P\+M\+T\+SD}!P\+M\+T\+SD@{P\+M\+T\+SD}}
-\index{P\+M\+T\+SD@{P\+M\+T\+SD}!P\+M\+T\+SD@{P\+M\+T\+SD}}
-\subsubsection{\texorpdfstring{P\+M\+T\+S\+D()}{PMTSD()}}
-{\footnotesize\ttfamily P\+M\+T\+S\+D\+::\+P\+M\+T\+SD (\begin{DoxyParamCaption}\item[{G4\+String}]{name }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classpmtSD_ae7746efb08ea75673a718fd342d243ea}\label{classpmtSD_ae7746efb08ea75673a718fd342d243ea}} 
+\index{pmt\+SD@{pmt\+SD}!pmt\+SD@{pmt\+SD}}
+\index{pmt\+SD@{pmt\+SD}!pmt\+SD@{pmt\+SD}}
+\subsubsection{\texorpdfstring{pmt\+S\+D()}{pmtSD()}}
+{\footnotesize\ttfamily pmt\+S\+D\+::pmt\+SD (\begin{DoxyParamCaption}\item[{G4\+String}]{name }\end{DoxyParamCaption})}
 
 
 
@@ -73,57 +66,34 @@ muon 击中 pmt ，保存时间，能量，位置和击中哪一个 pmt 信息 �
 \end{DoxyParams}
 
 
-在文件 P\+M\+T\+S\+D.\+cc 第 21 行定义.
+在文件 pmt\+S\+D.\+cc 第 13 行定义.
 
 
 
 \subsection{成员函数说明}
-\mbox{\Hypertarget{classPMTSD_af78a52d378f6d2832a6528e81975d385}\label{classPMTSD_af78a52d378f6d2832a6528e81975d385}} 
-\index{P\+M\+T\+SD@{P\+M\+T\+SD}!Initialize@{Initialize}}
-\index{Initialize@{Initialize}!P\+M\+T\+SD@{P\+M\+T\+SD}}
+\mbox{\Hypertarget{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}\label{classpmtSD_a5241646bdc0f46e27b011bf4fa35dc07}} 
+\index{pmt\+SD@{pmt\+SD}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!pmt\+SD@{pmt\+SD}}
 \subsubsection{\texorpdfstring{Initialize()}{Initialize()}}
-{\footnotesize\ttfamily void P\+M\+T\+S\+D\+::\+Initialize (\begin{DoxyParamCaption}\item[{G4\+H\+Cof\+This\+Event $\ast$}]{hcof }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+{\footnotesize\ttfamily void pmt\+S\+D\+::\+Initialize (\begin{DoxyParamCaption}\item[{G4\+H\+Cof\+This\+Event $\ast$}]{hcof }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
 
 
 
-在文件 P\+M\+T\+S\+D.\+cc 第 84 行定义.
+在文件 pmt\+S\+D.\+cc 第 76 行定义.
 
-\mbox{\Hypertarget{classPMTSD_ad901040792782721b858ac0a64a559bb}\label{classPMTSD_ad901040792782721b858ac0a64a559bb}} 
-\index{P\+M\+T\+SD@{P\+M\+T\+SD}!Process\+Hits@{Process\+Hits}}
-\index{Process\+Hits@{Process\+Hits}!P\+M\+T\+SD@{P\+M\+T\+SD}}
+\mbox{\Hypertarget{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}\label{classpmtSD_a5d557bd42f85305418f6ddd7e4bcfe7a}} 
+\index{pmt\+SD@{pmt\+SD}!Process\+Hits@{Process\+Hits}}
+\index{Process\+Hits@{Process\+Hits}!pmt\+SD@{pmt\+SD}}
 \subsubsection{\texorpdfstring{Process\+Hits()}{ProcessHits()}}
-{\footnotesize\ttfamily G4bool P\+M\+T\+S\+D\+::\+Process\+Hits (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{a\+Step,  }\item[{G4\+Touchable\+History $\ast$}]{R\+Ohist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
+{\footnotesize\ttfamily G4bool pmt\+S\+D\+::\+Process\+Hits (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{a\+Step,  }\item[{G4\+Touchable\+History $\ast$}]{R\+Ohist }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}}
 
 
 
-在文件 P\+M\+T\+S\+D.\+cc 第 29 行定义.
-
-
-
-\subsection{类成员变量说明}
-\mbox{\Hypertarget{classPMTSD_ad096abaafe714b508f14af1a2d3673b9}\label{classPMTSD_ad096abaafe714b508f14af1a2d3673b9}} 
-\index{P\+M\+T\+SD@{P\+M\+T\+SD}!f\+Hits\+Collection@{f\+Hits\+Collection}}
-\index{f\+Hits\+Collection@{f\+Hits\+Collection}!P\+M\+T\+SD@{P\+M\+T\+SD}}
-\subsubsection{\texorpdfstring{f\+Hits\+Collection}{fHitsCollection}}
-{\footnotesize\ttfamily \hyperlink{PMThit_8hh_a7f735d1ad0bfe8c6aa451ac6d58ffa57}{pmt\+Hits\+Collection}$\ast$ P\+M\+T\+S\+D\+::f\+Hits\+Collection \{ nullptr \}\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-在文件 P\+M\+T\+S\+D.\+hh 第 28 行定义.
-
-\mbox{\Hypertarget{classPMTSD_a2b3736dfb006ce9ca639b5008c91e6a5}\label{classPMTSD_a2b3736dfb006ce9ca639b5008c91e6a5}} 
-\index{P\+M\+T\+SD@{P\+M\+T\+SD}!f\+Hits\+Collection\+Id@{f\+Hits\+Collection\+Id}}
-\index{f\+Hits\+Collection\+Id@{f\+Hits\+Collection\+Id}!P\+M\+T\+SD@{P\+M\+T\+SD}}
-\subsubsection{\texorpdfstring{f\+Hits\+Collection\+Id}{fHitsCollectionId}}
-{\footnotesize\ttfamily G4int P\+M\+T\+S\+D\+::f\+Hits\+Collection\+Id \{ -\/1 \}\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-在文件 P\+M\+T\+S\+D.\+hh 第 29 行定义.
+在文件 pmt\+S\+D.\+cc 第 21 行定义.
 
 
 
 该类的文档由以下文件生成\+:\begin{DoxyCompactItemize}
 \item 
-include/\hyperlink{PMTSD_8hh}{P\+M\+T\+S\+D.\+hh}\item 
-src/\hyperlink{PMTSD_8cc}{P\+M\+T\+S\+D.\+cc}\end{DoxyCompactItemize}
+include/\hyperlink{pmtSD_8hh}{pmt\+S\+D.\+hh}\item 
+src/\hyperlink{pmtSD_8cc}{pmt\+S\+D.\+cc}\end{DoxyCompactItemize}

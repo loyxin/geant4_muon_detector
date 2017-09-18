@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @file muonActionInitialization.cc
  * @brief action 管理类
@@ -7,6 +8,9 @@
  * @version 1.0
  * @date 2017-09-10
  */
+=======
+
+>>>>>>> parent of 1c568a5... add doxygen
 #include "muonActionInitialization.hh"
 #include "muonPrimaryGeneratorAction.hh"
 #include "muonRunAction.hh"

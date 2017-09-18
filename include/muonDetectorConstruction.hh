@@ -10,15 +10,17 @@
 
 #include <G4VUserDetectorConstruction.hh>
 #include <G4SystemOfUnits.hh>
-#include <G4ThreeVector.hh>
-#include <G4RotationMatrix.hh>
-
 #include "muonMaterial.hh"
 class G4LogicalVolume;
+<<<<<<< HEAD
 class G4Trd;
 /**
  * @brief Detector Construction
  */
+=======
+/// Detector construction class to define materials and geometry.
+
+>>>>>>> parent of 1c568a5... add doxygen
 class muonDetectorConstruction : public G4VUserDetectorConstruction
 {
   public:
@@ -34,6 +36,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
      * @return world physical volume
      */
     virtual G4VPhysicalVolume* Construct() override;
+<<<<<<< HEAD
     /**
      * @brief Construct muondetector
      * @param world parent volume 为 world logical volume, 构建探测器 tree
@@ -57,11 +60,17 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
      * @brief 注册敏感探测器
      * @details 注册 pmt(PMTSD) muon detector(EnergyTimeSD) 敏感探测器
      */
+=======
+    void Constructmuondetector(G4LogicalVolume*, G4VPhysicalVolume* );
+    void ConstructPMT(G4LogicalVolume*);
+    // if Register some of the detector's volumes as "sensitive"
+>>>>>>> parent of 1c568a5... add doxygen
     void ConstructSDandField() override;
-    
+
   private:
     //一些物理常数
     G4double c_light   = 2.99792458e+8 * m/s;
+<<<<<<< HEAD
     G4double h_Planck      = 6.62606896e-34 * joule*s;
 
     
@@ -100,6 +109,11 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     G4ThreeVector rpos1 = G4ThreeVector(-1.*mm, 0, -15.*mm),
     rpos2 = G4ThreeVector(-1.*mm, 0., 15.*mm);
 
+=======
+    G4int   lambda_min = 200*nm ; 
+    G4int lambda_max = 700*nm ;  
+    G4double h_Planck      = 6.62606896e-34 * joule*s;
+>>>>>>> parent of 1c568a5... add doxygen
     G4bool checkOverlaps = true;
     // 材料信息存在 fMaterial
     muonMaterial* fMaterial;

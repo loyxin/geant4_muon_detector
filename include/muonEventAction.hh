@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @file muonEventAction.hh
  * @brief 设置Event action 保存信息输出到 Ntuple
@@ -5,6 +6,10 @@
  * @version 1.0
  * @date 2017-09-10
  */
+=======
+// 作用：设置Event action
+// 暂无
+>>>>>>> parent of 1c568a5... add doxygen
 #ifndef MUONEVENTACTION_HH
 #define MUONEVENTACTION_HH
 
@@ -17,6 +22,7 @@ class muonRunAction;
  */
 class muonEventAction : public G4UserEventAction
 {
+<<<<<<< HEAD
 	public:
 		/**
 		 * @brief 默认 construction 函数
@@ -29,10 +35,17 @@ class muonEventAction : public G4UserEventAction
 		 * @param anEvent [description]
 		 */
     	virtual void EndOfEventAction(const G4Event* anEvent) override;
+=======
+  public:
+    muonEventAction();
+    virtual ~muonEventAction();
+
+    virtual void EndOfEventAction(const G4Event* anEvent) override;
+>>>>>>> parent of 1c568a5... add doxygen
 	private:
 
 		G4int muondetectorEnId { -1 };
-    	G4int PMT_Id{-1};
+    G4int PMT_Id{-1};
 };
 
 #endif

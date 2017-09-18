@@ -12,10 +12,15 @@
 #include <G4VHit.hh>
 #include <G4THitsMap.hh>
 #include <G4ThreeVector.hh>
+<<<<<<< HEAD
 /**
  * @brief 设置 muon detector Hit 容器
  * @details Hit 容器保存能量，时间，位置，探测器名字
  */
+=======
+
+// 设置 Hit 容器
+>>>>>>> parent of 1c568a5... add doxygen
 class EnergyTimeHit : public G4VHit
 {
 public:

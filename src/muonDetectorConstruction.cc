@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @file muonDetectorConstruction.cc
  * @brief 搭建探测器
@@ -5,6 +6,9 @@
  * @version 1.0
  * @date 2017-09-10
  */
+=======
+
+>>>>>>> parent of 1c568a5... add doxygen
 #include "muonDetectorConstruction.hh"
 
 muonDetectorConstruction::muonDetectorConstruction()
@@ -27,16 +31,16 @@ muonDetectorConstruction::~muonDetectorConstruction()
 G4VPhysicalVolume* muonDetectorConstruction::Construct()
 {
 
-  // world  box material air
+  // world size 1 m x 1 m x 2 m box material air
   // name "world" point solidWorld logicalWorld physWorld
+  G4double world_sizeXY = 1*m, world_sizeZ  = 0.2*m;
   G4Material* world_mat = fMaterial->GetfAir();
 
   G4Box* solidWorld = new G4Box("World",0.5*world_sizeXY, 0.5*world_sizeXY, 0.5*world_sizeZ);
   G4LogicalVolume* logicalWorld = new G4LogicalVolume(solidWorld, world_mat, "World");
   G4VPhysicalVolume* physWorld = new G4PVPlacement(0, G4ThreeVector(), logicalWorld, "World", NULL, false, 0, checkOverlaps);
   
-  Constructmuondetector(logicalWorld);
-
+  Constructmuondetector(logicalWorld,physWorld);
   ConstructPMT(logicalWorld);
 
   return physWorld;
@@ -44,23 +48,38 @@ G4VPhysicalVolume* muonDetectorConstruction::Construct()
 
 
 #include <G4Trd.hh>
+#include <G4RotationMatrix.hh>
+
 
 #include <G4SubtractionSolid.hh>
 #include <G4Colour.hh>
 #include <G4VisAttributes.hh>
 
 
-void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWorld)
+void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWorld, G4VPhysicalVolume* physWorld )
 {
 
   //shape material
   G4Material* shape_mat = fMaterial->Getfdetector();
 
+  // 为了正面对着 gun
+  //rotation y axies 90 deg
+  // G4RotationMatrix* rotm  = 0;
+  G4double phi=90.*deg;
+  G4RotationMatrix* rotm = 
+  new G4RotationMatrix(G4ThreeVector(std::cos(phi),0., -std::sin(phi)), 
+  G4ThreeVector(0.,1., 0.), G4ThreeVector( std::sin(phi),0., std::cos(phi)));
+
+
+  // 物体参数
+  G4double shape_x1 =  20./2.*mm, shape_x2 = 20./2.*mm, shape_y1=84./2.*mm, shape_y2=143.5/2.*mm, shape_z=338.5/2.0*mm;
+  G4ThreeVector pos1 = G4ThreeVector(0, 0, -15.*mm),pos2 = G4ThreeVector(0., 0., 15.*mm);
+ 
   // point solidDector logicShape no physical point
-  G4Trd* solidDetector = 
+  G4Trd* solidDector = 
   new G4Trd("muondector", shape_x1, shape_x2,shape_y1,shape_y2, shape_z);
   G4LogicalVolume* logicShape = 
-  new G4LogicalVolume(solidDetector, shape_mat, "muondector");
+  new G4LogicalVolume(solidDector, shape_mat, "muondector");
 
   G4Colour red (1.0, 0.0, 0.0) ; // red
   G4VisAttributes* ShapeVisAtt= new G4VisAttributes(red);
@@ -71,30 +90,33 @@ void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWor
   new G4PVPlacement(rotm, pos2, logicShape, "muondector2", 
   logicalWorld, false, 1, checkOverlaps);
 
-  ConstructReflection(logicalWorld,solidDetector);
-}
-
-void muonDetectorConstruction::ConstructReflection(G4LogicalVolume* logicalWorld, G4Trd* solidDetector)
-{
   // Al2O3
+  shape_x1 =  22./2.*mm, shape_x2 = 22./2.*mm, shape_y1=86./2.*mm, shape_y2=145.5/2.*mm, shape_z=340.5/2.0*mm;
   G4Material* Al2O3 = fMaterial->Getfreflect();
 
-  G4Trd* solid = new G4Trd("Al2O3", rshape_x1, rshape_x2,rshape_y1,rshape_y2, rshape_z);
-  G4SubtractionSolid* Al2O3solid = new G4SubtractionSolid("Trd-Trd",solid,solidDetector,0,G4ThreeVector(-0.0*mm,-0.*mm,-1.*mm) );
+  G4Trd* solid = new G4Trd("Al2O3", shape_x1, shape_x2,shape_y1,shape_y2, shape_z);
+  G4SubtractionSolid* Al2O3solid = new G4SubtractionSolid("Trd-Trd",solid,solidDector,0,G4ThreeVector(-0.0*mm,-0.*mm,-1.*mm) );
 
   G4LogicalVolume* logicAl2O3 = new G4LogicalVolume(Al2O3solid, Al2O3, "Al2O3");
 
-  new G4PVPlacement(rotm, rpos1, logicAl2O3, "Al2O31", logicalWorld, false, 0, checkOverlaps);
-  new G4PVPlacement(rotm, rpos2, logicAl2O3, "Al2O32", logicalWorld, false, 1, checkOverlaps);
+  pos1 = G4ThreeVector(-1.*mm, 0, -15.*mm),pos2 = G4ThreeVector(-1.*mm, 0., 15.*mm);
+
+  G4VPhysicalVolume* Al2O31phy =  new G4PVPlacement(rotm, pos1, logicAl2O3, "Al2O31", logicalWorld, false, 0, checkOverlaps);
+  G4VPhysicalVolume* Al2O32phy = new G4PVPlacement(rotm, pos2, logicAl2O3, "Al2O32", logicalWorld, false, 1, checkOverlaps);
   
   //设置光学性质
 
   G4double fPolish = 1.;
   G4double fReflectivity = 1.;//全反射
 
-  G4OpticalSurface* Al2O3Surface = new G4OpticalSurface("PhotonDetSurface",glisur,ground,dielectric_metal,fPolish);
+  G4OpticalSurface* Al2O3Surface = new G4OpticalSurface("PhotonDetSurface",
+  glisur,
+  ground,
+  dielectric_metal,
+  fPolish);
 
-  G4MaterialPropertiesTable* Al2O3SurfaceProperty = new G4MaterialPropertiesTable();
+  G4MaterialPropertiesTable* Al2O3SurfaceProperty =
+  new G4MaterialPropertiesTable();
 
   G4double p_mppc[] = {1.70*eV, 3.47*eV};
   const G4int nbins = sizeof(p_mppc)/sizeof(G4double);
@@ -109,12 +131,24 @@ void muonDetectorConstruction::ConstructReflection(G4LogicalVolume* logicalWorld
   Al2O3Surface->SetMaterialPropertiesTable(Al2O3SurfaceProperty);
 
   new G4LogicalSkinSurface("Al2O3Surface",logicAl2O3,Al2O3Surface);
+
 }
 
 void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
 {
 
   G4Material* Quartz = fMaterial->GetfPMT();
+
+  G4double PMT_thick   =   1.0*mm; // Thickness of PMT window
+  G4double PMT_x    =  20./2.*mm, PMT_y=84./2.*mm; // Radius of curvature of PMT window
+  G4ThreeVector PMTpos1 = G4ThreeVector(340.5/2.0*mm,0.0*cm,15 *mm);
+  G4ThreeVector PMTpos2 = G4ThreeVector(340.5/2.0*mm,0.0*cm,-15 *mm);
+
+  G4double phi=90.*deg;
+  G4ThreeVector u = G4ThreeVector(std::cos(phi),0., -std::sin(phi));
+  G4ThreeVector v = G4ThreeVector(0.,1., 0.);
+  G4ThreeVector w = G4ThreeVector( std::sin(phi),0., std::cos(phi));
+  G4RotationMatrix* rotm = new G4RotationMatrix(u, v, w);
 
   G4Box* solidPMT = new G4Box("PMT_solid",PMT_x,PMT_y,PMT_thick);
   G4LogicalVolume* logicalPMT = new G4LogicalVolume(solidPMT,Quartz,"PMT_log",0,0,0);
@@ -131,7 +165,10 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
   G4double fPolish = 0.;
   G4double fReflectivity = 0.;//全吸收
 
-  G4OpticalSurface* photonDetSurface = new G4OpticalSurface("PhotonDetSurface",glisur,ground,dielectric_metal,
+  G4OpticalSurface* photonDetSurface = new G4OpticalSurface("PhotonDetSurface",
+  glisur,
+  ground,
+  dielectric_metal,
   fPolish);
 
   G4MaterialPropertiesTable* photonDetSurfaceProperty =
@@ -188,7 +225,6 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
 #include <G4VPrimitiveScorer.hh>
 void muonDetectorConstruction::ConstructSDandField()
 {
-  
   G4SDManager* sdManager = G4SDManager::GetSDMpointer();
   sdManager->SetVerboseLevel(2);
 
