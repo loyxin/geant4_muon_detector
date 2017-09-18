@@ -96,8 +96,8 @@ int main(int argc,char** argv)
   // Physics list
    G4String physName = "QGSP_BERT_HP";
   // G4VModularPhysicsList* physicsList = new QBBC;
-  G4VUserPhysicsList* muonPhy = new muonPhysicsList(physName);
-  // G4VUserPhysicsList* muonPhy = new Physics();
+  // G4VUserPhysicsList* muonPhy = new muonPhysicsList(physName);
+  G4VUserPhysicsList* muonPhy = new Physics();
 
   runManager->SetUserInitialization(muonPhy);
   muonPhy->SetVerboseLevel(1);

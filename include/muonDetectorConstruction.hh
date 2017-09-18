@@ -38,7 +38,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
      * @brief Construct muondetector
      * @param world parent volume 为 world logical volume, 构建探测器 tree
      */
-    void Constructmuondetector(G4LogicalVolume* world);
+    void Constructmuondetector(G4LogicalVolume* world,G4VPhysicalVolume* physWorld);
     /**
      * @brief Construct PMT
      * @param world parent volume 为 world logical volume, 构建探测器 tree
@@ -51,7 +51,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
      * @param world parent volume 为 world logical volume, 构建探测器 tree
      * @param detector muon detector 形状，用于构建发射层的形状
      */
-    void ConstructReflection(G4LogicalVolume* world , G4Trd* detector);
+    void ConstructReflection(G4LogicalVolume* world , G4Trd* detector,G4VPhysicalVolume* physWorlds);
 
     /**
      * @brief 注册敏感探测器
@@ -88,8 +88,8 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     // pmt 参数
     G4double PMT_thick   =   1.0*mm; // Thickness of PMT window
     G4double PMT_x    =  20./2.*mm, PMT_y=84./2.*mm; // Radius of curvature of PMT window
-    G4ThreeVector PMTpos1 = G4ThreeVector(340.5/2.0*mm,0.0*cm,15 *mm);
-    G4ThreeVector PMTpos2 = G4ThreeVector(340.5/2.0*mm,0.0*cm,-15 *mm);
+    G4ThreeVector PMTpos1 = G4ThreeVector(340.5/2.0*mm,10*cm,15 *mm);
+    G4ThreeVector PMTpos2 = G4ThreeVector(340.5/2.0*mm,10*cm,-15 *mm);
 
     // reflection 参数
     G4double rshape_x1 =  22./2.*mm, 

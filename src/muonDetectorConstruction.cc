@@ -35,7 +35,7 @@ G4VPhysicalVolume* muonDetectorConstruction::Construct()
   G4LogicalVolume* logicalWorld = new G4LogicalVolume(solidWorld, world_mat, "World");
   G4VPhysicalVolume* physWorld = new G4PVPlacement(0, G4ThreeVector(), logicalWorld, "World", NULL, false, 0, checkOverlaps);
   
-  Constructmuondetector(logicalWorld);
+  Constructmuondetector(logicalWorld,physWorld);
 
   ConstructPMT(logicalWorld);
 
@@ -50,7 +50,7 @@ G4VPhysicalVolume* muonDetectorConstruction::Construct()
 #include <G4VisAttributes.hh>
 
 
-void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWorld)
+void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWorld,G4VPhysicalVolume* physWorld)
 {
 
   //shape material
@@ -71,10 +71,10 @@ void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWor
   new G4PVPlacement(rotm, pos2, logicShape, "muondector2", 
   logicalWorld, false, 1, checkOverlaps);
 
-  ConstructReflection(logicalWorld,solidDetector);
+  ConstructReflection(logicalWorld,solidDetector,physWorld);
 }
-
-void muonDetectorConstruction::ConstructReflection(G4LogicalVolume* logicalWorld, G4Trd* solidDetector)
+#include <G4LogicalBorderSurface.hh>
+void muonDetectorConstruction::ConstructReflection(G4LogicalVolume* logicalWorld, G4Trd* solidDetector,G4VPhysicalVolume* physWorld )
 {
   // Al2O3
   G4Material* Al2O3 = fMaterial->Getfreflect();
@@ -84,7 +84,7 @@ void muonDetectorConstruction::ConstructReflection(G4LogicalVolume* logicalWorld
 
   G4LogicalVolume* logicAl2O3 = new G4LogicalVolume(Al2O3solid, Al2O3, "Al2O3");
 
-  new G4PVPlacement(rotm, rpos1, logicAl2O3, "Al2O31", logicalWorld, false, 0, checkOverlaps);
+  G4PVPlacement* physi =  new G4PVPlacement(rotm, rpos1, logicAl2O3, "Al2O31", logicalWorld, false, 0, checkOverlaps);
   new G4PVPlacement(rotm, rpos2, logicAl2O3, "Al2O32", logicalWorld, false, 1, checkOverlaps);
   
   //设置光学性质
@@ -108,7 +108,7 @@ void muonDetectorConstruction::ConstructReflection(G4LogicalVolume* logicalWorld
 
   Al2O3Surface->SetMaterialPropertiesTable(Al2O3SurfaceProperty);
 
-  new G4LogicalSkinSurface("Al2O3Surface",logicAl2O3,Al2O3Surface);
+  new G4LogicalBorderSurface("Al2O3Surface",physWorld,physi,Al2O3Surface);
 }
 
 void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)

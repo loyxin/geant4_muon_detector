@@ -18,7 +18,7 @@
 
 #include "Randomize.hh"
 
-
+#include "Physics.hh"
 
 int main(int argc,char** argv)
 {
@@ -40,7 +40,7 @@ int main(int argc,char** argv)
   runManager->SetUserInitialization(new blankDetectorConstruction());
 
   // Physics list
-  G4VUserPhysicsList* physicsList = new blankPhysics;
+  G4VUserPhysicsList* physicsList = new Physics;
   physicsList->SetVerboseLevel(1);
   runManager->SetUserInitialization(physicsList);
     

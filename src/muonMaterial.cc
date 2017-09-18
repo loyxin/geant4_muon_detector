@@ -64,7 +64,7 @@ void muonMaterial::CreateMaterials(){
     fdetector->AddElement(elH,10);
     fdetector->AddElement(elC,14);
     // PMT SiO_2
-    fPMT = fNistMan->FindOrBuildMaterial("G4_GLASS_PLATE");
+    fPMT = fNistMan->FindOrBuildMaterial("G4_POLYPROPYLENE");
 
 
     // freflection
@@ -146,12 +146,12 @@ void muonMaterial::CreateMaterials(){
     // detector C_10 H_14
     //--------------------------------------------------  
     G4double C10H14refractiveIndex[] =
-    { 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59,
-        1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59,
-        1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59,
-        1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59,
-        1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59,
-        1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59, 1.59};
+    { 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3};
 
     assert(sizeof(C10H14refractiveIndex) == sizeof(photonEnergy));
     
@@ -178,18 +178,21 @@ void muonMaterial::CreateMaterials(){
     // PMT SiO_2
     // -------------------------------------------------- 
     G4double SiO2refractiveIndex[] =
-    { 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54,
-        1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54, 1.54};
+    { 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
+        1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3};
 
     assert(sizeof(SiO2refractiveIndex) == sizeof(photonEnergy));
     
     G4MaterialPropertiesTable* mptSiO2 = new G4MaterialPropertiesTable();
     mptSiO2->AddProperty("RINDEX", photonEnergy, SiO2refractiveIndex, nEntries);
     mptSiO2->AddProperty("ABSLENGTH", photonEnergy, absC10H14, nEntries);
+    mptSiO2->AddConstProperty("SCINTILLATIONYIELD",10./keV);
+    mptSiO2->AddConstProperty("RESOLUTIONSCALE",1.0);
+    mptSiO2->AddConstProperty("FASTTIMECONSTANT", 10.*ns);
 
     fPMT ->SetMaterialPropertiesTable(mptSiO2);     
 }
