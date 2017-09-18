@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-/**
- * @file muonDetectorConstruction.cc
- * @brief 搭建探测器
- * @author loyxin
- * @version 1.0
- * @date 2017-09-10
- */
-=======
-
->>>>>>> parent of 1c568a5... add doxygen
+﻿
 #include "muonDetectorConstruction.hh"
 
 muonDetectorConstruction::muonDetectorConstruction()
@@ -28,6 +18,7 @@ muonDetectorConstruction::~muonDetectorConstruction()
 #include <G4LogicalBorderSurface.hh>
 #include <G4LogicalSkinSurface.hh>
 
+// Construct physics World; 
 G4VPhysicalVolume* muonDetectorConstruction::Construct()
 {
 
@@ -54,6 +45,8 @@ G4VPhysicalVolume* muonDetectorConstruction::Construct()
 #include <G4SubtractionSolid.hh>
 #include <G4Colour.hh>
 #include <G4VisAttributes.hh>
+#include "G4NistManager.hh"
+#include "G4Tubs.hh"
 
 
 void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWorld, G4VPhysicalVolume* physWorld )
@@ -72,12 +65,12 @@ void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWor
 
 
   // 物体参数
-  G4double shape_x1 =  20./2.*mm, shape_x2 = 20./2.*mm, shape_y1=84./2.*mm, shape_y2=143.5/2.*mm, shape_z=338.5/2.0*mm;
+  G4double shape_z1 =  20./2.*mm, shape_z2 = 20./2.*mm, shape_y1=84./2.*mm, shape_y2=143.5/2.*mm, shape_x=338.5/2.0*mm;
   G4ThreeVector pos1 = G4ThreeVector(0, 0, -15.*mm),pos2 = G4ThreeVector(0., 0., 15.*mm);
  
   // point solidDector logicShape no physical point
   G4Trd* solidDector = 
-  new G4Trd("muondector", shape_x1, shape_x2,shape_y1,shape_y2, shape_z);
+  new G4Trd("muondector", shape_z1, shape_z2,shape_y1,shape_y2, shape_x);
   G4LogicalVolume* logicShape = 
   new G4LogicalVolume(solidDector, shape_mat, "muondector");
 
@@ -89,25 +82,97 @@ void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWor
   logicalWorld, false, 0, checkOverlaps);
   new G4PVPlacement(rotm, pos2, logicShape, "muondector2", 
   logicalWorld, false, 1, checkOverlaps);
+  
+//  Set geometry for light guider;
+  //
+  // The Windows:  we will create 2 windows here, the same;
+  //
+  
+  // Get nist material manager
+  
+  // Ready for PMMA;
+  G4NistManager* nist = G4NistManager::Instance();
+  
+  // Prepare for PMMA;
+  std::vector<G4int> natoms;
+  std::vector<G4String> elements;
+  
+  elements.push_back("C");     natoms.push_back(5);
+  elements.push_back("H");     natoms.push_back(8);
+  elements.push_back("O");     natoms.push_back(2);
+  
+  G4Material* fPMMA = nist->ConstructNewMaterial("PMMA", elements, natoms, 1.190*g/cm3);
 
-  // Al2O3
-  shape_x1 =  22./2.*mm, shape_x2 = 22./2.*mm, shape_y1=86./2.*mm, shape_y2=145.5/2.*mm, shape_z=340.5/2.0*mm;
+  // End of readying for PMMA;
+  
+  G4Material* windows_mat = fPMMA;
+
+  // Trapezoid shape       
+  G4double windows_dza = 20./2.*mm, windows_dzb = 20./2.*mm;
+  G4double windows_dya = 20./2.*mm, windows_dyb = 84./2.*mm;
+  G4double windows_dx  = 84./2.*mm;      
+  
+  // Set Position for windows;
+  G4ThreeVector pos_win1 = G4ThreeVector((shape_x + windows_dx), 0, 15.*mm);
+  G4ThreeVector pos_win2 = G4ThreeVector((shape_x + windows_dx), 0, -15.*mm);
+  
+  G4Trd* solidwindows =    
+    new G4Trd("windows",                      //its name
+              windows_dza, windows_dzb, 
+              windows_dya, windows_dyb, windows_dx); //its size
+                
+  // Set two logical volume;
+  G4LogicalVolume* logicwin =                         
+    new G4LogicalVolume(solidwindows, windows_mat, "Windows");
+               
+  new G4PVPlacement(rotm, pos_win1, logicwin, "Windows1", logicalWorld, false, 0,  checkOverlaps);
+  new G4PVPlacement(rotm, pos_win2, logicwin, "Windows2", logicalWorld, false, 0,  checkOverlaps); 
+  
+  //
+  // The Guiders:  we will create 2 guiders here, the same;
+  //   
+  G4double guider_dza = 20./2.*mm, guider_dzb = 20./2.*mm;
+  G4double guider_dya = 20./2.*mm, guider_dyb = 20./2.*mm;
+  G4double guider_dx  = 12.*cm;  
+  // Set guider material;
+  G4Material* guider_mat = fMaterial->GetfPMT();
+  
+  // Set Position for guider;
+  G4ThreeVector pos_Guider1 = G4ThreeVector((shape_x + 2*windows_dx + guider_dx), 0, 15.*mm);
+  G4ThreeVector pos_Guider2 = G4ThreeVector((shape_x + 2*windows_dx + guider_dx), 0, -15.*mm);
+  
+  G4Trd* solidGuider =
+    new G4Trd("guider",                      //its name
+              guider_dza, guider_dzb, 
+              guider_dya, guider_dyb, guider_dx); //its size
+                
+  // Set two logical volume;
+  G4LogicalVolume* logicGuider = 
+    new G4LogicalVolume(solidGuider, guider_mat, "Guider");
+	
+  // Place the guiders;
+  new G4PVPlacement(rotm, pos_Guider1, logicGuider, "Guider1", logicalWorld, false, 0, checkOverlaps);
+  new G4PVPlacement(rotm, pos_Guider2, logicGuider, "Guider2", logicalWorld, false, 0, checkOverlaps);
+  
+//  End of setting geometry for light guide;
+
+  //构建 Al2O3
+  shape_z1 =  22./2.*mm, shape_z2 = 22./2.*mm, shape_y1=86./2.*mm, shape_y2=145.5/2.*mm, shape_x=340.5/2.0*mm;
   G4Material* Al2O3 = fMaterial->Getfreflect();
 
-  G4Trd* solid = new G4Trd("Al2O3", shape_x1, shape_x2,shape_y1,shape_y2, shape_z);
+  G4Trd* solid = new G4Trd("Al2O3", shape_z1, shape_z2,shape_y1,shape_y2, shape_x);
   G4SubtractionSolid* Al2O3solid = new G4SubtractionSolid("Trd-Trd",solid,solidDector,0,G4ThreeVector(-0.0*mm,-0.*mm,-1.*mm) );
 
   G4LogicalVolume* logicAl2O3 = new G4LogicalVolume(Al2O3solid, Al2O3, "Al2O3");
 
   pos1 = G4ThreeVector(-1.*mm, 0, -15.*mm),pos2 = G4ThreeVector(-1.*mm, 0., 15.*mm);
 
-  G4VPhysicalVolume* Al2O31phy =  new G4PVPlacement(rotm, pos1, logicAl2O3, "Al2O31", logicalWorld, false, 0, checkOverlaps);
-  G4VPhysicalVolume* Al2O32phy = new G4PVPlacement(rotm, pos2, logicAl2O3, "Al2O32", logicalWorld, false, 1, checkOverlaps);
+  //G4VPhysicalVolume* Al2O31phy =  new G4PVPlacement(rotm, pos1, logicAl2O3, "Al2O31", logicalWorld, false, 0, checkOverlaps);
+  //G4VPhysicalVolume* Al2O32phy = new G4PVPlacement(rotm, pos2, logicAl2O3, "Al2O32", logicalWorld, false, 1, checkOverlaps);
   
-  //设置光学性质
-
+  //边猜边看啊，师兄我看到这里都要疯啦！
   G4double fPolish = 1.;
-  G4double fReflectivity = 1.;//全反射
+  G4double fReflectivity = 1.;
 
   G4OpticalSurface* Al2O3Surface = new G4OpticalSurface("PhotonDetSurface",
   glisur,
@@ -160,10 +225,8 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
   new G4PVPlacement(rotm,PMTpos1,logicalPMT,"PMT1",logicalWorld,false,0,checkOverlaps);
   new G4PVPlacement(rotm,PMTpos2,logicalPMT,"PMT2",logicalWorld,false,1,checkOverlaps);
 
-  //设置光学性质
-
   G4double fPolish = 0.;
-  G4double fReflectivity = 0.;//全吸收
+  G4double fReflectivity = 0.;
 
   G4OpticalSurface* photonDetSurface = new G4OpticalSurface("PhotonDetSurface",
   glisur,
@@ -217,7 +280,7 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
 }
 
 #include "EnergyTimeSD.hh"
-#include "PMTSD.hh"
+#include "pmtSD.hh"
 // 设置敏感探测器 记录 能量沉积 位置
 #include <G4SDManager.hh>
 #include <G4MultiFunctionalDetector.hh>
@@ -225,6 +288,7 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
 #include <G4VPrimitiveScorer.hh>
 void muonDetectorConstruction::ConstructSDandField()
 {
+//	注册敏感探测器；
   G4SDManager* sdManager = G4SDManager::GetSDMpointer();
   sdManager->SetVerboseLevel(2);
 
@@ -232,7 +296,7 @@ void muonDetectorConstruction::ConstructSDandField()
   SetSensitiveDetector("muondector",muondectorEn);
   sdManager->AddNewDetector(muondectorEn);
 
-  PMTSD*  PMT_ET = new PMTSD("PMT_ET");
+  pmtSD*  PMT_ET = new pmtSD("PMT_ET");
   SetSensitiveDetector("PMT_log",PMT_ET);
   sdManager->AddNewDetector(PMT_ET);
 
