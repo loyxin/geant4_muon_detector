@@ -1,12 +1,6 @@
-/**
- * @file muonMaterial.cc
- * @brief 构建探测器的材料
- * @author loyxin
- * @version 1.0
- * @date 2017-09-10
- */
-#include "muonMaterial.hh"
+﻿#include "muonMaterial.hh"
 #include <G4SystemOfUnits.hh>
+#include <G4MaterialPropertiesTable.hh>
 
 muonMaterial* muonMaterial::fInstance=0;
 
@@ -63,8 +57,55 @@ void muonMaterial::CreateMaterials(){
   
     fdetector->AddElement(elH,10);
     fdetector->AddElement(elC,14);
+	
     // PMT SiO_2
-    fPMT = fNistMan->FindOrBuildMaterial("G4_SILICON_DIOXIDE");
+//    fPMT = fNistMan->FindOrBuildMaterial("G4_SILICON_DIOXIDE");
+	
+    fPMT = fNistMan->FindOrBuildMaterial("G4_Pyrex_Glass");
+	G4MaterialPropertiesTable* MPTsilica = new G4MaterialPropertiesTable();
+	
+	G4int nEntries = 32 + 26;
+	G4double PhotonEnergy[nEntries] =
+	{ 1.5*eV, 1.6*eV, 1.7*eV, 1.8*eV, 1.9*eV,
+	  2.034*eV, 2.068*eV, 2.103*eV, 2.139*eV,
+	  2.177*eV, 2.216*eV, 2.256*eV, 2.298*eV,
+	  2.341*eV, 2.386*eV, 2.433*eV, 2.481*eV,
+	  2.532*eV, 2.585*eV, 2.640*eV, 2.697*eV,
+	  2.757*eV, 2.820*eV, 2.885*eV, 2.954*eV,
+	  3.026*eV, 3.102*eV, 3.181*eV, 3.265*eV,
+	  3.353*eV, 3.446*eV, 3.545*eV, 3.649*eV,
+	  3.760*eV, 3.877*eV, 4.002*eV, 4.136*eV,
+	  4.2*eV, 4.3*eV, 4.4*eV, 4.5*eV, 4.6*eV,
+	  4.7*eV, 4.8*eV, 4.9*eV, 5.0*eV, 5.1*eV,
+	  5.2*eV, 5.3*eV, 5.4*eV, 5.5*eV, 5.6*eV,
+	  5.7*eV, 5.8*eV, 5.9*eV, 6.0*eV, 6.1*eV,
+	  6.2*eV};
+	
+	G4double RindexSilica[nEntries];
+	for(int i = 0; i<nEntries; i++){
+	//calculate the wavelength in micrometers.
+	G4double WLum = (1239.84187/PhotonEnergy[i])/1000;
+	RindexSilica[i] =
+	  sqrt( 1 +
+		(0.6961663*WLum*WLum)/(WLum*WLum-0.0684043*0.0684043) +
+		(0.4079426*WLum*WLum)/(WLum*WLum-0.1162414*0.1162414) +
+		(0.8974794*WLum*WLum)/(WLum*WLum-9.896161*9.896161) );
+	}
+	
+	G4double AbsLenSilica[nEntries] =
+    { 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m,
+      1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m,
+      1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m,
+      1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m,
+      1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m,
+      1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m,
+      1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m,
+      1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m, 1.00*m,
+      1.00*m, 1.00*m};
+	MPTsilica->AddProperty("RINDEX", PhotonEnergy, RindexSilica, nEntries);
+	MPTsilica->AddProperty("ABSLENGTH", PhotonEnergy, AbsLenSilica, nEntries);
+
+	fPMT->SetMaterialPropertiesTable(MPTsilica);
 
 
     // freflection
@@ -90,7 +131,7 @@ void muonMaterial::CreateMaterials(){
     3.20*eV,3.23*eV,3.26*eV,3.29*eV,3.32*eV,
     3.35*eV,3.38*eV,3.41*eV,3.44*eV,3.47*eV};
 
-    const G4int nEntries = sizeof(photonEnergy)/sizeof(G4double);
+    nEntries = sizeof(photonEnergy)/sizeof(G4double);
 
     //--------------------------------------------------
     // Air
@@ -116,23 +157,35 @@ void muonMaterial::CreateMaterials(){
     //--------------------------------------------------
     // freflection Al2O3
     //--------------------------------------------------
-    G4double Al2O3refractiveIndex[] =
-    { 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76};
+//    G4double Al2O3refractiveIndex[] =
+//    { 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
+//        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
+//        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
+//        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
+//        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
+//        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76};
+	
+	G4double Al2O3refractiveIndex[60];
+	for(int i=0; i<60; i++){
+		Al2O3refractiveIndex[i] = 1.76;
+	}
 
     assert(sizeof(Al2O3refractiveIndex) == sizeof(photonEnergy));
-    
-    G4double absAl2O3[] =
-    {1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m};
+	
+	G4double absAl2O3[60];
+	for(int i=0; i<60; i++){
+		absAl2O3[i] = 1.0*m;
+	}
+	
+//[我看到实现过程中有流语言的使用.exception的使用.assert（断言），以至于很难掌握的语言，it's amazing.
+//然而数组的赋值依然停留在逐位赋值的阶段，那一刻我感到了绝望]
+//    G4double absAl2O3[] =
+//    {1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
+//     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
+//     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
+//     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
+//     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
+//     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m};
     
     assert(sizeof(absAl2O3) == sizeof(photonEnergy));
 
