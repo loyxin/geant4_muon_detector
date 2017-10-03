@@ -14,8 +14,13 @@
 #include <G4RotationMatrix.hh>
 
 #include "muonMaterial.hh"
+#include "muonDetectorMessenger.hh"
+
+#include "G4RunManager.hh"
+
 class G4LogicalVolume;
 class G4Trd;
+class muonDetectorMessenger;
 /**
  * @brief Detector Construction
  */
@@ -51,7 +56,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
      * @param world parent volume 为 world logical volume, 构建探测器 tree
      * @param detector muon detector 形状，用于构建发射层的形状
      */
-    void ConstructReflection(G4LogicalVolume* world , G4Trd* detector,G4VPhysicalVolume* physWorlds);
+    void ConstructReflection(G4LogicalVolume* world , G4Trd* detector,G4Trd* detect,G4VPhysicalVolume* physWorlds);
 
     /**
      * @brief 注册敏感探测器
@@ -59,7 +64,50 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
      */
     void ConstructSDandField() override;
     
+    G4double GetDetector1Thick(){return shape_x1;}
+    void SetDetector1Thick(G4double x){
+        shape_x1 = x;
+        rshape_x1 =  shape_x1 + 1.*mm;
+        PMT_x1 = shape_x1;
+        G4RunManager::GetRunManager()->ReinitializeGeometry();
+    }
+
+    G4double GetDetector2Thick(){return shape_x1;}
+    void SetDetector2Thick(G4double x){
+        shape_x2 = x;
+        rshape_x2 = shape_x2 +1.*mm;
+        PMT_x2 = shape_x2;
+        G4RunManager::GetRunManager()->ReinitializeGeometry();
+    }
+
+
+    G4double GetDetectorPhi(){return phi;}
+    void SetDetectorPhi(G4double p){
+        phi = p;
+        G4RunManager::GetRunManager()->ReinitializeGeometry();
+    }
+
+    G4ThreeVector GetDetector1Position(){return pos1;}
+    void SetDetector1Position(G4ThreeVector vector){
+        pos1 = vector;
+        rpos1 = G4ThreeVector(pos1.getX()-1.*mm, pos1.getY(), pos1.getZ());
+        PMTpos1 = G4ThreeVector(pos1.getX()+shape_z+PMT_thick,pos1.getY(),pos1.getZ());
+        G4RunManager::GetRunManager()->ReinitializeGeometry();
+    }
+
+    G4ThreeVector GetDetector2Position(){return pos2;}
+    void SetDetector2Position(G4ThreeVector vector){
+        pos2 = vector;
+        rpos2 = G4ThreeVector(pos2.getX()-1.*mm, pos2.getY(), pos2.getZ());
+        PMTpos2 = G4ThreeVector(pos2.getX()+shape_z+PMT_thick,pos2.getY(),pos2.getZ());
+        G4RunManager::GetRunManager()->ReinitializeGeometry();
+    }
+    void SetSD(G4bool flag){
+        SDflag = flag;
+        G4RunManager::GetRunManager()->ReinitializeGeometry();
+    }
   private:
+
     //一些物理常数
     G4double c_light   = 2.99792458e+8 * m/s;
     G4double h_Planck      = 6.62606896e-34 * joule*s;
@@ -70,8 +118,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
 
     // detector 形状参数
     // 为了正面对着 gun rotation y axies 90 deg
-    G4double shape_x1 =  20./2.*mm, 
-    shape_x2 = 20./2.*mm, 
+    G4double shape_x1 =  20./2.*mm,  
     shape_y1=84./2.*mm, 
     shape_y2=143.5/2.*mm, 
     shape_z=338.5/2.0*mm;
@@ -84,25 +131,34 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     // detector 位置参数
     G4ThreeVector pos1 = G4ThreeVector(0, 0, -15.*mm),
     pos2 = G4ThreeVector(0., 0., 15.*mm);
+    // detector 2 thickness
+    G4double shape_x2 = 20./2.*mm;
+
+
+    // reflection 参数
+    // 厚度 1 mm 
+    G4double rshape_x1 =  shape_x1 + 1.*mm, 
+    rshape_x2 = shape_x2 +1.*mm, 
+    rshape_y1=shape_y1+1.*mm, 
+    rshape_y2=shape_y2+1.*mm, 
+    rshape_z=shape_z+1.*mm;
+
+    G4ThreeVector rpos1 = G4ThreeVector(pos1.getX()-1.*mm, pos1.getY(), pos1.getZ()),
+    rpos2 = G4ThreeVector(pos2.getX()-1.*mm, pos2.getY(), pos2.getZ());
 
     // pmt 参数
     G4double PMT_thick   =   1.0*mm; // Thickness of PMT window
-    G4double PMT_x    =  20./2.*mm, PMT_y=84./2.*mm; // Radius of curvature of PMT window
-    G4ThreeVector PMTpos1 = G4ThreeVector(340.5/2.0*mm,10*cm,15 *mm);
-    G4ThreeVector PMTpos2 = G4ThreeVector(340.5/2.0*mm,10*cm,-15 *mm);
-
-    // reflection 参数
-    G4double rshape_x1 =  22./2.*mm, 
-    rshape_x2 = 22./2.*mm, 
-    rshape_y1=86./2.*mm, 
-    rshape_y2=145.5/2.*mm, 
-    rshape_z=340.5/2.0*mm;
-    G4ThreeVector rpos1 = G4ThreeVector(-1.*mm, 0, -15.*mm),
-    rpos2 = G4ThreeVector(-1.*mm, 0., 15.*mm);
+    G4double PMT_x2    =  shape_x2, PMT_x1 = shape_x1, PMT_y=shape_y1; // Radius of curvature of PMT window
+    G4ThreeVector PMTpos1 = G4ThreeVector(pos1.getX()+shape_z+PMT_thick,pos1.getY(),pos1.getZ());
+    G4ThreeVector PMTpos2 = G4ThreeVector(pos2.getX()+shape_z+PMT_thick,pos2.getY(),pos2.getZ());
 
     G4bool checkOverlaps = true;
     // 材料信息存在 fMaterial
     muonMaterial* fMaterial;
+    // 新建宏命令，设置探测器的结构
+    muonDetectorMessenger* fMessenger;
+    // 是否挂载敏感探测器
+    G4bool SDflag=false;
 };
 
 #endif
