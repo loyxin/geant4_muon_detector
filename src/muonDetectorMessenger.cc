@@ -47,8 +47,7 @@ muonDetectorMessenger::muonDetectorMessenger(muonDetectorConstruction* det)
   f2x->SetDefaultUnit("mm");
   f2x->AvailableForStates(G4State_PreInit,G4State_Idle);
 
-  SDflag = new G4UIcmdWithABool("/muondetector/SD",this);
-  SDflag->AvailableForStates(G4State_PreInit,G4State_Idle);
+
 }
 
 muonDetectorMessenger::~muonDetectorMessenger()
@@ -64,7 +63,6 @@ muonDetectorMessenger::~muonDetectorMessenger()
 
 }
 
-//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void muonDetectorMessenger::SetNewValue(G4UIcommand* command,G4String val)
 {
@@ -80,7 +78,5 @@ void muonDetectorMessenger::SetNewValue(G4UIcommand* command,G4String val)
   else if( command == f2x ) {
     fDetector->SetDetector2Thick(G4UIcmdWithADoubleAndUnit::GetNewDoubleValue( val ) );    
   }
-  else if(command == SDflag){
-    fDetector->SetSD(G4UIcmdWithABool::GetNewBoolValue(val));
-  }
+
 }

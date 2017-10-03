@@ -12,6 +12,9 @@
 #include "G4RadioactiveDecayPhysics.hh"
 #include "G4EmStandardPhysics.hh"
 #include "G4OpticalPhysics.hh"
+#include "G4PhotoElectricEffect.hh"
+#include "G4OpticalPhoton.hh"
+#include "G4ProcessManager.hh"
 Physics::Physics() : G4VModularPhysicsList(), G4UImessenger()
 {
    fCmd = new G4UIcmdWithAString("/physics_lists/enable",this);
@@ -24,6 +27,10 @@ Physics::Physics() : G4VModularPhysicsList(), G4UImessenger()
    RegisterPhysics(new G4RadioactiveDecayPhysics());
    RegisterPhysics(new G4EmStandardPhysics()); // must be after RadioactiveDecay
    RegisterPhysics(new G4OpticalPhysics());
+   G4ProcessManager* pManager =
+   G4OpticalPhoton::OpticalPhoton()->GetProcessManager();
+
+//    pManager->AddProcess(new G4PhotoElectricEffect);
 }
 //______________________________________________________________________________
 //

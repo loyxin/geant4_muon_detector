@@ -61,7 +61,9 @@ void blankPhysics::ConstructParticle()
     slConstructor.ConstructParticle();
 
 }
-
+#include "G4ProcessManager.hh"
+#include "G4PhotoElectricEffect.hh"
+#include "G4OpticalPhoton.hh"
 void blankPhysics::ConstructProcess()
 {
 
@@ -70,7 +72,10 @@ void blankPhysics::ConstructProcess()
     ConstructEM();
 
     ConstructOp();
-
+    G4ProcessManager* pManager =
+    G4OpticalPhoton::OpticalPhoton()->GetProcessManager();
+ 
+    pManager->AddProcess(new G4PhotoElectricEffect);
 }
 
 
