@@ -38,7 +38,6 @@ class muonDetectorMessenger : public G4UImessenger
     G4UIcmdWithADoubleAndUnit* f1x;
     G4UIcmdWithADoubleAndUnit* f2x;
 
-    G4UIcmdWithABool*  SDflag;
 
 };
 

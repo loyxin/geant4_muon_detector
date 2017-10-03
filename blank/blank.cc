@@ -41,6 +41,7 @@ int main(int argc,char** argv)
 
   // Physics list
   G4VUserPhysicsList* physicsList = new Physics;
+  // G4VUserPhysicsList* physicsList = new blankPhysics();
   physicsList->SetVerboseLevel(1);
   runManager->SetUserInitialization(physicsList);
     

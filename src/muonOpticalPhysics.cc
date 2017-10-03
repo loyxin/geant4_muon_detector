@@ -5,6 +5,8 @@
 
 #include "muonOpticalPhysics.hh"
 
+#include "G4PhotoElectricEffect.hh"
+#include "G4LivermorePhotoElectricModel.hh"
 muonOpticalPhysics::muonOpticalPhysics(G4bool toggle)
     : G4VPhysicsConstructor("Optical")
 {
@@ -62,11 +64,14 @@ void muonOpticalPhysics::ConstructProcess()
 
   if (fAbsorptionOn) pManager->AddDiscreteProcess(fAbsorptionProcess);
 
-  //pManager->AddDiscreteProcess(fRayleighScattering);
-  //pManager->AddDiscreteProcess(fMieHGScatteringProcess);
+  pManager->AddDiscreteProcess(fRayleighScattering);
+  pManager->AddDiscreteProcess(fMieHGScatteringProcess);
 
   pManager->AddDiscreteProcess(fBoundaryProcess);
-
+  G4PhotoElectricEffect* thePhotoElectricEffect = new G4PhotoElectricEffect();
+  thePhotoElectricEffect->SetEmModel(new G4LivermorePhotoElectricModel());
+  pManager->AddDiscreteProcess(thePhotoElectricEffect);
+  
   fWLSProcess->UseTimeProfile("delta");
   //fWLSProcess->UseTimeProfile("exponential");
 

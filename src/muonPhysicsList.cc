@@ -18,6 +18,7 @@
 #include "G4Gamma.hh"
 #include "G4Electron.hh"
 #include "G4Positron.hh"
+#
 
 #include "muonStepMax.hh"
 
@@ -120,7 +121,8 @@ void muonPhysicsList::ConstructParticle()
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
+#include <G4PhotoElectricEffect.hh>
+#include <G4LivermorePhotoElectricModel.hh>
 void muonPhysicsList::ConstructProcess()
 {
     G4VModularPhysicsList::ConstructProcess();
@@ -182,6 +184,15 @@ void muonPhysicsList::ConstructProcess()
       pManager ->SetProcessOrdering(poldecay, idxPostStep);
       pManager ->SetProcessOrdering(poldecay, idxAtRest);
     }
+    G4PhotoElectricEffect* thePhotoElectricEffect = new G4PhotoElectricEffect();
+    thePhotoElectricEffect->SetEmModel(new G4LivermorePhotoElectricModel());
+    
+    pManager = G4Gamma::Gamma()->GetProcessManager();
+
+    pManager->AddDiscreteProcess(thePhotoElectricEffect);
+    
+    pManager =G4OpticalPhoton::OpticalPhoton()->GetProcessManager();
+    pManager->AddDiscreteProcess(thePhotoElectricEffect);
 
     AddStepMax();
 

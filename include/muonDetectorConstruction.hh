@@ -102,10 +102,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
         PMTpos2 = G4ThreeVector(pos2.getX()+shape_z+PMT_thick,pos2.getY(),pos2.getZ());
         G4RunManager::GetRunManager()->ReinitializeGeometry();
     }
-    void SetSD(G4bool flag){
-        SDflag = flag;
-        G4RunManager::GetRunManager()->ReinitializeGeometry();
-    }
+
   private:
 
     //一些物理常数
@@ -157,8 +154,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     muonMaterial* fMaterial;
     // 新建宏命令，设置探测器的结构
     muonDetectorMessenger* fMessenger;
-    // 是否挂载敏感探测器
-    G4bool SDflag=false;
+
 };
 
 #endif
