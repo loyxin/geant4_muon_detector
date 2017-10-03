@@ -55,9 +55,18 @@ G4VPhysicalVolume* blankDetectorConstruction::Construct()
                             0,                     //copy number
                             checkOverlaps);        //overlaps checking
 
-  G4Box* solidZn = new G4Box("Zincsolid", 0.5*Zn_sizeXY, 0.5*Zn_sizeXY, 0.5*Zn_sizeZ);
-  G4LogicalVolume* logicalZn = new G4LogicalVolume(solidZn,Zn_mat,"zinc");
-  new G4PVPlacement(0,G4ThreeVector(),logicalZn,"zinc",logicWorld, false,0,checkOverlaps);
+//   G4Box* solidZn = new G4Box("Zincsolid", 0.5*Zn_sizeXY, 0.5*Zn_sizeXY, 0.5*Zn_sizeZ);
+//   G4LogicalVolume* logicalZn = new G4LogicalVolume(solidZn,Zn_mat,"zinc");
+//   new G4PVPlacement(0,G4ThreeVector(),logicalZn,"zinc",logicWorld, false,0,checkOverlaps);
+
+//   // PMMA C5H8O2 ( Acrylic )
+//   // -------------
+//    density = 1.19*g/cm3;
+//    G4Material* Acrylic = new G4Material(name="Acrylic", density, nel=3);
+//    Acrylic->AddElement(elC, 5);
+//    Acrylic->AddElement(elH, 8);
+//    Acrylic->AddElement(elO, 2);
+
   return physWorld;
 }
 
