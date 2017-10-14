@@ -66,17 +66,23 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     
     G4double GetDetector1Thick(){return shape_x1;}
     void SetDetector1Thick(G4double x){
-        shape_x1 = x;
+        shape_x1 = x/2.0;
         rshape_x1 =  shape_x1 + 1.*mm;
         PMT_x1 = shape_x1;
+        pos1 = G4ThreeVector(0, 0, -shape_x1-5.*mm);
+        rpos1 = G4ThreeVector(pos1.getX()-1.*mm, pos1.getY(), pos1.getZ());
+        PMTpos1 = G4ThreeVector(pos1.getX()+shape_z+PMT_thick,pos1.getY(),pos1.getZ());
         G4RunManager::GetRunManager()->ReinitializeGeometry();
     }
 
     G4double GetDetector2Thick(){return shape_x1;}
     void SetDetector2Thick(G4double x){
-        shape_x2 = x;
+        shape_x2 = x/2.0;
         rshape_x2 = shape_x2 +1.*mm;
         PMT_x2 = shape_x2;
+        pos2 = G4ThreeVector(0., 0., shape_x2+5.*mm);
+        rpos2 = G4ThreeVector(pos2.getX()-1.*mm, pos2.getY(), pos2.getZ());
+        PMTpos2 = G4ThreeVector(pos2.getX()+shape_z+PMT_thick,pos2.getY(),pos2.getZ());
         G4RunManager::GetRunManager()->ReinitializeGeometry();
     }
 
@@ -124,12 +130,13 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     G4RotationMatrix* rotm = 
     new G4RotationMatrix(G4ThreeVector(std::cos(phi),0., -std::sin(phi)), 
     G4ThreeVector(0.,1., 0.), G4ThreeVector( std::sin(phi),0., std::cos(phi)));
-
-    // detector 位置参数
-    G4ThreeVector pos1 = G4ThreeVector(0, 0, -15.*mm),
-    pos2 = G4ThreeVector(0., 0., 15.*mm);
     // detector 2 thickness
     G4double shape_x2 = 20./2.*mm;
+
+    // detector 位置参数
+    G4ThreeVector pos1 = G4ThreeVector(0, 0, -shape_x1-5.*mm),
+    pos2 = G4ThreeVector(0., 0., shape_x2+5.*mm);
+
 
 
     // reflection 参数

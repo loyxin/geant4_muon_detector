@@ -17,20 +17,20 @@ $$
 探测器的核心是两个高 338.5 mm，下底面长143.5 mm ， 上底面长 84 mm，厚 2 cm 的梯形形 塑 料 闪 烁 体，材 料 为 $ C_1{0H}_{14} $，其密 度为 1.25*g/cm3，它们间隔为 10 mm，当一个高能缪子或电子穿越探测器时，其轨迹上会产生微弱的荧光．这些荧光会被光电倍增管接收并放大为电信号．为了增加光的收集率，探测器被一层氧化铝反射层包裹
 
 如图所示:
-![ muon detector](./pic/muondetect.png  "muon detector")
+![ muon detector](./result/pic/muondetect.png  "muon detector")
 
 **其中红色为探测器，白色为氧化铝反射层，绿色为光电倍增管的光窗**
 
 
 <video id="video" controls=""  >
-      <source id="mpeg" src="./pic/GMovie.mpeg" type="video/mpeg">
+      <source id="mpeg" src="./result/pic/GMovie.mpeg" type="video/mpeg">
 </video>
     
 ## 运行结果
 在探测器板上方 75 mm 的高度发射$\mu^-$，能量为 150 MeV， 方向为 z 轴负方向。
 如图所示:
-![](./pic/muon_event1.png)
-![](./pic/muon_event2.png)
+![](./result/pic/muon_event1.png)
+![](./result/pic/muon_event2.png)
 **其中红色径迹代表为带负电的缪子，绿色径迹代表是不带电的光子，缪子打在塑闪板上发出光子，光子在里面发射，直到打在光电倍增管上，被吸收**
 
 ## 文件介绍

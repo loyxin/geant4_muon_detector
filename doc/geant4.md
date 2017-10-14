@@ -70,7 +70,7 @@ geant4 要告诉探测器的结构和设计的物理过程是怎么样的，有�
 - DetectorConstruction
 - PhylicsList
 - ActionInitialization
-![](../pic/Mandatory.png)
+![](../result/pic/Mandatory.png)
 交给`runManager`管理，main 函数也可以新建宏文件调用的对象 batch mode ，和`terminal`控制的对象 可视化界面和 Interactive mode
 
 ```cpp
