@@ -73,7 +73,7 @@ void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWor
   new G4Trd("muondector1", shape_x1, shape_x1,shape_y1,shape_y2, shape_z);
   G4LogicalVolume* logicShape1 = 
   new G4LogicalVolume(solidDetector1, shape_mat, "muondector1");
-  new G4PVPlacement(rotm, pos1, logicShape1, "muondector", 
+  new G4PVPlacement(rotm, pos1, logicShape1, "muondector1", 
   logicalWorld, false, 1, checkOverlaps);
 
 
@@ -81,7 +81,7 @@ void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWor
   new G4Trd("muondector2", shape_x2, shape_x2,shape_y1,shape_y2, shape_z);
   G4LogicalVolume* logicShape2 = 
   new G4LogicalVolume(solidDetector2, shape_mat, "muondector2");
-  new G4PVPlacement(rotm, pos2, logicShape2, "muondector", 
+  new G4PVPlacement(rotm, pos2, logicShape2, "muondector2", 
   logicalWorld, false, 2, checkOverlaps);
 
 
@@ -119,7 +119,7 @@ void muonDetectorConstruction::ConstructReflection(G4LogicalVolume* logicalWorld
   G4LogicalVolume* logic2Al2O3 = new G4LogicalVolume(Al2O3solid2, Al2O3, "Al2O32");
   G4PVPlacement* physi2 = new G4PVPlacement(rotm, rpos2, logic2Al2O3, "Al2O32", logicalWorld, false, 1, checkOverlaps);
   
-  // //设置光学性质
+  //设置光学性质
 
   G4double fReflectivity = 1.;//全反射
 
@@ -171,6 +171,28 @@ void muonDetectorConstruction::ConstructPMT(G4LogicalVolume* logicalWorld)
   logicalPMT2->SetSensitiveDetector(PMT_ET);
   sdManager->AddNewDetector(PMT_ET);
 
+  //设置光学性质
+
+  G4double fReflectivity = 0.;
+  
+  G4OpticalSurface* Surface = new G4OpticalSurface("PhotonDetSurface",glisur,ground,dielectric_metal);
+  
+  G4MaterialPropertiesTable* SurfaceProperty = new G4MaterialPropertiesTable();
+  
+  G4double p_mppc[] = {1.70*eV, 3.47*eV};
+  const G4int nbins = sizeof(p_mppc)/sizeof(G4double);
+  G4double refl_mppc[] = {fReflectivity,fReflectivity};
+  assert(sizeof(refl_mppc) == sizeof(p_mppc));
+  G4double effi_mppc[] = {1, 1};
+  assert(sizeof(effi_mppc) == sizeof(p_mppc));
+  
+  SurfaceProperty->AddProperty("REFLECTIVITY",p_mppc,refl_mppc,nbins);
+  SurfaceProperty->AddProperty("EFFICIENCY",p_mppc,effi_mppc,nbins);
+  
+  Surface->SetMaterialPropertiesTable(SurfaceProperty);
+  
+  new G4LogicalSkinSurface("PMTSurface",logicalPMT1,Surface);
+  new G4LogicalSkinSurface("PMTSurface",logicalPMT2,Surface);
 
 }
 

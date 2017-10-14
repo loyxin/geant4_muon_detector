@@ -25,10 +25,22 @@ G4bool EnergyTimeSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     if (aStep == NULL) return false;
     G4Track* theTrack = aStep->GetTrack();
   
-    
+
     if(theTrack->GetDefinition()
        !=G4MuonMinus::MuonMinus() && theTrack->GetDefinition()
        !=G4MuonPlus::MuonPlus() ) return false;//判断是否是 muon 子
+    
+    G4StepPoint* thePrePoint  = aStep->GetPreStepPoint();
+    G4StepPoint* thePostPoint = aStep->GetPostStepPoint();
+
+    G4VPhysicalVolume* thePrePV  = thePrePoint->GetPhysicalVolume();
+    G4VPhysicalVolume* thePostPV = thePostPoint->GetPhysicalVolume();
+
+    G4String thePrePVname  = " ";
+    G4String thePostPVname = " ";
+
+    thePrePVname  = thePrePV->GetName();
+    thePostPVname = thePostPV->GetName();
     
     G4double aDep = aStep->GetTotalEnergyDeposit();
     G4double time = aStep->GetPostStepPoint()->GetGlobalTime();
@@ -39,8 +51,14 @@ G4bool EnergyTimeSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     hit->SetTime(time);
     hit->SetDeltaEnergy(aDep);
     hit->SetPosition(position);
-    hit->SetName(name);
 
+    if(thePostPVname=="muondector1"|| thePostPVname=="muondector2") {
+        hit->SetName(thePostPVname);
+    }
+    
+    if(thePrePVname=="muondector1"|| thePrePVname=="muondector2") {
+        hit->SetName(thePrePVname);
+    }
     fHitsCollection->insert(hit);
 
     return true;
