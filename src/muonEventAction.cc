@@ -17,7 +17,8 @@
 #include "PMThit.hh"
 using namespace std;
 
-muonEventAction::muonEventAction() : G4UserEventAction(){}
+muonEventAction::muonEventAction() : G4UserEventAction()
+{}
 
 muonEventAction::~muonEventAction()
 {}
@@ -79,7 +80,7 @@ void muonEventAction::EndOfEventAction(const G4Event* event)
 
     }
 
-    if(muondetectorEnId> 0 )
+    if( muondetectorEnId > -1 )
     {
 
         EnergyTimeHitsCollection* muhitCollection =

@@ -1,4 +1,3 @@
-<<<<<<< HEAD:src/PMTSD.cc
 /**
  * @file PMTSD.cc
  * @brief 设置敏感探测器保存哪些数据
@@ -9,12 +8,15 @@
  * @date 2017-09-10
  */
 #include "PMTSD.hh"
-=======
-#include "pmtSD.hh"
->>>>>>> parent of 1c568a5... add doxygen:src/pmtSD.cc
 
 #include <G4SDManager.hh>
 #include <G4SystemOfUnits.hh>
+/**
+ * @brief 设置敏感探测器保存哪些数据
+ * @details muon 击中 pmt ，保存时间，能量，位置和击中哪一个 pmt 信息
+ * 敏感探测器挂载在敏感探测器管理类格式为 name/pmt_energy_time
+ * @param name pmt 的名字
+ */
 
 PMTSD::PMTSD(G4String name) :
   G4VSensitiveDetector(name)
@@ -30,11 +32,7 @@ G4bool PMTSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     if (aStep == NULL) return false;
 
     G4Track* theTrack = aStep->GetTrack();
-<<<<<<< HEAD:src/PMTSD.cc
     
-=======
-
->>>>>>> parent of 1c568a5... add doxygen:src/pmtSD.cc
     if(theTrack->GetDefinition()
     !=G4OpticalPhoton::OpticalPhoton() ) return false;// 确定是否是光子
 
@@ -63,8 +61,6 @@ G4bool PMTSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
      G4double time = aStep->GetPostStepPoint()->GetGlobalTime();
      G4ThreeVector position = aStep->GetPostStepPoint()->GetPosition();
      G4String name = aStep->GetPostStepPoint()->GetPhysicalVolume()->GetName();
-
-    //  G4cout<<"bingo"<<time<<G4endl;
 
     if(thePostPVname=="PMT1"|| thePostPVname=="PMT2") {
         hit->SetTime(time);

@@ -58,22 +58,15 @@ void muonMaterial::CreateMaterials(){
   
     fdetector->AddElement(elH,10);
     fdetector->AddElement(elC,14);
+    
+    fPMMA = new G4Material("PMMA", 1.190*g/cm3,3);
 
-    // Get nist material manager
-  
-    // Ready for PMMA;
-    G4NistManager* nist = G4NistManager::Instance();
+    G4Element* elO = new G4Element("Oxygen","O",8.,16.00*g/mole);
     
-    // Prepare for PMMA;
-    std::vector<G4int> natoms;
-    std::vector<G4String> elements;
-    
-    elements.push_back("C");     natoms.push_back(5);
-    elements.push_back("H");     natoms.push_back(8);
-    elements.push_back("O");     natoms.push_back(2);
-    
-    fPMMA = nist->ConstructNewMaterial("PMMA", elements, natoms, 1.190*g/cm3);
-	
+    fPMMA -> AddElement(elC,5);
+    fPMMA -> AddElement(elH,8);
+    fPMMA -> AddElement(elO,2);
+
     // PMT 	
     fPMT = fNistMan->FindOrBuildMaterial("G4_Pyrex_Glass");
 
@@ -101,7 +94,7 @@ void muonMaterial::CreateMaterials(){
     3.20*eV,3.23*eV,3.26*eV,3.29*eV,3.32*eV,
     3.35*eV,3.38*eV,3.41*eV,3.44*eV,3.47*eV};
 
-    nEntries = sizeof(photonEnergy)/sizeof(G4double);
+    G4int nEntries = sizeof(photonEnergy)/sizeof(G4double);
 
     //--------------------------------------------------
     // Air
@@ -181,7 +174,7 @@ void muonMaterial::CreateMaterials(){
     mptC10H14->AddConstProperty("FASTTIMECONSTANT", 10.*ns);
 
     fdetector->SetMaterialPropertiesTable(mptC10H14);  
-
+    fPMMA->SetMaterialPropertiesTable(mptC10H14);
     // --------------------------------------------------
     // PMT 
     // -------------------------------------------------- 
