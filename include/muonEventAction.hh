@@ -32,7 +32,7 @@ class muonEventAction : public G4UserEventAction
 	private:
 
 		G4int muondetectorEnId { -1 };
-    	G4int PMT_Id{-1};
+    G4int PMT_Id{-1};
 };
 
 #endif

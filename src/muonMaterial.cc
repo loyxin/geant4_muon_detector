@@ -1,19 +1,13 @@
-/**
- * @file muonMaterial.cc
- * @brief 构建探测器的材料
- * @author loyxin
- * @version 1.0
- * @date 2017-09-10
- */
-#include "muonMaterial.hh"
+﻿#include "muonMaterial.hh"
 #include <G4SystemOfUnits.hh>
+#include <G4MaterialPropertiesTable.hh>
 
 muonMaterial* muonMaterial::fInstance=0;
 
 muonMaterial::muonMaterial(){
     fNistMan = G4NistManager::Instance();
 
-    // fNistMan->SetVerbose(2);
+    fNistMan->SetVerbose(2);
 
     CreateMaterials();
 }
@@ -22,6 +16,7 @@ muonMaterial::~muonMaterial(){
     delete fdetector;
     delete fPMT;
     delete freflect;
+    delete fPMMA;
 }
 
 muonMaterial* muonMaterial::GetInstance(){
@@ -63,8 +58,24 @@ void muonMaterial::CreateMaterials(){
   
     fdetector->AddElement(elH,10);
     fdetector->AddElement(elC,14);
-    // PMT SiO_2
-    fPMT = fNistMan->FindOrBuildMaterial("G4_POLYPROPYLENE");
+
+    // Get nist material manager
+  
+    // Ready for PMMA;
+    G4NistManager* nist = G4NistManager::Instance();
+    
+    // Prepare for PMMA;
+    std::vector<G4int> natoms;
+    std::vector<G4String> elements;
+    
+    elements.push_back("C");     natoms.push_back(5);
+    elements.push_back("H");     natoms.push_back(8);
+    elements.push_back("O");     natoms.push_back(2);
+    
+    fPMMA = nist->ConstructNewMaterial("PMMA", elements, natoms, 1.190*g/cm3);
+	
+    // PMT 	
+    fPMT = fNistMan->FindOrBuildMaterial("G4_Pyrex_Glass");
 
 
     // freflection
@@ -90,7 +101,7 @@ void muonMaterial::CreateMaterials(){
     3.20*eV,3.23*eV,3.26*eV,3.29*eV,3.32*eV,
     3.35*eV,3.38*eV,3.41*eV,3.44*eV,3.47*eV};
 
-    const G4int nEntries = sizeof(photonEnergy)/sizeof(G4double);
+    nEntries = sizeof(photonEnergy)/sizeof(G4double);
 
     //--------------------------------------------------
     // Air
@@ -116,23 +127,20 @@ void muonMaterial::CreateMaterials(){
     //--------------------------------------------------
     // freflection Al2O3
     //--------------------------------------------------
-    G4double Al2O3refractiveIndex[] =
-    { 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76,
-        1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76, 1.76};
+
+	
+	G4double Al2O3refractiveIndex[60];
+	for(int i=0; i<60; i++){
+		Al2O3refractiveIndex[i] = 1.76;
+	}
 
     assert(sizeof(Al2O3refractiveIndex) == sizeof(photonEnergy));
-    
-    G4double absAl2O3[] =
-    {1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,
-     1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m,1.0*m};
+	
+	G4double absAl2O3[60];
+	for(int i=0; i<60; i++){
+		absAl2O3[i] = 1.0*m;
+	}
+	
     
     assert(sizeof(absAl2O3) == sizeof(photonEnergy));
 
@@ -175,7 +183,7 @@ void muonMaterial::CreateMaterials(){
     fdetector->SetMaterialPropertiesTable(mptC10H14);  
 
     // --------------------------------------------------
-    // PMT SiO_2
+    // PMT 
     // -------------------------------------------------- 
     G4double SiO2refractiveIndex[] =
     { 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3, 1.3,
