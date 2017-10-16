@@ -47,7 +47,7 @@ public:
      */
     G4Material* GetfAir(){return fAir;}
     
-    G4MaterialZ GetfPMMA(){return fPMMA;}
+    G4Material* GetfPMMA(){return fPMMA;}
 private:  
     // 构建材料
     /**

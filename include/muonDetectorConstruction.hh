@@ -67,6 +67,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     G4double GetDetector1Thick(){return shape_x1;}
     void SetDetector1Thick(G4double x){
         shape_x1 = x/2.0;
+        windows_x1 = shape_x1;
         rshape_x1 =  shape_x1 + 1.*mm;
         PMT_x1 = shape_x1;
         pos1 = G4ThreeVector(0, 0, -shape_x1-5.*mm);
@@ -78,6 +79,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     G4double GetDetector2Thick(){return shape_x1;}
     void SetDetector2Thick(G4double x){
         shape_x2 = x/2.0;
+        windows_x2 = shape_x2;
         rshape_x2 = shape_x2 +1.*mm;
         PMT_x2 = shape_x2;
         pos2 = G4ThreeVector(0., 0., shape_x2+5.*mm);
@@ -98,6 +100,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
         pos1 = vector;
         rpos1 = G4ThreeVector(pos1.getX()-1.*mm, pos1.getY(), pos1.getZ());
         PMTpos1 = G4ThreeVector(pos1.getX()+shape_z+PMT_thick,pos1.getY(),pos1.getZ());
+        pos_win1 = G4ThreeVector((pos1.getX() + shape_z + windows_z), pos1.getY(), pos1.getZ());
         G4RunManager::GetRunManager()->ReinitializeGeometry();
     }
 
@@ -106,6 +109,7 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
         pos2 = vector;
         rpos2 = G4ThreeVector(pos2.getX()-1.*mm, pos2.getY(), pos2.getZ());
         PMTpos2 = G4ThreeVector(pos2.getX()+shape_z+PMT_thick,pos2.getY(),pos2.getZ());
+        pos_win2 = G4ThreeVector((pos2.getX() + shape_z + windows_z), pos2.getY(), pos2.getZ());
         G4RunManager::GetRunManager()->ReinitializeGeometry();
     }
 
@@ -137,7 +141,10 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     G4ThreeVector pos1 = G4ThreeVector(0, 0, -shape_x1-5.*mm),
     pos2 = G4ThreeVector(0., 0., shape_x2+5.*mm);
 
-
+    // Trapezoid shape       
+    G4double windows_x1 = shape_x1,windows_x2= shape_x2;
+    G4double windows_y1 = shape_x1, windows_y2 = shape_y1;
+    G4double windows_z  = shape_y1;      
 
     // reflection 参数
     // 厚度 1 mm 
@@ -147,24 +154,27 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     rshape_y2=shape_y2+1.*mm, 
     rshape_z=shape_z+1.*mm;
 
+    G4double wshape_x1 = windows_x1 + 1.*mm, 
+    wshape_x2 = windows_x2 +1.*mm, 
+    wshape_y1=windows_y1+1.*mm, 
+    wshape_y2=windows_y2+1.*mm, 
+    wshape_z=windows_z;
+
     G4ThreeVector rpos1 = G4ThreeVector(pos1.getX()-1.*mm, pos1.getY(), pos1.getZ()),
-    rpos2 = G4ThreeVector(pos2.getX()-1.*mm, pos2.getY(), pos2.getZ());
+    rpos2 = G4ThreeVector(pos2.getX()-1.*mm, pos2.getY(), pos2.getZ()),
+    wpos2 = G4ThreeVector((pos1.getX() + shape_z + windows_z), pos1.getY(), pos1.getZ()),
+    wpos1 = G4ThreeVector((pos2.getX() + shape_z + windows_z), pos2.getY(), pos2.getZ());
+
+
+    // Set Position for windows;
+    G4ThreeVector pos_win1 = G4ThreeVector((pos1.getX() + shape_z + windows_z), pos1.getY(), pos1.getZ());
+    G4ThreeVector pos_win2 = G4ThreeVector((pos2.getX() + shape_z + windows_z), pos2.getY(), pos2.getZ());
 
     // pmt 参数
     G4double PMT_thick   =   1.0*mm; // Thickness of PMT window
-    G4double PMT_x2    =  shape_x2, PMT_x1 = shape_x1, PMT_y=shape_y1; // Radius of curvature of PMT window
-    G4ThreeVector PMTpos1 = G4ThreeVector(pos1.getX()+shape_z+PMT_thick,pos1.getY(),pos1.getZ());
-    G4ThreeVector PMTpos2 = G4ThreeVector(pos2.getX()+shape_z+PMT_thick,pos2.getY(),pos2.getZ());
-
-    // Trapezoid shape       
-    G4double windows_dza = 20./2.*mm, windows_dzb = 20./2.*mm;
-    G4double windows_dya = 20./2.*mm, windows_dyb = 84./2.*mm;
-    G4double windows_dx  = 84./2.*mm;      
-  
-    // Set Position for windows;
-    G4ThreeVector pos_win1 = G4ThreeVector((shape_x + windows_dx), 0, 15.*mm);
-    G4ThreeVector pos_win2 = G4ThreeVector((shape_x + windows_dx), 0, -15.*mm);
-
+    G4double PMT_x2    =  shape_x2, PMT_x1 = shape_x1, PMT_y=shape_x1; // Radius of curvature of PMT window
+    G4ThreeVector PMTpos1 = G4ThreeVector(pos1.getX()+shape_z+2*windows_z+PMT_thick,pos1.getY(),pos1.getZ());
+    G4ThreeVector PMTpos2 = G4ThreeVector(pos2.getX()+shape_z+2*windows_z+PMT_thick,pos2.getY(),pos2.getZ());
     G4bool checkOverlaps = true;
     // 材料信息存在 fMaterial
     muonMaterial* fMaterial;
