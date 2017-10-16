@@ -46,6 +46,8 @@ public:
      * @return world 的材料
      */
     G4Material* GetfAir(){return fAir;}
+    
+    G4MaterialZ GetfPMMA(){return fPMMA;}
 private:  
     // 构建材料
     /**
@@ -64,6 +66,7 @@ private:
     G4Material*        fPMT;
     G4Material*        freflect;
     G4Material*        fAir;
+    G4Material*        fPMMA;
 };
 
 

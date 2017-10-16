@@ -5,14 +5,16 @@
 # mail: rafrozenluoxin@gmail.com
 # Created Time: 2017-10-07 00:26:27
 #########################################################################
-for var in dis_3 dis_5 dis_15 dis_20 dis_40 dis_60 dis_80 fir_10 fir_15 fir_25 fir_30 fir_35 fir_40 fir_60 
+for var in 0.01 0.011 0.012 0.013 0.014 0.015 0.016 0.017 0.018 0.019 0.02 0.021 \
+0.022 0.023 0.024 0.025 0.026 0.027 0.028 0.029 0.03 0.031 0.032 \
+0.033 0.034 0.035 0.036 0.037 0.038 0.039 0.04 0.041 0.042 0.043 
+
 do
-    cd ./$var/data/GeV/
-    rm pmt.csv detect_one.csv
-    mv ../../../sh/*.sh ../../../sh/*.py ./
+    cd ./data/GeV/$var
+    ./detect.sh
+    ./detectone.sh
     ./pmt.sh
     ./pmt_cal.sh
-    cat ./pmt.csv >> ../../../all_pmt.csv
     mv ./*.sh ./*.py ../../../sh/
     cd ../../../
 done
