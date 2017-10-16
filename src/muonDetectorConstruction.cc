@@ -1,10 +1,4 @@
-/**
- * @file muonDetectorConstruction.cc
- * @brief 搭建探测器
- * @author loyxin
- * @version 1.0
- * @date 2017-09-10
- */
+﻿
 #include "muonDetectorConstruction.hh"
 #include "muonDetectorMessenger.hh"
 
@@ -35,11 +29,13 @@ muonDetectorConstruction::~muonDetectorConstruction()
 #include <G4LogicalBorderSurface.hh>
 #include <G4LogicalSkinSurface.hh>
 
+// Construct physics World; 
 G4VPhysicalVolume* muonDetectorConstruction::Construct()
 {
 
-  // world  box material air
+  // world size 1 m x 1 m x 2 m box material air
   // name "world" point solidWorld logicalWorld physWorld
+  G4double world_sizeXY = 1*m, world_sizeZ  = 0.2*m;
   G4Material* world_mat = fMaterial->GetfAir();
 
   G4Box* solidWorld = new G4Box("World",0.5*world_sizeXY, 0.5*world_sizeXY, 0.5*world_sizeZ);
@@ -47,7 +43,6 @@ G4VPhysicalVolume* muonDetectorConstruction::Construct()
   G4VPhysicalVolume* physWorld = new G4PVPlacement(0, G4ThreeVector(), logicalWorld, "World", NULL, false, 0, checkOverlaps);
   
   Constructmuondetector(logicalWorld,physWorld);
-
   ConstructPMT(logicalWorld);
 
     
@@ -56,13 +51,17 @@ G4VPhysicalVolume* muonDetectorConstruction::Construct()
 
 
 #include <G4Trd.hh>
+#include <G4RotationMatrix.hh>
+
 
 #include <G4SubtractionSolid.hh>
 #include <G4Colour.hh>
 #include <G4VisAttributes.hh>
+#include "G4NistManager.hh"
+#include "G4Tubs.hh"
 
 
-void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWorld,G4VPhysicalVolume* physWorld)
+void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWorld, G4VPhysicalVolume* physWorld )
 {
 
   //shape material
@@ -98,7 +97,52 @@ void muonDetectorConstruction::Constructmuondetector(G4LogicalVolume* logicalWor
   logicShape2->SetSensitiveDetector(muondectorEn);
   sdManager->AddNewDetector(muondectorEn);
   
-
+  //  Set geometry for light guider;
+  //
+  // The Windows:  we will create 2 windows here, the same;
+  //
+  
+  G4Material* windows_mat = fMaterial->GetfPMMA();
+  
+  G4Trd* solidwindows =    
+    new G4Trd("windows",                      //its name
+              windows_dza, windows_dzb, 
+              windows_dya, windows_dyb, windows_dx); //its size
+                
+  // Set two logical volume;
+  G4LogicalVolume* logicwin =                         
+    new G4LogicalVolume(solidwindows, windows_mat, "Windows");
+               
+  new G4PVPlacement(rotm, pos_win1, logicwin, "Windows1", logicalWorld, false, 0,  checkOverlaps);
+  new G4PVPlacement(rotm, pos_win2, logicwin, "Windows2", logicalWorld, false, 0,  checkOverlaps); 
+  
+  //
+  // The Guiders:  we will create 2 guiders here, the same;
+  //   
+  G4double guider_dza = 20./2.*mm, guider_dzb = 20./2.*mm;
+  G4double guider_dya = 20./2.*mm, guider_dyb = 20./2.*mm;
+  G4double guider_dx  = 12.*cm;  
+  // Set guider material;
+  G4Material* guider_mat = fMaterial->GetfPMT();
+  
+  // Set Position for guider;
+  G4ThreeVector pos_Guider1 = G4ThreeVector((shape_x + 2*windows_dx + guider_dx), 0, 15.*mm);
+  G4ThreeVector pos_Guider2 = G4ThreeVector((shape_x + 2*windows_dx + guider_dx), 0, -15.*mm);
+  
+  G4Trd* solidGuider =
+    new G4Trd("guider",                      //its name
+              guider_dza, guider_dzb, 
+              guider_dya, guider_dyb, guider_dx); //its size
+                
+  // Set two logical volume;
+  G4LogicalVolume* logicGuider = 
+    new G4LogicalVolume(solidGuider, guider_mat, "Guider");
+	
+  // Place the guiders;
+  new G4PVPlacement(rotm, pos_Guider1, logicGuider, "Guider1", logicalWorld, false, 0, checkOverlaps);
+  new G4PVPlacement(rotm, pos_Guider2, logicGuider, "Guider2", logicalWorld, false, 0, checkOverlaps);
+  
+//  End of setting geometry for light guide;
 
   ConstructReflection(logicalWorld,solidDetector1,solidDetector2,physWorld);
 }
@@ -124,20 +168,6 @@ void muonDetectorConstruction::ConstructReflection(G4LogicalVolume* logicalWorld
   G4double fReflectivity = 1.;//全反射
 
   G4OpticalSurface* Al2O3Surface = new G4OpticalSurface("PhotonDetSurface",glisur,ground,dielectric_metal);
-
-  G4MaterialPropertiesTable* Al2O3SurfaceProperty = new G4MaterialPropertiesTable();
-
-  G4double p_mppc[] = {1.70*eV, 3.47*eV};
-  const G4int nbins = sizeof(p_mppc)/sizeof(G4double);
-  G4double refl_mppc[] = {fReflectivity,fReflectivity};
-  assert(sizeof(refl_mppc) == sizeof(p_mppc));
-  G4double effi_mppc[] = {1, 1};
-  assert(sizeof(effi_mppc) == sizeof(p_mppc));
-
-  Al2O3SurfaceProperty->AddProperty("REFLECTIVITY",p_mppc,refl_mppc,nbins);
-  Al2O3SurfaceProperty->AddProperty("EFFICIENCY",p_mppc,effi_mppc,nbins);
-
-  Al2O3Surface->SetMaterialPropertiesTable(Al2O3SurfaceProperty);
 
   new G4LogicalSkinSurface("Al2O3Surface",logic1Al2O3,Al2O3Surface);
   new G4LogicalSkinSurface("Al2O3Surface",logic2Al2O3,Al2O3Surface);

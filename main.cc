@@ -37,28 +37,16 @@
 #include "Physics.hh"
 
 using namespace std;
-/**
- * @brief main function 可视化，三个强制类的新建
- * @details 
- * 可视化，如果遇到 -i 参数，都会弹出可视化界面
- * 直接调用程序默认弹出可视化界面
- * 如果有宏文件，则不弹出可视化界面，并执行宏文件命令
- * 新建三个强制类，并交给 runManager 管理
- * 
- * @param argc 参量个数
- * @param argv 参量名
- * 
- * @return 
- */
+
 int main(int argc,char** argv)
 {
 
   vector<G4String> macros;
   bool interactive = false;
 
+
   if  (argc == 1)
     {
-    // 运行源程序不带宏文件
     // 可视化交互 default
       interactive = true;
     }
@@ -104,8 +92,6 @@ int main(int argc,char** argv)
 
   //Action initialization
   runManager->SetUserInitialization(new muonActionInitialization());
-
-
   #ifdef G4VIS_USE
     G4VisManager* visManager = new G4VisExecutive("quiet");
     visManager->SetVerboseLevel(0);
@@ -130,7 +116,7 @@ int main(int argc,char** argv)
       UImanager->ApplyCommand(command + macro);
     }
 
-  // 默认可视化设置
+    // 默认可视化设置
   #ifdef G4UI_USE
     if (interactive)
       {
@@ -139,6 +125,9 @@ int main(int argc,char** argv)
         delete ui;
       }
   #endif
+
+  G4AnalysisManager* man = G4AnalysisManager::Instance();
+  man->CloseFile();
 
   delete visManager;
   delete runManager;

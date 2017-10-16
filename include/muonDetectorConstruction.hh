@@ -156,6 +156,15 @@ class muonDetectorConstruction : public G4VUserDetectorConstruction
     G4ThreeVector PMTpos1 = G4ThreeVector(pos1.getX()+shape_z+PMT_thick,pos1.getY(),pos1.getZ());
     G4ThreeVector PMTpos2 = G4ThreeVector(pos2.getX()+shape_z+PMT_thick,pos2.getY(),pos2.getZ());
 
+    // Trapezoid shape       
+    G4double windows_dza = 20./2.*mm, windows_dzb = 20./2.*mm;
+    G4double windows_dya = 20./2.*mm, windows_dyb = 84./2.*mm;
+    G4double windows_dx  = 84./2.*mm;      
+  
+    // Set Position for windows;
+    G4ThreeVector pos_win1 = G4ThreeVector((shape_x + windows_dx), 0, 15.*mm);
+    G4ThreeVector pos_win2 = G4ThreeVector((shape_x + windows_dx), 0, -15.*mm);
+
     G4bool checkOverlaps = true;
     // 材料信息存在 fMaterial
     muonMaterial* fMaterial;
