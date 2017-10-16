@@ -23,14 +23,14 @@ muonRunAction::muonRunAction(){
 	analysisManager->SetFirstNtupleId(1);
 	analysisManager->SetFirstHistoId(1);
 
-	//   EnergyDeposit, Time, X, Y & Z id = 1
+	//   EnergyDeposit, Time, X, Y & Z
 	analysisManager->CreateNtuple("pmt", "Energy and time");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
 	analysisManager->CreateNtupleDColumn("Time/ns");
 	analysisManager->CreateNtupleDColumn("PMT");
 	analysisManager->CreateNtupleDColumn("EventID");
 	analysisManager->FinishNtuple(1);
-	// id = 2
+	
 	analysisManager->CreateNtuple("detector", "Energy and time ");
 	analysisManager->CreateNtupleDColumn("EnergyDeposit/Mev");
 	analysisManager->CreateNtupleDColumn("z/mm");

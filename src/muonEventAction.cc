@@ -17,8 +17,7 @@
 #include "PMThit.hh"
 using namespace std;
 
-muonEventAction::muonEventAction() : G4UserEventAction()
-{}
+muonEventAction::muonEventAction() : G4UserEventAction(){}
 
 muonEventAction::~muonEventAction()
 {}
