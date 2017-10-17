@@ -3,6 +3,7 @@
 
 import csv
 import math
+import sys
 with open('detect_result.csv', 'r+') as csvfile:
     reader = csv.reader(csvfile)
     # energy 0 , decay length 1, energy /mm 2, decay event number 3
@@ -17,16 +18,16 @@ with open('detect_result.csv', 'r+') as csvfile:
             continue
         if int(column[2]) == 1:
             if float(column[1]) > 0:
-                length = 25.0 - float(column[1])
+                length = float(sys.argv[1]) + 5.0 - float(column[1])
                 one[1] += length
                 two[1] += length**2
             else:
-                length = 20.0-5.0-float(column[1])
+                length = float(sys.argv[1])-float(sys.argv[3])+5.0-float(column[1])
                 one[1] += length
                 two[1] += length**2
             eventnum += 1
         else:
-            length = 40.0
+            length = float(sys.argv[1])+float(sys.argv[2])
             one[1] += length
             two[1] += length**2
 

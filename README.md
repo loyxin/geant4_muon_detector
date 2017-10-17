@@ -93,5 +93,37 @@ $$
 ├── Doxyfile doxygen 文件
 
 
+## 运行和结果
+先编译程序
 
+```
+mkdir build
+cd build
+cmake the_path_to_the_project/
+make -j4
+```
+
+拷贝运行脚本和画图脚本
+
+```
+cd build
+cp the_path_to_the_project/result/shell_py ./
+mv the_path_to_the_project/result/shell_py/run/*.sh ./
+```
+
+打开`macro/run.mac`，设置相应的参数，记录两个探测器的厚度和距离，再运行
+
+```
+./run.sh
+./cal.sh theThicknessNumberofFirstDetector theThicknessNumberofSecondDetector theDistance 
+```
+
+画图
+```
+cp the_path_to_the_project/result/shell_py/pmt/pmt_plot.py ./data/GeV
+cp the_path_to_the_project/result/shell_py/detector/detector_plot.py ./data/GeV
+cd ./data/GeV
+python detector_plot.py
+python pmt_plot.py
+```
 Monday, 04. September 2017 09:53AM 

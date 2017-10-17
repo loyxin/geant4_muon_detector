@@ -5,16 +5,16 @@
 # mail: rafrozenluoxin@gmail.com
 # Created Time: 2017-10-07 00:26:27
 #########################################################################
-for var in 0.01 0.011 0.012 0.013 0.014 0.015 0.016 0.017 0.018 0.019 0.02 0.021 \
-0.022 0.023 0.024 0.025 0.026 0.027 0.028 0.029 0.03 0.031 0.032 \
-0.033 0.034 0.035 0.036 0.037 0.038 0.039 0.04 0.041 0.042 0.043 
+cp ./result/shell_py/detector/*.py ./result/shell_py/detector/*.sh ./result/shell_py/pmt/*.py ./result/shell_py/pmt/*.sh ./data/GeV
 
-do
-    cd ./data/GeV/$var
-    ./detect.sh
-    ./detectone.sh
-    ./pmt.sh
-    ./pmt_cal.sh
-    mv ./*.sh ./*.py ../../../sh/
-    cd ../../../
-done
+a=$1
+b=$2
+c=$3
+
+cd ./data/GeV
+./detect.sh $1 $2 $3
+./detect_one_csv.sh
+./pmt.sh
+./pmt_cal.sh
+cd ../../
+rm ./data/GeV/*.sh ./data/GeV/*.py 
