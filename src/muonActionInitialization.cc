@@ -21,7 +21,7 @@ muonActionInitialization::~muonActionInitialization()
 
 void muonActionInitialization::BuildForMaster() const
 {
-
+  SetUserAction(new muonRunAction);
 }
 
 
@@ -33,6 +33,5 @@ void muonActionInitialization::Build() const
   muonEventAction* event = new muonEventAction();
   SetUserAction(event);
 
-  SetUserAction(new muonSteppingAction(event));
 
 }

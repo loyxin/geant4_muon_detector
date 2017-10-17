@@ -8,7 +8,8 @@
 # Description:
 
 """
-import csv
+import csv 
+import sys
 
 reader = csv.reader(open("muon_nt_detector.csv"))
 
@@ -38,7 +39,7 @@ for row in reader:
         flag = flag+1
         line.append(result)
         line.append(min(position))
-        if float(min(position)) > float(-25.0):
+        if float(min(position)) > -1*float(sys.argv[2])-1*float(sys.argv[3])+5.0:
             line.append(1)
         else:
             line.append(0)
@@ -52,7 +53,7 @@ for row in reader:
 
 line.append(result)
 line.append(min(position))
-if float(min(position)) > float(-25.0):
+if float(min(position)) > -float(sys.argv[2])-float(sys.argv[3])+5.0:
     line.append(1)
 else:
     line.append(0)#decay event
