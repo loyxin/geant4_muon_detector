@@ -23,7 +23,7 @@ $$
 
 
 <video id="video" controls=""  >
-      <source id="mpeg" src="./result/pic/GMovie.mpeg" type="video/mpeg">
+      <source id="mpeg" src="http://ow3kig4i4.bkt.clouddn.com/GMovie.mpeg" type="video/mpeg">
 </video>
     
 ## 运行结果
