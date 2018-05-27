@@ -6,6 +6,6 @@
 # Created Time: 2017-10-14 15:29:03
 #########################################################################
 
-xelatex muon.tex
-xelatex muon.tex
-rm *.aux *.log muon.out
+xelatex muon_last.tex
+xelatex muon_last.tex
+rm *.aux *.log *.out
