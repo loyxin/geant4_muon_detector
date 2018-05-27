@@ -1,3 +1,5 @@
 cmake-build-debug
 .idea
 result/thesis/muon_last.pdf
+doc/html
+doc/latex
