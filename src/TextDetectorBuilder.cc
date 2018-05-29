@@ -15,6 +15,7 @@ const G4tgrVolume * TextDetectorBuilder::ReadDetector()
 //______________________________________________________________________________
 //
 #include <G4LogicalBorderSurface.hh>
+#include <G4LogicalSkinSurface.hh>
 G4VPhysicalVolume* TextDetectorBuilder::ConstructDetector(
       const G4tgrVolume* topVol)
 {
@@ -35,12 +36,19 @@ G4VPhysicalVolume* TextDetectorBuilder::ConstructDetector(
          v1 = m1->GetDaughter(i);
          if (v1->GetCopyNo()==copyNo1) break;
       }
-      for (int i=0; i<m2->GetNoDaughters(); i++) {
-         v2 = m2->GetDaughter(i);
-         if (v2->GetCopyNo()==copyNo2) break;
+      if(physV2=="world")
+      v2 = tgbVolmgr->FindG4PhysVol(physV2);
+      else{
+            for (int i=0; i<m2->GetNoDaughters(); i++) {
+                  v2 = m2->GetDaughter(i);
+                  if (v2->GetCopyNo()==copyNo2) break;
       }
+      }
+      
       if (v1 && v2) {
          new G4LogicalBorderSurface(border->name,v1,v2,border->optic);
+         // for my project
+         new G4LogicalSkinSurface(border->name,m1,border->optic);
          G4cout<<"Border surface "<<border->name<<" in between "
             <<physV1<<":"<<copyNo1<<" and "<<physV2<<":"<<copyNo2
             <<" added"<<G4endl;

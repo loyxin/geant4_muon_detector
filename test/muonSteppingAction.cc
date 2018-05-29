@@ -24,7 +24,7 @@ muonSteppingAction::~muonSteppingAction()
 #include <G4AntiNeutrinoE.hh>
 #include <G4VPhysicalVolume.hh>
 #include <G4MuonMinus.hh>
-void muonSteppingAction::UserSteppingAction(const G4Step* theStep)
+void muonSteppingAction::UserSteppingAction(const G4Step* )
 {
 
 }

@@ -43,13 +43,12 @@ void muonDetectorConstruction::ConstructSDandField()
   G4SDManager* sdManager = G4SDManager::GetSDMpointer();
   sdManager->SetVerboseLevel(2);
 
-  // EnergyTimeSD* muondectorEn = new EnergyTimeSD("muondectorEn");
-  // SetSensitiveDetector("muondector",muondectorEn);
-  // sdManager->AddNewDetector(muondectorEn);
+  EnergyTimeSD* muondectorEn = new EnergyTimeSD("muondectorEn");
+  SetSensitiveDetector("muondector",muondectorEn);
+  sdManager->AddNewDetector(muondectorEn);
 
 
-  // PMTSD*  PMT_ET = new PMTSD("PMT_ET");
-  // SetSensitiveDetector("PMT_log1",PMT_ET);
-  // SetSensitiveDetector("PMT_log2",PMT_ET);
-  // sdManager->AddNewDetector(PMT_ET);
+  PMTSD*  PMT_ET = new PMTSD("PMT_ET");
+  SetSensitiveDetector("PMT",PMT_ET);
+  sdManager->AddNewDetector(PMT_ET);
 }
