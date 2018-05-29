@@ -11,7 +11,8 @@ if(WITH_GEANT4_UIVIS)
 else()
   find_package(Geant4 REQUIRED)
 endif()
-
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb ")
+SET(CMAKE_CXX_FLAGS_RELEASE "${ENV{CXXFLAGS} -O3 -Wall")
 
 # Setup Geant4 include directories and compile definitions
 # Setup include directory for this project
@@ -41,6 +42,8 @@ set(muon_SCRIPTS
  ./macro/otherdrive.mac 
  ./macro/run.mac
  ./macro/run_gear.mac
+ ./muon.tg 
+ ./material.tg
   )
 
 foreach(_script ${muon_SCRIPTS})

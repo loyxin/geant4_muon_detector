@@ -1,0 +1,57 @@
+#include material.tg
+// Define a parameter for later use
+:P de_x 20./2.*mm
+:P de_y1 84./2.*mm
+:P de_y2 143.5/2.*mm
+:P de_z 338.5/2.0*mm 
+:P win_x $de_x
+:P win_y1 $de_y1
+:P win_y2 $de_y2
+:P win_z $de_z
+:P r_x $de_x+1.*mm
+:P r_y1 $de_y1+1.*mm
+:P r_y2 $de_y2+1.*mm
+:P r_z $de_z+1.*mm
+
+:P pos1 -$de_x-5.*mm
+:P pos2 $de_x+5.*mm
+:P x 0.
+:P y 0.
+
+:ROTM rm0 0. 0. -1. 0. 1. 0. 1. 0. 0.
+:ROTM R0 1. 0. 0. 0. 1. 0. 0. 0. 1.
+// world
+:VOLU world BOX 1*m 1*m 0.2*m G4_AIR
+:VIS world OFF
+
+:SOLID muon_solid TRD $de_x $de_x $de_y1 $de_y2 $de_z
+:VOLU muondector muon_solid anthracene
+:COLOUR muondector 1. 0. 0.  // red
+:PLACE muondector 1 world rm0 $x $y $pos1
+:PLACE muondector 2 world rm0 $x $y $pos2
+
+:SOLID bref_solid TRD $r_x $r_x $r_y1 $r_y2 $r_z
+:SOLID ref_solid SUBTRACTION bref_solid muon_solid R0 0. 0. -1.*mm
+:VOLU Al2O3 ref_solid G4_ALUMINUM_OXIDE
+:PLACE Al2O3 1 world rm0 $x-1.*mm $y $pos1
+:PLACE Al2O3 2 world rm0 $x-1.*mm $y $pos2
+
+:surf Al2O3Surface1 Al2O3:1 muondector:1
+  type dielectric_metal
+  model glisur
+  finish ground
+  property photon_energies 2 1.70*eV 3.47*eV
+    REFLECTIVITY 0.9 0.9
+
+:surf Al2O3Surface2 Al2O3:2 muondector:2
+  type dielectric_metal
+  model glisur
+  finish ground
+  property photon_energies 2 1.70*eV 3.47*eV
+    REFLECTIVITY 0.9 0.9
+
+// pmt 
+
+
+    
+    
