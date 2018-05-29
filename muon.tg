@@ -4,14 +4,13 @@
 :P de_y1 84./2.*mm
 :P de_y2 143.5/2.*mm
 :P de_z 338.5/2.0*mm 
-:P win_x $de_x
-:P win_y1 $de_y1
-:P win_y2 $de_y2
-:P win_z $de_z
-:P r_x $de_x+1.*mm
-:P r_y1 $de_y1+1.*mm
-:P r_y2 $de_y2+1.*mm
-:P r_z $de_z+1.*mm
+:P guide_x $de_x
+:P guide_y1 $de_y1
+:P guide_y2 $de_x
+:P guide_z 50*mm
+:P pmt_x $de_x
+:P pmt_y $de_x
+:P pmt_z 20*mm
 
 :P pos1 -$de_x-5.*mm
 :P pos2 $de_x+5.*mm
@@ -30,7 +29,7 @@
 :PLACE muondector 1 world rm0 $x $y $pos1
 :PLACE muondector 2 world rm0 $x $y $pos2
 
-:SOLID bref_solid TRD $r_x $r_x $r_y1 $r_y2 $r_z
+:SOLID bref_solid TRD $de_x+1.*mm $de_x+1.*mm $de_y1+1.*mm $de_y2+1.*mm $de_z+1.*mm
 :SOLID ref_solid SUBTRACTION bref_solid muon_solid R0 0. 0. -1.*mm
 :VOLU Al2O3 ref_solid G4_ALUMINUM_OXIDE
 :PLACE Al2O3 1 world rm0 $x-1.*mm $y $pos1
@@ -42,6 +41,7 @@
   finish ground
   property photon_energies 2 1.70*eV 3.47*eV
     REFLECTIVITY 0.9 0.9
+    EFFICIENCY 1.0 1.0
 
 :surf Al2O3Surface2 Al2O3:2 muondector:2
   type dielectric_metal
@@ -49,9 +49,43 @@
   finish ground
   property photon_energies 2 1.70*eV 3.47*eV
     REFLECTIVITY 0.9 0.9
+    EFFICIENCY 1.0 1.0
 
-// pmt 
+:surf Al2O3wSurface2 Al2O3:2 world:0
+  type dielectric_metal
+  model glisur
+  finish ground
+  property photon_energies 2 1.70*eV 3.47*eV
+    REFLECTIVITY 0.9 0.9
+    EFFICIENCY 1.0 1.0
+
+:surf Al2O3wSurface1 Al2O3:1 world:0
+  type dielectric_metal
+  model glisur
+  finish ground
+  property photon_energies 2 1.70*eV 3.47*eV
+    REFLECTIVITY 0.9 0.9
+    EFFICIENCY 1.0 1.0
+
+// guide
+:SOLID guide_solid TRD $guide_x $guide_x $guide_y2 $guide_y1 $guide_z
+:VOLU guide guide_solid PMMA
+:PLACE guide 1 world rm0 $x+$guide_z+$de_z $y $pos1
+:PLACE guide 2 world rm0 $x+$guide_z+$de_z $y $pos2
+:COLOUR guide 0. 0. 1.  // blue
+
+// guide reflection 
+:SOLID g_bref_solid TRD $guide_x+1.*mm $guide_x+1.*mm $guide_y2+1.*mm $guide_y1+1.*mm $guide_z
+:SOLID g_ref_solid SUBTRACTION g_bref_solid guide_solid R0 0. 0. 0.
+:VOLU Al2O3_guide g_ref_solid G4_ALUMINUM_OXIDE
+:PLACE Al2O3_guide 3 world rm0 $x+$guide_z+$de_z $y $pos1
+:PLACE Al2O3_guide 4 world rm0 $x+$guide_z+$de_z $y $pos2
 
 
-    
-    
+
+:SOLID PMT_solid BOX $pmt_x $pmt_y $pmt_z
+:VOLU PMT PMT_solid G4_Pyrex_Glass
+:PLACE PMT 1 world rm0 $x+2*$guide_z+$de_z+$pmt_z $y $pos1
+:PLACE PMT 2 world rm0 $x+2*$guide_z+$de_z+$pmt_z $y $pos2
+// green
+:COLOUR PMT 0. 1. 0.  

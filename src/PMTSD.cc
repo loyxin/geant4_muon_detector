@@ -35,46 +35,26 @@ G4bool PMTSD::ProcessHits(G4Step* aStep, G4TouchableHistory* /*ROhist*/)
     
     if(theTrack->GetDefinition()
     !=G4OpticalPhoton::OpticalPhoton() ) return false;// 确定是否是光子
+    
 
-    G4StepPoint* thePrePoint  = aStep->GetPreStepPoint();
-    G4StepPoint* thePostPoint = aStep->GetPostStepPoint();
+    PMThit* hit = new PMThit();
 
-    G4VPhysicalVolume* thePrePV  = thePrePoint->GetPhysicalVolume();
-    G4VPhysicalVolume* thePostPV = thePostPoint->GetPhysicalVolume();
+    G4double Energy = aStep->GetPreStepPoint()->GetTotalEnergy();
+    G4double time = aStep->GetPreStepPoint()->GetGlobalTime();
+    G4ThreeVector position = aStep->GetPreStepPoint()->GetPosition();
+    G4String name;
+    G4int number = aStep->GetPreStepPoint()->GetPhysicalVolume()->GetCopyNo();
+    G4cout<<number<<G4endl;
 
-    G4String thePrePVname  = " ";
-    G4String thePostPVname = " ";
+    hit->SetTime(time);
+    hit->SetDeltaEnergy(Energy);
+    hit->SetPosition(position);
+    if(number==2)
+        name = "PMT2";
+    else
+        name = "PMT1";
+    hit->SetName(name);
 
-    if (thePostPV) {
-        thePrePVname  = thePrePV->GetName();
-        thePostPVname = thePostPV->GetName();
-     }
-
-     if(thePostPVname!="PMT1" && thePostPVname!="PMT2" && 
-     thePrePVname!="PMT1" && thePrePVname!="PMT2" ) return false;
-
-     
-
-     PMThit* hit = new PMThit();
-
-     G4double aDep = aStep->GetTotalEnergyDeposit();
-     G4double time = aStep->GetPostStepPoint()->GetGlobalTime();
-     G4ThreeVector position = aStep->GetPostStepPoint()->GetPosition();
-     G4String name = aStep->GetPostStepPoint()->GetPhysicalVolume()->GetName();
-
-    if(thePostPVname=="PMT1"|| thePostPVname=="PMT2") {
-        hit->SetTime(time);
-        hit->SetDeltaEnergy(aDep);
-        hit->SetPosition(position);
-        hit->SetName(thePostPVname);
-    }
-
-    if(thePrePVname=="PMT1"|| thePrePVname=="PMT2") {
-        hit->SetTime(time);
-        hit->SetDeltaEnergy(aDep);
-        hit->SetPosition(position);
-        hit->SetName(thePrePVname);
-    }
 
     fHitsCollection->insert(hit);
     
