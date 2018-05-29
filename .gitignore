@@ -3,3 +3,5 @@ cmake-build-debug
 result/thesis/muon_last.pdf
 doc/html
 doc/latex
+gear/gears-master
+build
