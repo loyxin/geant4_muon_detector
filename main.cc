@@ -33,7 +33,7 @@
 #include "Analysis.hh"
 #include "muonDetectorConstruction.hh"
 #include "muonActionInitialization.hh"
-#include "muonPhysicsList.hh"
+// #include "muonPhysicsList.hh" 如果要用这个 PhysicsList 把include&src 的physics的里面的文件放出来
 #include "Physics.hh"
 
 using namespace std;
@@ -82,10 +82,10 @@ int main(int argc,char** argv)
   runManager->SetUserInitialization(new muonDetectorConstruction() );
 
   // Physics list
-   G4String physName = "QGSP_BERT_HP";
   // G4VModularPhysicsList* physicsList = new QBBC;
-  G4VUserPhysicsList* muonPhy = new muonPhysicsList(physName);
-  // G4VUserPhysicsList* muonPhy = new Physics();
+  //  G4String physName = "QGSP_BERT_HP";
+  // G4VUserPhysicsList* muonPhy = new muonPhysicsList(physName);
+  G4VUserPhysicsList* muonPhy = new Physics();
 
   runManager->SetUserInitialization(muonPhy);
   muonPhy->SetVerboseLevel(1);
